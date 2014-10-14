@@ -199,6 +199,15 @@ if (defined('ENVIRONMENT'))
  * And away we go...
  *
  */
+/*
+ *---------------------------------------------------------------
+ * TZ CUSTOM BY TRANS
+ *---------------------------------------------------------------
+ * Xác định các đường dẫn cơ bản
+ */
+/* Thư mục public chứa các file css,js,... của trang web */
+define('WEBROOT_URL', 'http://localhost/ComicProject/application/webroot/');
+	
 require_once BASEPATH.'core/CodeIgniter.php';
 
 /* End of file index.php */

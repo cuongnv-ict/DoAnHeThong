@@ -1,0 +1,608 @@
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Berkshire+Swash);
+
+/*@font-face {
+    font-family: "VNI-Univer";
+    src: url(../fonts/VNI-Univer.ttf) format("truetype");
+}*/
+body {
+  background-color: #32353b;
+}
+
+.container-fluid{
+  padding: 0;
+}
+
+a.navbar-brand {
+  color: #50b4e6 !important;
+  font-weight: bold;
+  font-family: "Berkshire Swash", Arial, sans-serif;
+  font-size: 2em;
+}
+
+/* Style for top menu */
+#cssmenu > ul{
+  border-top: #3e4147 solid 2px; 
+}
+
+#cssmenu,
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul li a,
+#cssmenu #menu-button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#cssmenu:after,
+#cssmenu > ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+#cssmenu #menu-button {
+  display: none;
+}
+#cssmenu {
+  width: auto;
+  font-family: "Open Sans",Arial, sans-serif;
+  line-height: 1;
+  background: #ffffff;
+}
+#menu-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #009ae1;
+  -webkit-transition: all 0.25s ease-out;
+  -moz-transition: all 0.25s ease-out;
+  -ms-transition: all 0.25s ease-out;
+  -o-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+#cssmenu > ul > li {
+  float: left;
+}
+#cssmenu.align-center > ul {
+  font-size: 0;
+  text-align: center;
+}
+#cssmenu.align-center > ul > li {
+  display: inline-block;
+  float: none;
+}
+#cssmenu.align-center ul ul {
+  text-align: left;
+}
+#cssmenu.align-right > ul > li {
+  float: right;
+}
+#cssmenu.align-right ul ul {
+  text-align: right;
+}
+#cssmenu > ul > li > a {
+  padding: 20px;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000000;
+  -webkit-transition: color .2s ease;
+  -moz-transition: color .2s ease;
+  -ms-transition: color .2s ease;
+  -o-transition: color .2s ease;
+  transition: color .2s ease;
+}
+#cssmenu > ul > li:hover > a,
+#cssmenu > ul > li.active > a {
+  color: #009ae1;
+}
+#cssmenu > ul > li.has-sub > a {
+  padding-right: 25px;
+}
+#cssmenu > ul > li.has-sub > a::after {
+  position: absolute;
+  top: 21px;
+  right: 10px;
+  width: 4px;
+  height: 4px;
+  border-bottom: 1px solid #000000;
+  border-right: 1px solid #000000;
+  content: "";
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transition: border-color 0.2s ease;
+  -moz-transition: border-color 0.2s ease;
+  -ms-transition: border-color 0.2s ease;
+  -o-transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease;
+}
+#cssmenu > ul > li.has-sub:hover > a::after {
+  border-color: #009ae1;
+}
+#cssmenu ul ul {
+  position: absolute;
+  left: -9999px;
+}
+#cssmenu li:hover > ul {
+  left: auto;
+}
+#cssmenu.align-right li:hover > ul {
+  right: 0;
+}
+#cssmenu ul ul ul {
+  margin-left: 100%;
+  top: 0;
+}
+#cssmenu.align-right ul ul ul {
+  margin-left: 0;
+  margin-right: 100%;
+}
+#cssmenu ul ul li {
+  height: 0;
+  -webkit-transition: height .2s ease;
+  -moz-transition: height .2s ease;
+  -ms-transition: height .2s ease;
+  -o-transition: height .2s ease;
+  transition: height .2s ease;
+}
+#cssmenu ul li:hover > ul > li {
+  height: 32px;
+}
+#cssmenu ul ul li a {
+  padding: 10px 20px;
+  width: 160px;
+  font-size: 12px;
+  background: #333333;
+  text-decoration: none;
+  color: #dddddd;
+  -webkit-transition: color .2s ease;
+  -moz-transition: color .2s ease;
+  -ms-transition: color .2s ease;
+  -o-transition: color .2s ease;
+  transition: color .2s ease;
+}
+#cssmenu ul ul li:hover > a,
+#cssmenu ul ul li a:hover {
+  color: #ffffff;
+}
+#cssmenu ul ul li.has-sub > a::after {
+  position: absolute;
+  top: 13px;
+  right: 10px;
+  width: 4px;
+  height: 4px;
+  border-bottom: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  content: "";
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transition: border-color 0.2s ease;
+  -moz-transition: border-color 0.2s ease;
+  -ms-transition: border-color 0.2s ease;
+  -o-transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease;
+}
+#cssmenu.align-right ul ul li.has-sub > a::after {
+  right: auto;
+  left: 10px;
+  border-bottom: 0;
+  border-right: 0;
+  border-top: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
+}
+#cssmenu ul ul li.has-sub:hover > a::after {
+  border-color: #ffffff;
+}
+@media all and (max-width: 768px), only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min--moz-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 1024px), only screen and (min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min-resolution: 192dpi) and (max-width: 1024px), only screen and (min-resolution: 2dppx) and (max-width: 1024px) {
+  #cssmenu {
+    width: 100%;
+  }
+  #cssmenu ul {
+    width: 100%;
+    display: none;
+  }
+  #cssmenu.align-center > ul,
+  #cssmenu.align-right ul ul {
+    text-align: left;
+  }
+  #cssmenu ul li,
+  #cssmenu ul ul li,
+  #cssmenu ul li:hover > ul > li {
+    width: 100%;
+    height: auto;
+    border-top: 1px solid rgba(120, 120, 120, 0.15);
+  }
+  #cssmenu ul li a,
+  #cssmenu ul ul li a {
+    width: 100%;
+  }
+  #cssmenu > ul > li,
+  #cssmenu.align-center > ul > li,
+  #cssmenu.align-right > ul > li {
+    float: none;
+    display: block;
+  }
+  #cssmenu ul ul li a {
+    padding: 20px 20px 20px 30px;
+    font-size: 12px;
+    color: #000000;
+    background: none;
+  }
+  #cssmenu ul ul li:hover > a,
+  #cssmenu ul ul li a:hover {
+    color: #000000;
+  }
+  #cssmenu ul ul ul li a {
+    padding-left: 40px;
+  }
+  #cssmenu ul ul,
+  #cssmenu ul ul ul {
+    position: relative;
+    left: 0;
+    right: auto;
+    width: 100%;
+    margin: 0;
+  }
+  #cssmenu > ul > li.has-sub > a::after,
+  #cssmenu ul ul li.has-sub > a::after {
+    display: none;
+  }
+  #menu-line {
+    display: none;
+  }
+  #cssmenu #menu-button {
+    display: block;
+    padding: 20px;
+    color: #000000;
+    cursor: pointer;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  #cssmenu #menu-button::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: block;
+    width: 15px;
+    height: 2px;
+    background: #000000;
+  }
+  #cssmenu #menu-button::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    display: block;
+    width: 15px;
+    height: 3px;
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+  }
+  #cssmenu .submenu-button {
+    position: absolute;
+    z-index: 10;
+    right: 0;
+    top: 0;
+    display: block;
+    border-left: 1px solid rgba(120, 120, 120, 0.15);
+    height: 52px;
+    width: 52px;
+    cursor: pointer;
+  }
+  #cssmenu .submenu-button::after {
+    content: '';
+    position: absolute;
+    top: 21px;
+    left: 26px;
+    display: block;
+    width: 1px;
+    height: 11px;
+    background: #000000;
+    z-index: 99;
+  }
+  #cssmenu .submenu-button::before {
+    content: '';
+    position: absolute;
+    left: 21px;
+    top: 26px;
+    display: block;
+    width: 11px;
+    height: 1px;
+    background: #000000;
+    z-index: 99;
+  }
+  #cssmenu .submenu-button.submenu-opened:after {
+    display: none;
+  }
+}
+
+#cssmenu ul li a{
+  color: #50b4e6;
+  padding: 0.5em;
+  padding-right: 2em;
+}
+
+#cssmenu {
+  background-color: #32353b;
+  border-top: #3e4147 solid 1px;
+  margin-bottom: 2em;
+}
+
+#cssmenu ul li.active a{
+  color: #f3d56b;
+}
+
+#cssmenu ul li a:hover{
+  color: #f3d56b;
+}
+
+/*End style for top menu*/
+/*Top Nav*/
+div#topnav {
+  background-color: #1F1E1E;
+  border-bottom: #50b4e6 solid 3px;
+}
+
+/*=============== mTitle ================*/
+div.mtitle h3{
+  font-size: 1.2em;
+  color: white;
+  font-family: Arial;
+  margin: 0;
+  text-transform: uppercase;
+}
+div.mtitle hr{
+  margin: 0.5em 0;
+}
+
+div.mtitle i {
+  font-size: 2.7em;
+  margin-right: 0.2em;
+}
+/*=============== mItem ================*/
+
+
+div.mitem {
+  background-color: #3e4147;
+  margin: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border: 0px solid #000000;
+}
+div.mitem h3{
+  font-size: 1.2em;
+  text-align: center;
+  color: #c4c8ce;
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-bottom: 0.2em;
+}
+
+div.mitem p{
+  position: absolute;
+  width: 85%;
+  z-index: 100;
+  line-height: 1.8em;
+  margin-top: -2.7em;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 0.5em;
+  font-size: 1em;
+  text-align: center;
+  color: #cccccc;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+div.mitem img {
+  margin-top: 0.5em;
+  z-index: -11111;
+}
+/*============= */
+div#featured .col-md-2{
+  padding: 0 !important;
+}
+
+div.mitem a:hover{
+  text-decoration: none;
+}
+/*=============== wrap-scroller ================*/
+
+/*=============== Sidebar ================*/
+
+div#sidebar #category a{
+  color: #c4c8ce;
+}
+
+div#sidebar div#category a{
+  line-height: 2.5em;
+}
+
+div#sidebar div#category a:hover{
+  color: #f3d56b;
+  text-decoration: none;
+}
+
+
+div#sidebar div#abc {
+  border-left: #50b4e6 solid 2px;
+  padding: 0;
+  background-color: #3E4147;
+}
+div#sidebar div#abc a{
+  font-weight: bold;
+  line-height: 1.5em;
+  padding: 0.5em; 
+}
+div#sidebar div#abc a:hover{
+  text-decoration: none;
+  background-color: #1d1c1c;
+}
+
+
+/*=============== main-content ================*/
+div#main-content {
+  padding-left: 1em;
+}
+
+ .col-md-3, .col-md-4, .col-md-6, .col-md-12 {
+  padding: 0;
+}
+
+/*=============== mitem-2 ================*/
+.mitem-2 {
+  background-color: #3e4147;
+  margin: 0.25em;
+  padding: 0.5em;
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border: 0px solid #000000;
+}
+
+.mitem-2 .caption {
+ padding-left: 1em;
+}
+
+.mitem-2 .caption h3 {
+  font-size: 1.2em;
+  color: #f3d56b;
+}
+
+.mitem-2 a:hover{
+  text-decoration: none;
+}
+
+/*=============== footer ================*/
+#footer {
+  margin-top: 3em;
+  background-color: #000000;
+  border-top: #50b4e6 solid 3px;
+}
+#footer span {
+  font-size: 1em;
+}
+#footer h4 {
+  margin: 0;
+  color: #50b4e6;
+  font-size: 1.2em;
+}
+#footer p {
+  font-size: 0.8em;
+}
+#footer hr {
+  margin: 0;
+}
+#footer .box {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+/*=============  Details css  ==========================*/
+.breadcrumb {
+  background-color: #4b4e56;
+}
+.breadcrumb a{
+  color: #c4c8ce;
+}
+
+.breadcrumb a:hover{
+  color: white;
+  text-decoration: none;
+}
+
+#details .info ul {
+  list-style: none;
+  padding: 0;
+}
+
+#details .info h2 {
+  font-size: 2em;
+  color: #f3d56b;
+}
+#details h5{
+  color: #c4c8ce;
+}
+#details li, p{
+  color: #c4c8ce;
+}
+
+/* Chapter */
+.chapter select{
+  background-color: #3e4147;
+  color: #c4c8ce;
+}
+
+.chapter select option{
+  color: #c4c8ce;
+}
+
+#chapter-last ul{
+  list-style: none;
+  padding: 0;
+}
+
+#chapter-last ul li a{ 
+  color: #c4c8ce;
+  line-height: 2.5em;
+}
+
+#chapter-last ul li {
+  border-bottom: #282828 solid 1px;
+}
+
+#chapter-last ul li a:hover{ 
+  color: #f3d56b;
+  line-height: 2.5em;
+  text-decoration: none;
+}
+
+/*=============  Reading css  ==========================*/
+
+h1 {
+  font-size: 2.2em;
+  color: #f3d56b;
+}
+
+#content-book {
+  background-color: #202329;
+  padding: 2em;
+}
+
+.comment {
+  margin-top: 2em;
+  background-color: #202329;
+}
+
+#img-content-book img{
+  margin-top: 2em;
+}
+
+#img-content-book {
+  background-color: #202329;
+  padding-right: 2em;
+  padding-left: 2em;
+}

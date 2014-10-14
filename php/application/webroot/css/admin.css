@@ -1,0 +1,100 @@
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Berkshire+Swash);
+
+/*Reset*/
+.col-md-3, .col-md-2 {
+  padding: 0;
+  margin: 0;
+}
+
+
+body {
+  background-color: white;
+  color: black;
+}
+
+.container-fluid{
+  padding: 0;
+}
+
+/* topnav */
+
+a.navbar-brand {
+  color: #50b4e6 !important;
+  font-weight: bold;
+  font-family: "Berkshire Swash", Arial, sans-serif;
+  font-size: 2em;
+}
+
+#account a{
+  padding-bottom: 0.2em;
+  padding-top: 0.2em;
+  height: inherit;
+
+}
+
+#account a img {
+  vertical-align: bottom;
+}
+/* panel */
+#sidebar .panel{
+  border: none;
+}
+
+#sidebar .panel .panel-heading{
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: #FFF50D solid 3px;
+}
+
+#sidebar .panel .panel-body{
+  padding: 0;
+}
+
+#sidebar .panel .panel-body .list-group{
+  margin: 0;
+}
+
+#sidebar .panel .panel-body .list-group a.active{
+  background-color: #DDDDDD;
+  border: none;
+}
+/* profile */
+.avatar img{
+  padding: 0.1em;
+  margin: 0;
+  border: solid black 1px;
+  vertical-align: bottom;
+}
+
+.avatar h4 {
+  display: inline;
+}
+
+/*  */
+#actions {
+  margin-bottom: 0.4  em;
+}
+
+.pagination {
+  display: inline;
+}
+
+#content .title{
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 0.5em;
+}
+
+#header h3{
+  margin-top: 0;
+  border-bottom: #FFF50D solid 3px;
+}
+
+#header {
+  margin-bottom: 0.5em;
+}
+#content .control-label{
+  font-weight: normal;
+}
