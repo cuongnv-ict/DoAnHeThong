@@ -1,0 +1,1 @@
+<?php echo $content_for_layout ;// các file view được nạp vào layout?>
