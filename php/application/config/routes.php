@@ -37,10 +37,11 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "public/home";
 $route['404_override'] = '';
-
+// $config['modules_locations'] = array(
+// 		APPPATH.'modules/' => '../modules/',
+// );
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
