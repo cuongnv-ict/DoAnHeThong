@@ -529,6 +529,10 @@ div#main-content {
   color: #c4c8ce;
 }
 
+#details div#rating a i{
+	color: yellow;
+}
+
 .breadcrumb a:hover{
   color: white;
   text-decoration: none;
@@ -606,3 +610,4 @@ h1 {
   padding-right: 2em;
   padding-left: 2em;
 }
+
