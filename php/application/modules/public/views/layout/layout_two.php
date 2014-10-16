@@ -202,8 +202,8 @@
 				<span>Mạng xã hội</span>
 				<h4>TruyenZ trên facebook</h4>
 				<hr />
-				<div>
-					<p>facebook</p>
+				<div class="box-content">
+					<div class="fb-like-box" data-href="https://www.facebook.com/truyen.ry" data-width="100%" data-colorscheme="dark" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
 				</div>
 			</div>
 			<div class="col-md-4 box">

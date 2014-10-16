@@ -11,9 +11,16 @@ class Mcomic extends MX_Controller{
 		$this->tz_layout->setLayout("layout/ad_layout_one");
 	}
 	
-	public function showAllComic(){
-		$this->tz_layout->view("comic/all_comic");
+	public function showAll(){
+		$this->tz_layout->view("comic/show_all");
 	}
 	
+	public function edit(){
+		$this->tz_layout->view("comic/edit");
+	}
+	
+	public function editChapter(){
+		$this->tz_layout->view("comic/edit_chapter");
+	}
 	
 }

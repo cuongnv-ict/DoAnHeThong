@@ -614,3 +614,6 @@ h1 {
   padding-left: 2em;
 }
 
+#footer .box-content {
+	margin-top: 0.5em;
+}

@@ -74,7 +74,7 @@ a.navbar-brand {
 
 /*  */
 #actions {
-  margin-bottom: 0.4  em;
+  margin-bottom: 0.4em;
 }
 
 .pagination {
@@ -98,3 +98,4 @@ a.navbar-brand {
 #content .control-label{
   font-weight: normal;
 }
+
