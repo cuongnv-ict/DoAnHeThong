@@ -16,6 +16,7 @@
 	<div class="info col-md-8 col-sm-6 col-xs-12">
 		<h2>Spider man - The manga</h2>
 		<div id="rating">
+			<div class="fb-like" data-href="https://www.facebook.com/truyen.ry" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
 			<a href="#">
 				<i class="fa fa-star fa-2x"></i>
 			</a>
@@ -76,6 +77,6 @@
 		</div>
 	</div>
 </div>
-<div>
-	Facebook API
+<div id="fb-api" class="col-md-12">
+	<div class="fb-comments" data-href="https://www.facebook.com/truyen.ry" data-width="100%" data-numposts="5" data-colorscheme="dark"></div>
 </div>
