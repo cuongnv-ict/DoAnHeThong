@@ -617,3 +617,8 @@ h1 {
 #footer .box-content {
 	margin-top: 0.5em;
 }
+
+.nav {
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
