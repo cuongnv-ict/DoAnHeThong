@@ -20,4 +20,8 @@ class Comic extends MX_Controller{
 		$this->tz_layout->setLayout("layout/layout_reading");
 		$this->tz_layout->view("comic/reading_two");
 	}
+	
+	public function search(){
+		$this->tz_layout->view("comic/search");
+	}
 }
