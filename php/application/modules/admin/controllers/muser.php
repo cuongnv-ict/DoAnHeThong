@@ -15,4 +15,12 @@ class Muser extends MX_Controller{
 		$this->tz_layout->view("user/index");
 	}
 	
+	public function allUser(){
+		$this->tz_layout->view("user/all_user");
+	}
+	
+	public function newUser(){
+		$this->tz_layout->view("user/new_user");
+	}
+	
 }

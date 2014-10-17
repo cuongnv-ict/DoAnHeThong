@@ -3,7 +3,7 @@
 @import url(http://fonts.googleapis.com/css?family=Berkshire+Swash);
 
 /*Reset*/
-.col-md-3, .col-md-2 {
+.col-md-3, .col-md-2, .col-sm-4 {
   padding: 0;
   margin: 0;
 }
@@ -82,9 +82,9 @@ a.navbar-brand {
 }
 
 #content .title{
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  padding-left: 0.5em;
+  padding-top: 0.2em;
+  padding-bottom: 0.4em;
+  padding-left: 0.2em;
 }
 
 #header h3{
@@ -99,3 +99,10 @@ a.navbar-brand {
   font-weight: normal;
 }
 
+.control-label {
+ margin-bottom: 0;	
+}
+
+.form-group {
+	display: block;
+}

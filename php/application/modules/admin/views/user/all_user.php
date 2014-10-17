@@ -1,5 +1,5 @@
 <div id="header">
-	<h3 class="bg-primary title">Danh mục truyện</h3>
+	<h3 class="bg-primary title">Danh sách người dùng</h3>
 	<div class="clearfix container-fluid">
 		<div id="actions" class="btn-group col-md-3">
 			<button type="button" class="btn btn-success">
@@ -17,11 +17,6 @@
 			</div>
 		</div>
 
-
-		<!-- 	<div class="col-md-3">
-							<input type="text" class="form-control" placeholder="Tìm kiếm theo tên">
-						</div>
-						<button type="button" class="btn btn-success">Tìm kiếm</button> -->
 
 		<ul class="pagination pull-right">
 			<li><a href="#">&laquo;</a></li>
@@ -41,10 +36,11 @@
 				<th width="2%"><input type="checkbox" id="inlineCheckbox1"
 					value="option1"></th>
 				<th>ID</th>
-				<th>Tên truyện</th>
-				<th>Loại truyện</th>
-				<th>Thể loại</th>
-				<th>Tác giả</th>
+				<th>Username</th>
+				<th>Password</th>
+				<th>Role</th>
+				<th>Email</th>
+				<th>Phone</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -52,6 +48,7 @@
 				<td><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
 				<td>Mark</td>
 				<td><a href="#">Otto</a></td>
+				<td>Otto</td>
 				<td>Otto</td>
 				<td>Otto</td>
 				<td>@mdo</td>
@@ -62,12 +59,14 @@
 				<td><a href="#">Otto</a></td>
 				<td>Otto</td>
 				<td>Otto</td>
+				<td>Otto</td>
 				<td>@fat</td>
 			</tr>
 			<tr>
 				<td><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
 				<td>Larry</td>
 				<td><a href="#">Otto</a></td>
+				<td>Otto</td>
 				<td>Otto</td>
 				<td>Otto</td>
 				<td>@twitter</td>
