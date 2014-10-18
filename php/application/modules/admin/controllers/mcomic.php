@@ -23,4 +23,13 @@ class Mcomic extends MX_Controller{
 		$this->tz_layout->view("comic/edit_chapter");
 	}
 	
+	public function newComic(){
+		$this->tz_layout->view("comic/new_comic");
+	}
+	
+	public function newChapter(){
+		$this->tz_layout->view("comic/new_chapter");
+	}
+	
+	
 }
