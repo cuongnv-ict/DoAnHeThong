@@ -67,7 +67,7 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">ZTruyen</a>
+			<a class="navbar-brand" href="<?php echo base_url("index.php"); ?>">ZTruyen</a>
 		</div>
 		<div class="navbar-collapse collapse navbar-responsive-collapse">
 			<form class="navbar-form navbar-right">
@@ -84,12 +84,12 @@
 		<!-- TopMenu -->
 		<div id='cssmenu'>
 			<ul>
-				<li class='active'><a href='#'><i class="fa fa-home fa-2x"></i>
+				<li class='active'><a href='<?php echo base_url("index.php"); ?>'><i class="fa fa-home fa-2x"></i>
 						Trang chủ</a></li>
-				<li><a href='#'><i class="fa fa-file-image-o fa-2x"></i> Truyện
+				<li><a href='<?php echo base_url("index.php/public/home/showToType/2"); ?>'><i class="fa fa-file-image-o fa-2x"></i> Truyện
 						tranh</a>
 				
-				<li><a href='#'><i class="fa fa-file-text-o fa-2x"></i> Truyện chữ</a></li>
+				<li><a href='<?php echo base_url("index.php/public/home/showToType/1"); ?>'><i class="fa fa-file-text-o fa-2x"></i> Truyện chữ</a></li>
 				<li><a href='#'><i class="fa fa-credit-card fa-2x"></i> Liên hệ</a></li>
 			</ul>
 		</div>

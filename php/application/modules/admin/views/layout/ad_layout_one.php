@@ -76,8 +76,8 @@
 			  <div class="panel-heading">Quản lí truyện</div>
 			  <div class="panel-body">
 			    <div class="list-group">
-				  <a href="#" class="list-group-item "><i class="fa fa-th-list"></i> Thêm truyện mới</a>
-				  <a href="#" class="list-group-item"><i class="fa fa-th-list"></i> Tất cả truyện</a>
+				  <a href="<?php echo base_url("index.php/admin/mcomic/newcomic");?>" class="list-group-item "><i class="fa fa-th-list"></i> Thêm truyện mới</a>
+                                  <a href="<?php echo base_url("index.php/admin/mcomic/showall");?>" class="list-group-item"><i class="fa fa-th-list"></i> Tất cả truyện</a>
 				  <a href="#" class="list-group-item"><i class="fa fa-th-list"></i> Thông báo lỗi</a>
 				  <a href="#" class="list-group-item"><i class="fa fa-th-list"></i> Quản lý tag</a>
 				</div>

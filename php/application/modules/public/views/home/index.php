@@ -1,158 +1,27 @@
 <div class="mtitle">
-	<i class="fa fa-bars fa-3x navbar-left"></i> <span>Hằng ngày</span>
-	<h3>Truyện mới cập nhật</h3>
-	<hr />
+    <i class="fa fa-bars fa-3x navbar-left"></i> <span>Hằng ngày</span>
+    <h3>Truyện mới cập nhật(<?php echo sizeof($lstComicShow);?>)</h3>
+    <hr />
 </div>
+<?php
+if(sizeof($lstComicShow)==0){
+    echo '<i class="h2">Nội dung hiện tại chưa cập nhật!</i>';
+}
+for ($i = 0; $i < sizeof($lstComicShow); $i++) {
+    echo '<div class="col-md-3 col-sm-4 col-xs-6">
+            <div class="mitem-2">
+                <div>
+                    <a href="'.(base_url()).'index.php/public/comic/index/'.$lstComicShow[$i]["id"].'">
+                        <img src="'.(base_url("application/".$lstComicShow[$i]["url_images"])).'" width="100%" height="200px" />
+                    </a>
+                </div>
+                <div class="caption">
+                    <a href="#"><h3>'.$lstComicShow[$i]["comic_name"].'</h3></a> <a href="#"><p>Chương 12</p></a>
+                    <p>Tác giả: '.AuthorModel::getById($lstComicShow[$i]["id_author"])[0]["author_name"].'</p>
+                </div>
 
-<div class="col-md-3 col-sm-4 col-xs-6">
-	<div class="mitem-2">
-		<div>
-			<a href="#"> <img src="<?php echo TZ_Helper::getUrlImage('h1.jpg')?>"
-				width="100%" height="100%">
-			</a>
-		</div>
-		<div class="caption">
-			<a href="#"><h3>One Peice</h3></a> <a href="#"><p>Chương 12</p></a>
-			<p>Tác giả: Achilles</p>
-			<p>Người dịch: Achilles</p>
-		</div>
+            </div>
+        </div>';
+}
+?>
 
-	</div>
-</div>
-
-
-<div class="col-md-3 col-sm-4 col-xs-6">
-	<div class="mitem-2">
-		<div>
-			<a href="#"> <img src="<?php echo TZ_Helper::getUrlImage('h1.jpg')?>"
-				width="100%" height="100%">
-			</a>
-		</div>
-		<div class="caption">
-			<a href="#"><h3>One Peice</h3></a> <a href="#"><p>Chương 12</p></a>
-			<p>Tác giả: Achilles</p>
-			<p>Người dịch: Achilles</p>
-		</div>
-
-	</div>
-</div>
-<div class="col-md-3 col-sm-4 col-xs-6">
-	<div class="mitem-2">
-		<div>
-			<a href="#"> <img src="<?php echo TZ_Helper::getUrlImage('h1.jpg')?>"
-				width="100%" height="100%">
-			</a>
-		</div>
-		<div class="caption">
-			<a href="#"><h3>One Peice</h3></a> <a href="#"><p>Chương 12</p></a>
-			<p>Tác giả: Achilles</p>
-			<p>Người dịch: Achilles</p>
-		</div>
-
-	</div>
-</div>
-<div class="col-md-3 col-sm-4 col-xs-6">
-	<div class="mitem-2">
-		<div>
-			<a href="#"> <img src="<?php echo TZ_Helper::getUrlImage('h1.jpg')?>"
-				width="100%" height="100%">
-			</a>
-		</div>
-		<div class="caption">
-			<a href="#"><h3>One Peice</h3></a> <a href="#"><p>Chương 12</p></a>
-			<p>Tác giả: Achilles</p>
-			<p>Người dịch: Achilles</p>
-		</div>
-
-	</div>
-</div>
-<div class="col-md-3 col-sm-4 col-xs-6">
-	<div class="mitem-2">
-		<div>
-			<a href="#"> <img src="<?php echo TZ_Helper::getUrlImage('h1.jpg')?>"
-				width="100%" height="100%">
-			</a>
-		</div>
-		<div class="caption">
-			<a href="#"><h3>One Peice</h3></a> <a href="#"><p>Chương 12</p></a>
-			<p>Tác giả: Achilles</p>
-			<p>Người dịch: Achilles</p>
-		</div>
-
-	</div>
-</div>
-<div class="col-md-3 col-sm-4 col-xs-6">
-	<div class="mitem-2">
-		<div>
-			<a href="#"> <img src="<?php echo TZ_Helper::getUrlImage('h1.jpg')?>"
-				width="100%" height="100%">
-			</a>
-		</div>
-		<div class="caption">
-			<a href="#"><h3>One Peice</h3></a> <a href="#"><p>Chương 12</p></a>
-			<p>Tác giả: Achilles</p>
-			<p>Người dịch: Achilles</p>
-		</div>
-
-	</div>
-</div>
-<div class="col-md-3 col-sm-4 col-xs-6">
-	<div class="mitem-2">
-		<div>
-			<a href="#"> <img src="<?php echo TZ_Helper::getUrlImage('h1.jpg')?>"
-				width="100%" height="100%">
-			</a>
-		</div>
-		<div class="caption">
-			<a href="#"><h3>One Peice</h3></a> <a href="#"><p>Chương 12</p></a>
-			<p>Tác giả: Achilles</p>
-			<p>Người dịch: Achilles</p>
-		</div>
-
-	</div>
-</div>
-<div class="col-md-3 col-sm-4 col-xs-6">
-	<div class="mitem-2">
-		<div>
-			<a href="#"> <img src="<?php echo TZ_Helper::getUrlImage('h1.jpg')?>"
-				width="100%" height="100%">
-			</a>
-		</div>
-		<div class="caption">
-			<a href="#"><h3>One Peice</h3></a> <a href="#"><p>Chương 12</p></a>
-			<p>Tác giả: Achilles</p>
-			<p>Người dịch: Achilles</p>
-		</div>
-
-	</div>
-</div>
-<div class="col-md-3 col-sm-4 col-xs-6">
-	<div class="mitem-2">
-		<div>
-			<a href="#"> <img src="<?php echo TZ_Helper::getUrlImage('h1.jpg')?>"
-				width="100%" height="100%">
-			</a>
-		</div>
-		<div class="caption">
-			<a href="#"><h3>One Peice</h3></a> <a href="#"><p>Chương 12</p></a>
-			<p>Tác giả: Achilles</p>
-			<p>Người dịch: Achilles</p>
-		</div>
-
-	</div>
-</div>
-<div class="col-md-3 col-sm-4 col-xs-6">
-	<div class="mitem-2">
-		<div>
-			<a href="#"> <img src="<?php echo TZ_Helper::getUrlImage('h1.jpg')?>"
-				width="100%" height="100%">
-			</a>
-		</div>
-		<div class="caption">
-			<a href="#"><h3>One Peice</h3></a> <a href="#"><p>Chương 12</p></a>
-			<p>Tác giả: Achilles</p>
-			<p>Người dịch: Achilles</p>
-		</div>
-
-	</div>
-</div>
