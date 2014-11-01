@@ -108,7 +108,7 @@
                         </div>
                         <div class="container-fluid">
                             <div class="col-md-6 col-sm-4 col-xs-4 text-info ">
-                                <a href="<?php echo base_url("index.php/public/home/showToTypeComic/1"); ?>"><b>TRUYỆN CHỮ</b></a>
+                                <a href="<?php echo base_url("index.php/public/home/showToType/1"); ?>"><b>TRUYỆN CHỮ</b></a>
                             </div>
                         </div>
                         <div class="container-fluid">
@@ -123,7 +123,7 @@
                         
                         <div class="container-fluid">
                             <div class="col-md-6 col-sm-4 col-xs-4 text-info ">
-                                <a href="<?php echo base_url("index.php/public/home/showToTypeComic/2"); ?>"><b>TRUYỆN TRANH</b></a>
+                                <a href="<?php echo base_url("index.php/public/home/showToType/2"); ?>"><b>TRUYỆN TRANH</b></a>
                             </div>
                         </div>
                         <div class="container-fluid">

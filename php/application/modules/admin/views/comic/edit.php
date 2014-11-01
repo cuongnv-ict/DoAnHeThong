@@ -66,7 +66,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title clearfix">
-                    <span class="col-md-2">Người đăng</span> <span>San San</span> <a
+                    <span class="col-md-2">Thể loại</span> <span><?php echo KindModel::getById(CategoryModel::getById($model["id_category"])[0]["id_kind"])[0]["kind_name"]?></span> <a
                         class="pull-right" data-toggle="collapse" data-parent="#accordion"
                         href="#collapse3"> Chỉnh sửa </a>
                 </h4>
@@ -124,7 +124,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title clearfix">
-                    <span class="col-md-2">Thư mục gốc</span> <span>Nguoi_nhen_3</span>
+                    <span class="col-md-2">Đường dẫn ảnh</span> <span><?php echo base_url().$model["url_images"];?></span>
                     <a class="pull-right" data-toggle="collapse"
                        data-parent="#accordion" href="#collapse5"> Chỉnh sửa </a>
                 </h4>
@@ -153,8 +153,8 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title clearfix">
-                    <span class="col-md-2">Tổng quan</span> <span>Nguoi_nhen_3</span> <a
-                        class="pull-right" data-toggle="collapse" data-parent="#accordion"
+                    <span class="col-md-2">Lời dẫn</span> <span class="col-md-9"><?php echo $model["summary"];?></span> 
+                    <a class="pull-right" data-toggle="collapse" data-parent="#accordion"
                         href="#collapse6"> Chỉnh sửa </a>
                 </h4>
             </div>

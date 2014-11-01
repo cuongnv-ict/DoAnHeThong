@@ -59,6 +59,7 @@
                         <th>Đường dẫn</th>
                         <th>Ngày khởi tạo</th>
                         <th>Cập nhật lần cuối</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,6 +73,7 @@
                                     <td>' . $lstDataStore[$i]["url_store"] . '</td>
                                     <td>' . $lstDataStore[$i]["create_time"] . '</td>
                                     <td>' . $lstDataStore[$i]["change_time"] . '</td>
+                                    <td align="center"><input title="Chỉnh sửa" type="image" src="'.(base_url("application/webroot/images/edit.png")).'" /></td>
                                 </tr>';
                     }
                     ?>
