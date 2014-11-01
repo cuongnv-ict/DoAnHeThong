@@ -52,7 +52,7 @@
                 <select class="form-control">
                     <?php
                     for ($i = 0; $i < sizeof($lstKind); $i++) {
-                        echo '<option value="' . $lstKind[$i]["id"] . '">' . $lstKind[$i]["type_name"] . '</option>';
+                        echo '<option value="' . $lstKind[$i]["id"] . '">' . $lstKind[$i]["kind_name"] . '</option>';
                     }
                     ?>
                 </select>

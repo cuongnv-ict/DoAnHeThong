@@ -12,7 +12,12 @@ class KindModel extends CI_Model {
         $query = $this->db->get("tbl_kind");
         return $query->result_array();
     }
-
+    
+    public function getAll() {
+        $this->db->select("*");
+        $query = $this->db->get("tbl_kind");
+        return $query->result_array();
+    }
 }
 
 /*
