@@ -13,4 +13,8 @@ class TZ_Helper{
 		$src = WEBROOT_URL.'images/'.$imageName;
 		return $src;
 	}
+	public static function getUrl($module,$controller,$action){
+		$url = base_url("index.php/{$module}/{$controller}/{$action}");
+		return $url;
+	}
 }
