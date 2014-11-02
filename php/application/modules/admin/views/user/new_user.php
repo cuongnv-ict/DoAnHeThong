@@ -5,14 +5,14 @@
 <div id="table-content">
 	<form class="form" role="form">
 		<div class="form-group col-md-12">
-			<label for="inputEmail3" class="col-sm-1 control-label input-sm">Tên sử dụng</label>
+			<label for="inputEmail3" class="col-sm-2 control-label input-sm">Tên sử dụng</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control input-sm" 
 					placeholder="">
 			</div>
 		</div>
 		<div class="form-group col-md-12">
-			<label for="inputPassword3" class="col-sm-1 control-label input-sm">Password</label>
+			<label for="inputPassword3" class="col-sm-2 control-label input-sm">Password</label>
 			<div class="col-sm-4">
 				<input type="password" class="form-control input-sm"
 					 placeholder="Password">
@@ -20,7 +20,7 @@
 		</div>
 		
 		<div class="form-group col-md-12">
-			<label for="inputEmail3" class="col-sm-1 control-label input-sm">Email</label>
+			<label for="inputEmail3" class="col-sm-2 control-label input-sm">Email</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control input-sm" 
 					placeholder="">
@@ -28,7 +28,7 @@
 		</div>
 		
 		<div class="form-group col-md-12">
-			<label for="inputEmail3" class="col-sm-1 control-label input-sm">Điện thoại</label>
+			<label for="inputEmail3" class="col-sm-2 control-label input-sm">Điện thoại</label>
 			<div class="col-sm-4">
 				<input type="text" class="form-control input-sm" 
 					placeholder="">
@@ -36,10 +36,12 @@
 		</div>
 		
 		<div class="form-group col-md-12">
-			<label for="inputEmail3" class="col-sm-1 control-label input-sm">Phân quyền</label>
+			<label for="inputEmail3" class="col-sm-2 control-label input-sm">Phân quyền</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control input-sm" 
-					placeholder="">
+                            <select>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                            </select>
 			</div>
 		</div>
 

@@ -8,14 +8,14 @@
         <div class="form-group">
             <label  class="col-sm-2 input-sm control-label">ID: </label>
             <div class="col-sm-2 input-group">
-                <input type="text" disabled="disabled" class="form-control input-sm" value="12" placeholder="Mã truyện">
+                <input type="text" disabled="disabled" class="form-control input-sm" value="<?php echo $model["id"];?>" placeholder="Mã truyện">
             </div>
         </div>
 
         <div class="form-group">
             <label  class="col-sm-2 control-label input-sm">Tên chương: </label>
             <div class="col-sm-3 input-group">
-                <input type="text" class="form-control input-sm" placeholder="type name comic">
+                <input type="text" class="form-control input-sm" placeholder="type name comic" value="<?php echo $model["chapter_name"];?>">
                 <span class="input-group-btn">
 			      <button class="btn btn-success input-sm" type="button">Cập nhật</button>
 			    </span>

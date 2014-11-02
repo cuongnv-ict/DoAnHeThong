@@ -10,11 +10,12 @@ class Mauthor extends MX_Controller {
         // Nạp thư viện layout
         $this->load->library("Tz_layout");
         $this->tz_layout->setLayout("layout/ad_layout_one");
-
+        $this->load->Model('AuthorModel');
     }
 
     public function index() {
-    	$this->tz_layout->view("author/index");
+        $model["lstAuthor"]=  AuthorModel::getAll();
+    	$this->tz_layout->view("author/index",$model);
     }
     public function newAuthor() {
     	$this->tz_layout->view("author/new_author");

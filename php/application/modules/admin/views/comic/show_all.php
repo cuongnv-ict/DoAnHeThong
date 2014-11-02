@@ -3,7 +3,7 @@
     <div class="clearfix container-fluid">
         <div id="actions" class="btn-group col-md-3">
             <button type="button" class="btn btn-success">
-                <i class="fa fa-plus"></i> Thêm mới
+                <a href="<?php echo TZ_Helper::getUrl("admin", "mcomic", "newcomic")?>" style="color: white;"><i class="fa fa-plus"></i> Thêm mới</a>
             </button>
             <button type="button" class="btn btn-success">
                 <i class="fa fa-times"></i> Xóa
@@ -53,7 +53,7 @@
                 echo '  <tr>
                                         <td><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
                                         <td>' . $lstComic[$i]["id"] . '</td>
-                                        <td><a href="'.(base_url("index.php/admin/mcomic/edit")."/".$lstComic[$i]["id"]).'">' . $lstComic[$i]["comic_name"] . '</a></td>
+                                        <td><a href="'.TZ_Helper::getUrl("admin", "mcomic", "edit/".$lstComic[$i]["id"]).'">' . $lstComic[$i]["comic_name"] . '</a></td>
                                         <td>' . (TypeModel::getById(CategoryModel::getById($lstComic[$i]["id_category"])[0]["id_type"])[0]["type_name"]) . '</td>
                                         <td>' . (KindModel::getById(CategoryModel::getById($lstComic[$i]["id_category"])[0]["id_kind"])[0]["kind_name"]) . '</td>
                                         <td>' . (AuthorModel::getById($lstComic[$i]["id_author"])[0]["author_name"]) . '</td>
