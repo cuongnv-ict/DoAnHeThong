@@ -73,9 +73,14 @@
             </div>
             <div class="navbar-collapse collapse navbar-responsive-collapse">
                 <form class="navbar-form navbar-right">
-                    <input type="text" class="form-control col-lg-8"
-                           placeholder="Tìm kiếm tác giả hoặc tác phẩm" size="50"> <a href="#"
+                    <div class="input-group">
+                	<input id="search" type="text" class="form-control col-lg-8"
+                           placeholder="Tìm kiếm tác giả hoặc tác phẩm" size="50"> 
+                            <span class="input-group-btn">
+                           <a href="#" id="bt-search"
                            class="btn btn-primary">Tìm kiếm</a>
+                           </span>
+                </div>
                 </form>
             </div>
         </div>
@@ -190,10 +195,11 @@
 
         </div>
 
-<!-- 	<script src="js/custom.js"></script> -->
         <?php echo TZ_Helper::htmlJs('custom') ?>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- 	<script src="js/bootstrap.min.js"></script> -->
         <?php echo TZ_Helper::htmlJs('bootstrap.min') ?>
+        <?php echo TZ_Helper::htmlJs('typeahead') ?>
+        <?php echo TZ_Helper::htmlJs('search') ?>
     </body>
 </html>
