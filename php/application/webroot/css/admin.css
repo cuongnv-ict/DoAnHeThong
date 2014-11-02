@@ -10,7 +10,8 @@
 
 
 body {
-  background-color: white;
+	background-image: url("bgmain.png");
+  //background-color: white;
   color: black;
 }
 
@@ -101,8 +102,53 @@ a.navbar-brand {
 
 .control-label {
  margin-bottom: 0;	
+ text-align: left!important;
+ padding-left: 2.5em!important;
+ font-size: 14px;
 }
 
 .form-group {
 	display: block;
+	margin-bottom: 0.2em;
 }
+
+.bt-action {
+	margin-top: 2em;
+}
+
+textarea {
+	margin-bottom: 0.1em!important;
+}
+
+.panel-body ul {
+	margin: 0;
+	
+}
+
+.panel-body li a{
+	line-height: 2.5em;
+	padding-left: 1em;
+	
+}
+
+.panel-body li {
+	border-bottom: #DBDBD9 solid 1px;
+}
+
+.panel-body li.active {
+	background-color: #DBDBD9;
+}
+
+.panel-body li a:HOVER{
+	text-decoration: none;
+}
+
+.panel-body li:HOVER{
+	text-decoration: none;
+	background-color: #DBDBD9;
+}
+#sidebar {
+	padding-left: 0.2em;
+}
+
+
