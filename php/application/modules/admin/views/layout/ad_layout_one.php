@@ -64,23 +64,49 @@
 			<div class="panel panel-primary">
 			  <div class="panel-heading">Người dùng</div>
 			  <div class="panel-body">
-			    <div class="list-group">
-				  <a href="#" class="list-group-item active"><i class="fa fa-th-list"></i> Tài khoản cá nhân</a>
-				  <a href="#" class="list-group-item"><i class="fa fa-th-list"></i> Quản lí người dùng</a>
-				 
-				</div>
+				  <ul class="list-unstyled">
+				  	<li class="active"><a href="#" class="active"><i class="fa fa-th-list"></i> Tài khoản cá nhân</a></li>
+				  	<li><a href="#" ><i class="fa fa-th-list"></i> Tài khoản cá nhân</a></li>
+				  </ul>
 			  </div>
 			</div>
 
 			<div class="panel panel-primary">
 			  <div class="panel-heading">Quản lí truyện</div>
 			  <div class="panel-body">
-			    <div class="list-group">
-				  <a href="<?php echo base_url("index.php/admin/mcomic/newcomic");?>" class="list-group-item "><i class="fa fa-th-list"></i> Thêm truyện mới</a>
-                                  <a href="<?php echo base_url("index.php/admin/mcomic/showall");?>" class="list-group-item"><i class="fa fa-th-list"></i> Tất cả truyện</a>
-				  <a href="#" class="list-group-item"><i class="fa fa-th-list"></i> Thông báo lỗi</a>
-				  <a href="#" class="list-group-item"><i class="fa fa-th-list"></i> Quản lý tag</a>
-				</div>
+			  
+			  	<ul class="list-unstyled">
+				  	<li><a href="<?php echo base_url("index.php/admin/mcomic/showall");?>" class="active"><i class="fa fa-th-list"></i> Tất cả truyện</a></li>
+				  	<li><a href="<?php echo base_url("index.php/admin/mcomic/newcomic");?>" ><i class="fa fa-th-list"></i> Thêm truyện mới</a></li>
+				  	<li ><a href="#" class="active"><i class="fa fa-th-list"></i> Thông báo lỗi</a></li>
+				
+				  </ul>
+				  
+			   
+			  </div>
+			</div>
+			
+			<div class="panel panel-primary">
+			  <div class="panel-heading">Quản lí tác giả</div>
+			  <div class="panel-body">
+			  
+			  	<ul class="list-unstyled">
+				  	<li> <a href="<?php echo TZ_Helper::getUrl("admin","mauthor","index");?>" ><i class="fa fa-th-list"></i> Danh sách tác giả</a></li>
+				  	<li><a href="<?php echo TZ_Helper::getUrl("admin","mauthor","newauthor");?>" ><i class="fa fa-th-list"></i> Thêm tác giả mới</a></li>
+				  </ul>
+			  
+			  </div>
+			</div>
+			
+			<div class="panel panel-primary">
+			  <div class="panel-heading">Quản lí thể loại</div>
+			  <div class="panel-body">
+			  
+			  	<ul class="list-unstyled">
+				  	<li> <a href="<?php echo TZ_Helper::getUrl("admin","mkind","index");?>" ><i class="fa fa-th-list"></i> Danh mục truyện</a></li>
+				  	<li><a href="<?php echo TZ_Helper::getUrl("admin","mkind","newkind");?>" ><i class="fa fa-th-list"></i> Thêm thể loại</a></li>
+				  </ul>
+			   
 			  </div>
 			</div>
 

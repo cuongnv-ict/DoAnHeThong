@@ -1,84 +1,74 @@
-<?php $model = $model[0]; ?>
+
 <div id="header">
-    <h3 class="bg-primary title">Chỉnh sửa chap truyện</h3> 
+    <h3 class="bg-primary title">Chỉnh sửa chương truyện</h3>
 </div>
 <div id="table-content">
-    <div class="panel-group" id="accordion">
+    <form class="form-horizontal" role="form">
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title clearfix">
-                    <span class="col-md-2">Tên chap</span>
-                    <span><?php echo $model["chapter_name"]; ?></span>
-                    <a class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                        Chỉnh sửa
-                    </a>
-                </h4>
-            </div>
-            <div id="collapse1" class="panel-collapse collapse out">
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Tên chap mới: </label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">Đồng ý</button>
-                                <button type="submit" class="btn btn-default">Hủy bỏ</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+        <div class="form-group">
+            <label  class="col-sm-2 input-sm control-label">ID: </label>
+            <div class="col-sm-2 input-group">
+                <input type="text" disabled="disabled" class="form-control input-sm" value="12" placeholder="Mã truyện">
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title clearfix">
-                    <span class="col-md-2">Danh sách file lưu trữ</span>
-                </h4>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label input-sm">Tên chương: </label>
+            <div class="col-sm-3 input-group">
+                <input type="text" class="form-control input-sm" placeholder="type name comic">
+                <span class="input-group-btn">
+			      <button class="btn btn-success input-sm" type="button">Cập nhật</button>
+			    </span>
             </div>
-            <div id="actions" class="btn-group col-md-3">
-                <button type="button" class="btn btn-success">
-                    <i class="fa fa-plus"></i> Thêm mới
-                </button>
-                <button type="button" class="btn btn-success">
-                    <i class="fa fa-times"></i> Xóa
-                </button>
-            </div>
-            <table class="table table-striped table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th width="2%"><input type="checkbox" id="inlineCheckbox1"
-                                              value="option1"></th>
-                        <th>ID</th>
-                        <th>STT</th>
-                        <th>Đường dẫn</th>
-                        <th>Ngày khởi tạo</th>
-                        <th>Cập nhật lần cuối</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $lstDataStore = DataStoreModel::getByChapterId($model["id"]);
-                    for ($i = 0; $i < sizeof($lstDataStore); $i++) {
-                        echo '  <tr>
-                                    <td><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
-                                    <td>' . $lstDataStore[$i]["id"] . '</td>
-                                    <td>' . $lstDataStore[$i]["No"] . '</td>
-                                    <td>' . $lstDataStore[$i]["url_store"] . '</td>
-                                    <td>' . $lstDataStore[$i]["create_time"] . '</td>
-                                    <td>' . $lstDataStore[$i]["change_time"] . '</td>
-                                    <td align="center"><input title="Chỉnh sửa" type="image" src="'.(base_url("application/webroot/images/edit.png")).'" /></td>
-                                </tr>';
-                    }
-                    ?>
-                </tbody>
-            </table>
         </div>
-    </div>
+
+      
+
+        <div class="form-group">
+            <label  class="col-sm-2 control-label input-sm">Lưu trữ: </label>
+            <div class="col-sm-3 input-group">
+                <input type="text" class="form-control input-sm" placeholder="type name comic">
+                <span class="input-group-btn">
+			      <button class="btn btn-success input-sm" type="button">Cập nhật</button>
+			    </span>
+            </div>
+        </div>       
+    </form>
+	
+	<h4>Danh sách các file</h4>
+	<hr />
+	<table class="table table-striped table-bordered table-hover">
+		<thead>
+			<tr>
+				<th width="2%"><input type="checkbox" id="inlineCheckbox1"
+					value="option1"></th>
+				<th>Đường dẫn</th>
+				<th>Hình thu nhỏ</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr>
+				<td><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
+				<td>1</td>
+				<td><a
+					href="http://localhost/doanhethong/php/index.php/admin/mcomic/edit/1">Băng
+						Nhi</a></td>
+			
+				
+				
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
+				<td>2</td>
+				<td><a
+					href="http://localhost/doanhethong/php/index.php/admin/mcomic/edit/2">Cát
+						bụi chân ai</a></td>
+					
+			
+				
+			</tr>
+		</tbody>
+	</table>
+
 </div>

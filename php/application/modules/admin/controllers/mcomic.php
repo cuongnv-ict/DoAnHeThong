@@ -31,15 +31,13 @@ class Mcomic extends MX_Controller {
         $this->tz_layout->view("comic/edit",$model);
     }
 
-    public function editChapter($id_chapter) {
-        $model["model"]=  ChapterModel::getById($id_chapter);
-        $this->tz_layout->view("comic/edit_chapter",$model);
+    public function editChapter() {
+        $this->tz_layout->view("comic/edit_chapter");
     }
 
     public function newComic() {
         $model["lstAuthor"]=  AuthorModel::getAll();
         $model["lstType"]=  TypeModel::getAll();
-        $model["lstKind"]=  KindModel::getAll();
         $this->tz_layout->view("comic/new_comic",$model);
     }
 
