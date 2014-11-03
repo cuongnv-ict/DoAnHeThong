@@ -38,6 +38,11 @@ class Mcomic extends MX_Controller {
         $model["model"]=  ChapterModel::getById($id_chapter)[0];
         $this->tz_layout->view("comic/edit_chapter",$model);
     }
+    
+    public function editChapterTwo() {
+   
+    	$this->tz_layout->view("comic/edit_chapter_two");
+    }
 
     public function newComic() {
         $model["lstAuthor"]=  AuthorModel::getAll();
