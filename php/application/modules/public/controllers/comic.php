@@ -49,7 +49,18 @@ class Comic extends MX_Controller {
 
     public function changeContent() {
         $id_chapter = $_REQUEST["id_chapter"];
+        $infoChapter = ChapterModel::getById($id_chapter)[0];
+        if (isset($_REQUEST["btn"])) {
+            $action = $_REQUEST["btn"];
+            if ($action == "f") {
+                $id_chapter = ChapterModel::getByIdComicAndNo($infoChapter["id_comic"], $infoChapter["No"] - 1)[0]["id"];
+            } else if ($action == "l") {
+                $id_chapter = ChapterModel::getByIdComicAndNo($infoChapter["id_comic"], $infoChapter["No"] + 1)[0]["id"];
+            }
+        }
+
         $lstDataStore = DataStoreModel::getByChapterId($id_chapter);
+
         for ($i = 0; $i < sizeof($lstDataStore); $i++) {
             $url = base_url() . 'application/' . $lstDataStore[$i]["url_store"];
             $file = fopen($url, 'r');

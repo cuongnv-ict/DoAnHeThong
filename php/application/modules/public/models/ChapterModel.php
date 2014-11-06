@@ -42,7 +42,14 @@ class ChapterModel extends CI_Model {
         $query = $this->db->get("tbl_chapter");
         return $query->result_array();
     }
-
+    
+    public function getByIdComicAndNo($id_comic,$no){
+        $this->db->select("*");
+        $this->db->where("id_comic", $id_comic);
+        $this->db->where("No",$no);
+        $query = $this->db->get("tbl_chapter");
+        return $query->result_array();
+    }
 }
 
 ?>

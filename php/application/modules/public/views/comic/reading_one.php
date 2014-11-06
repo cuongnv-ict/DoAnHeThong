@@ -89,14 +89,16 @@
     $("#btn-first").click(function () {
         var id_chapter = $("#select-chapter").val();
         $("#content-book").load("<?php echo base_url('/index.php/public/comic/changeContent'); ?>", {
-            "id_chapter": id_chapter-1
+            "id_chapter": id_chapter,
+            "btn":"f",
         });
     });
 
     $("#btn-last").click(function () {
         var id_chapter = $("#select-chapter").val();
         $("#content-book").load("<?php echo base_url('/index.php/public/comic/changeContent'); ?>", {
-            "id_chapter": id_chapter+1
+            "id_chapter": id_chapter,
+            "btn":"l"
         });
     })
 </script>

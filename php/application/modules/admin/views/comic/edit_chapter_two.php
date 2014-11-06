@@ -1,11 +1,10 @@
 <?php
-include dirname(BASEPATH)."/application/webroot/fckeditor/fckeditor.php";
+include dirname(BASEPATH) . "/application/webroot/fckeditor/fckeditor.php";
 
 $sBasePath = "/doanhethong/php/application/webroot/fckeditor/";
 
-$oFCKeditor = new FCKeditor('FCKeditor1') ;
-$oFCKeditor->BasePath	= $sBasePath ;
-
+$oFCKeditor = new FCKeditor('FCKeditor1');
+$oFCKeditor->BasePath = $sBasePath;
 ?>
 
 <div id="header">
@@ -17,39 +16,47 @@ $oFCKeditor->BasePath	= $sBasePath ;
         <div class="form-group">
             <label  class="col-sm-2 input-sm control-label">ID: </label>
             <div class="col-sm-2 input-group">
-                <input type="text" disabled="disabled" class="form-control input-sm" value="" placeholder="Mã truyện">
+                <?php echo $model["id"]; ?>
             </div>
         </div>
 
         <div class="form-group">
             <label  class="col-sm-2 control-label input-sm">Tên chương: </label>
             <div class="col-sm-3 input-group">
-                <input type="text" class="form-control input-sm" placeholder="type name comic" value="">
+                <input type="text" class="form-control input-sm" placeholder="type name comic" value="<?php echo $model["chapter_name"]; ?>">
                 <span class="input-group-btn">
-			      <button class="btn btn-success input-sm" type="button">Cập nhật</button>
-			    </span>
+                    <button class="btn btn-success input-sm" type="button">Cập nhật</button>
+                </span>
             </div>
         </div>
 
-      
+
 
         <div class="form-group">
             <label  class="col-sm-2 control-label input-sm">Lưu trữ: </label>
             <div class="col-sm-3 input-group">
-                <input type="text" class="form-control input-sm" placeholder="type name comic">
+                <input type="text" class="form-control input-sm" placeholder="type name comic" value="<?php echo DataStoreModel::getByChapterId($model["id"])[0]["url_store"]; ?>">
                 <span class="input-group-btn">
-			      <button class="btn btn-success input-sm" type="button">Cập nhật</button>
-			    </span>
+                    <button class="btn btn-success input-sm" type="button">Cập nhật</button>
+                </span>
             </div>
         </div>       
     </form>
-	
-	<h4>Nội dung chương</h4>
-	<hr />
-	<div id="fckeditor">
-	<?php $oFCKeditor->Create() ;?>
-	</div>
-	
-	
+
+    <h4>Nội dung chương</h4>
+    <hr />
+    <div id="fckeditor">
+        <?php
+        $lstDataStore = DataStoreModel::getByChapterId($model["id"]);
+        $strContentChapter = "asdss";
+        for ($i = 0; $i < sizeof($lstDataStore); $i++) {
+            $strContentChapter=file_get_contents(base_url() . 'application/' . $lstDataStore[$i]["url_store"]);
+        }
+        $oFCKeditor->Value = "$strContentChapter";
+        $oFCKeditor->Create();
+        ?>
+    </div>
+
+
 
 </div>

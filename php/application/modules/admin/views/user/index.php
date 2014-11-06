@@ -1,8 +1,8 @@
 <div class="avatar"> 
     <a href="#" >
-        <img src="<?php echo TZ_Helper::getUrlImage($model["url_image"]);?>" alt="..." class="img-thumbnail" width="100px">
+        <img src="<?php echo TZ_Helper::getUrlImage($model["url_image"]); ?>" alt="..." class="img-thumbnail" width="100px">
     </a>
-    <h4><?php echo $model["administrator_name"];?></h4>
+    <h4><?php echo $model["administrator_name"]; ?></h4>
 
     <hr />
 </div>
@@ -15,15 +15,27 @@
             <div class="panel-heading">
                 <h4 class="panel-title clearfix">
                     <span class="col-md-2">Tên </span>
-                    <span><?php echo $model["fullname"];?></span>
+                    <span><?php echo $model["fullname"]; ?></span>
                     <a class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
                         Chỉnh sửa
                     </a>
                 </h4>
             </div>
+            <script>
+                function changeName() {
+                    $(document).ready(function () {
+                        var newname = $("#inputPassword3").val();
+                        var id =<?php echo $model["id"]; ?>;
+                        $("#test").load("",{
+                            
+                        })
+                    });
+                }
+            </script>
+            <div id="test"></div>
             <div id="collapse1" class="panel-collapse collapse out">
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" role="form" action="javascript:changeName()">
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-2 control-label">Họ  và tên: </label>
                             <div class="col-sm-10">
@@ -74,7 +86,7 @@
             <div class="panel-heading">
                 <h4 class="panel-title clearfix">
                     <span class="col-md-2">Email </span>
-                    <span><?php echo $model["email"];?></span>
+                    <span><?php echo $model["email"]; ?></span>
                     <a class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
                         Chỉnh sửa
                     </a>
@@ -103,7 +115,7 @@
             <div class="panel-heading">
                 <h4 class="panel-title clearfix">
                     <span class="col-md-2">Số điện thoại </span>
-                    <span><?php echo $model["phone_number"];?></span>
+                    <span><?php echo $model["phone_number"]; ?></span>
                     <a class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
                         Chỉnh sửa
                     </a>
@@ -132,7 +144,7 @@
             <div class="panel-heading">
                 <h4 class="panel-title clearfix">
                     <span class="col-md-2">Ảnh đại diện </span>
-                    <span><?php echo $model["url_image"];?></span>
+                    <span><?php echo $model["url_image"]; ?></span>
                     <a class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse5">
                         Chỉnh sửa
                     </a>

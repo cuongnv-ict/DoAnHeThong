@@ -39,9 +39,9 @@ class Mcomic extends MX_Controller {
         $this->tz_layout->view("comic/edit_chapter",$model);
     }
     
-    public function editChapterTwo() {
-   
-    	$this->tz_layout->view("comic/edit_chapter_two");
+    public function editChapterTwo($id_chapter) {
+        $model["model"]=  ChapterModel::getById($id_chapter)[0];
+    	$this->tz_layout->view("comic/edit_chapter_two",$model);
     }
 
     public function newComic() {

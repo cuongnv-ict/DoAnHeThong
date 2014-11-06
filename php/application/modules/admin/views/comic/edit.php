@@ -139,7 +139,7 @@
                 <td><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
                 <td>'.$lstChapter[$i]["id"].'</td>
                 <td>'.$lstChapter[$i]["No"].'</td>
-                <td><a href="'.(TZ_Helper::getUrl("admin", "mcomic", "editChapter/".$lstChapter[$i]["id"])).'">'.$lstChapter[$i]["chapter_name"].'</a></td>
+                <td><a href="'.(TZ_Helper::getUrl("admin", "mcomic", "editChapterTwo/".$lstChapter[$i]["id"])).'">'.$lstChapter[$i]["chapter_name"].'</a></td>
                 <td>'.$lstChapter[$i]["create_time"].'</td>
                 <td>'.$lstChapter[$i]["change_time"].'</td>
 
