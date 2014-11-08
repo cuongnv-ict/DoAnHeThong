@@ -20,6 +20,20 @@ class DataStoreModel extends CI_Model {
         return $query->result_array();
     }
 
+    public function insert($data_storeModel) {
+        $this->db->insert("tbl_data_store", $data_storeModel);
+    }
+
+    public function delete($id) {
+        $this->db->where("id", $id);
+        $this->db->delete("tbl_data_store");
+    }
+
+    public function update($data_storeModel, $id) {
+        $this->db->where("id", $id);
+        $this->db->update("tbl_data_store", $data_storeModel);
+    }
+
 }
 
 ?>

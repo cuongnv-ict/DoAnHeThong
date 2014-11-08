@@ -3,7 +3,8 @@
     <div class="clearfix container-fluid">
         <div id="actions" class="btn-group col-md-3">
             <button type="button" class="btn btn-success">
-                <i class="fa fa-plus"></i> Thêm mới
+                <i class="fa fa-plus"></i> 
+                <a href="<?php echo TZ_Helper::getUrl("admin", "mauthor", "newauthor") ?>" style="color: white;">Thêm mới</a>
             </button>
             <button type="button" class="btn btn-success">
                 <i class="fa fa-times"></i> Xóa
@@ -32,11 +33,10 @@
     <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
-                <th width="2%"><input type="checkbox" id="inlineCheckbox1"
-                                      value="option1"></th>
+                <th width="2%"><input type="checkbox" id="inlineCheckbox1" value="option1"></th>
                 <th>STT</th>
                 <th>Tên tác giả</th>
-
+                <th>Ngày tạo</th>
             </tr>
         </thead>
         <tbody>
@@ -44,9 +44,9 @@
             for ($i = 0; $i < sizeof($lstAuthor); $i++) {
                 echo '<tr>
                 <td><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
-                <td>'.($i+1).'</td>
-                <td><a href="#">'.$lstAuthor[$i]["author_name"].'</a></td>
-
+                <td>' . ($i + 1) . '</td>
+                <td><a href="#">' . $lstAuthor[$i]["author_name"] . '</a></td>
+                <td><a href="#">' . $lstAuthor[$i]["create_date"] . '</a></td>    
             </tr>';
             }
             ?>

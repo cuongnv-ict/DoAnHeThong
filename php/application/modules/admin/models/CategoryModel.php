@@ -33,6 +33,19 @@ class CategoryModel extends CI_Model {
         return $query->result_array();
     }
 
+    public function insert($categoryModel) {
+        $this->db->insert("tbl_categorys", $categoryModel);
+    }
+
+    public function delete($id) {
+        $this->db->where("id", $id);
+        $this->db->delete("tbl_categorys");
+    }
+
+    public function update($categoryModel, $id) {
+        $this->db->where("id", $id);
+        $this->db->update("tbl_categorys", $categoryModel);
+    }
 }
 
 ?>

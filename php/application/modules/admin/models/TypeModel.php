@@ -26,6 +26,20 @@ class TypeModel extends CI_Model {
         return $query->result_array();
     }
 
+    public function insert($typeModel) {
+        $this->db->insert("tbl_type", $typeModel);
+    }
+
+    public function delete($id) {
+        $this->db->where("id", $id);
+        $this->db->delete("tbl_type");
+    }
+
+    public function update($typeModel, $id) {
+        $this->db->where("id", $id);
+        $this->db->update("tbl_type", $typeModel);
+    }
+
 }
 
 ?>

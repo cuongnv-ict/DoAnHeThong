@@ -45,9 +45,23 @@ class ComicModel extends CI_Model {
 
     public function getByFirstChar($char) {
         $this->db->select("*");
-        $this->db->where("comic_name like ", $char."%");
+        $this->db->where("comic_name like ", $char . "%");
         $query = $this->db->get("tbl_comic");
         return $query->result_array();
+    }
+
+    public function insert($comicModel) {
+        $this->db->insert("tbl_comic", $comicModel);
+    }
+
+    public function delete($id) {
+        $this->db->where("id", $id);
+        $this->db->delete("tbl_comic");
+    }
+
+    public function update($comicModel, $id) {
+        $this->db->where("id", $id);
+        $this->db->update("tbl_comic", $comicModel);
     }
 
 }
