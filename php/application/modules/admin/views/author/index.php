@@ -6,7 +6,7 @@
                 <i class="fa fa-plus"></i> 
                 <a href="<?php echo TZ_Helper::getUrl("admin", "mauthor", "newauthor") ?>" style="color: white;">Thêm mới</a>
             </button>
-            <button type="button" class="btn btn-success">
+            <button type="button" class="btn btn-success" id="btn-delete">
                 <i class="fa fa-times"></i> Xóa
             </button>
         </div>
@@ -33,17 +33,17 @@
     <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
-                <th width="2%"><input type="checkbox" id="inlineCheckbox1" value="option1"></th>
+                <th width="2%"><input type="checkbox" id="chkAuthors" value="all"></th>
                 <th>STT</th>
                 <th>Tên tác giả</th>
                 <th>Ngày tạo</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="lst-author">
             <?php
             for ($i = 0; $i < sizeof($lstAuthor); $i++) {
                 echo '<tr>
-                <td><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
+                <td><input type="checkbox" name="chkAuthors" id="' . ($i + 1) . '_chkAuthor" value="' . $lstAuthor[$i]["id"] . '"></td>
                 <td>' . ($i + 1) . '</td>
                 <td><a href="#">' . $lstAuthor[$i]["author_name"] . '</a></td>
                 <td><a href="#">' . $lstAuthor[$i]["create_date"] . '</a></td>    
@@ -64,3 +64,34 @@
         <li><a href="#">&raquo;</a></li>
     </ul>
 </div>
+<script>
+    $('#chkAuthors').change(function () {
+        if ($('#chkAuthors').is(':checked')) {
+            var elements = document.getElementsByName('chkAuthors');
+            for (var i = 0; i < elements.length; i++) {
+                $(elements[i]).attr('checked', false);
+            }
+        }
+    });
+    $('input[name="chkAuthors"]').change(function () {
+        if ($(this).is(':checked'))
+            $('#chkAuthors').attr('checked', false);
+    });
+    $("#btn-delete").click(function () {
+        var arIdAuthor = [];
+        if ($('#chkAuthors').is(':checked')) {
+            arIdAuthor.push($("#chkAuthors").val());
+        } else {
+            var elements = document.getElementsByName('chkAuthors');
+            for (var i = 0; i < elements.length; i++) {
+                if ($(elements[i]).is(":checked")) {
+                    arIdAuthor.push($(elements[i]).val());
+                }
+            }
+        }
+        alert(arIdAuthor);
+        $("#lst-author").load("<?php echo TZ_Helper::getUrl("admin", "mauthor", "delete"); ?>", {
+            "lstAuthorId":arIdAuthor,
+        });
+    });
+</script>

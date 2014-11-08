@@ -47,7 +47,5 @@
             $this->db->where("id",$id);
             $this->db->update("tbl_authors",$authorModel);
         }
-        
-        
     }
 ?>

@@ -45,7 +45,20 @@ class Mauthor extends MX_Controller {
     }
 
     public function delete() {
-        
+        $lstAuthorId = $_REQUEST["lstAuthorId"];
+        // print_r( $lstAuthorId);
+        foreach ($lstAuthorId as $id) {
+            AuthorModel::delete($id);
+        }
+        $lstAuthor=  AuthorModel::getAll();
+        for ($i = 0; $i < sizeof($lstAuthor); $i++) {
+            echo '<tr>
+                <td><input type="checkbox" name="chkAuthors" id="' . ($i + 1) . '_chkAuthor" value="' . $lstAuthor[$i]["id"] . '"></td>
+                <td>' . ($i + 1) . '</td>
+                <td><a href="#">' . $lstAuthor[$i]["author_name"] . '</a></td>
+                <td><a href="#">' . $lstAuthor[$i]["create_date"] . '</a></td>    
+            </tr>';
+        }
     }
 
     public function update() {
