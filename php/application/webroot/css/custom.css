@@ -479,7 +479,7 @@ div#main-content {
 /*=============== mitem-2 ================*/
 .mitem-2 {
   background-color: #3e4147;
-  margin: 0.25em;
+  margin: 0.5em;
   padding: 0.5em;
   border-radius: 5px 5px 5px 5px;
   -moz-border-radius: 5px 5px 5px 5px;
@@ -489,11 +489,19 @@ div#main-content {
 
 .mitem-2 .caption {
  padding-left: 1em;
+ 
+}
+
+.mitem-2 .caption p{
+ margin: 0.1em;
+ 
 }
 
 .mitem-2 .caption h3 {
   font-size: 1.2em;
   color: #f3d56b;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
 }
 
 .mitem-2 a:hover{
