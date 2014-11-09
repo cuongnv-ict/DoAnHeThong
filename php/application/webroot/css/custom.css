@@ -397,7 +397,7 @@ div.mitem h3{
   font-size: 1.2em;
   text-align: center;
   color: #c4c8ce;
-  margin-top: 1em;
+  margin-top: 0;
   margin-left: 1em;
   margin-right: 1em;
   margin-bottom: 0.2em;
@@ -420,6 +420,10 @@ div.mitem p{
 div.mitem img {
   margin-top: 0.5em;
   z-index: -11111;
+}
+
+div.mitem span {
+	
 }
 /*============= */
 div#featured .col-md-2{
