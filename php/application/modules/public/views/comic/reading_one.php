@@ -35,7 +35,7 @@
         </div>
         <div class="col-md-4 chapter">
             <select class="form-control " id="select-chapter" onchange="changeContent()">
-                <option value="0"><?php echo ChapterModel::getById($id_chapter)[0]["chapter_name"]; ?></option>
+                <option value="<?php echo $id_chapter;?>"><?php echo ChapterModel::getById($id_chapter)[0]["chapter_name"]; ?></option>
                 <?php
                 $lstChapter = ChapterModel::getByComicId($id_comic);
                 for ($i = 0; $i < sizeof($lstChapter); $i++) {
@@ -81,24 +81,34 @@
             if (id_chapter == "0") {
                 return;
             }
-            $("#content-book").load("<?php echo base_url('/index.php/public/comic/changeContent'); ?>", {
+            $("#content-book").load("<?php echo TZ_Helper::getUrl("public", "comic", "changecontent"); ?>", {
                 "id_chapter": id_chapter
             });
         });
     }
     $("#btn-first").click(function () {
         var id_chapter = $("#select-chapter").val();
-        $("#content-book").load("<?php echo base_url('/index.php/public/comic/changeContent'); ?>", {
+        $("#content-book").load("<?php echo TZ_Helper::getUrl("public", "comic", "changecontent"); ?>", {
             "id_chapter": id_chapter,
-            "btn":"f",
+            "btn":"f"
+        });
+        $("#select-chapter").load("<?php echo TZ_Helper::getUrl("public", "actionChange", "changeSelectChapter");?>",{
+           "id_comic": "<?php echo $id_comic;?>",
+           "id_chapter": id_chapter,
+           "btn":"f"
         });
     });
 
     $("#btn-last").click(function () {
         var id_chapter = $("#select-chapter").val();
-        $("#content-book").load("<?php echo base_url('/index.php/public/comic/changeContent'); ?>", {
+        $("#content-book").load("<?php echo TZ_Helper::getUrl("public", "comic", "changecontent"); ?>", {
             "id_chapter": id_chapter,
             "btn":"l"
+        });
+         $("#select-chapter").load("<?php echo TZ_Helper::getUrl("public", "actionChange", "changeSelectChapter");?>",{
+           "id_comic": "<?php echo $id_comic;?>",
+           "id_chapter": id_chapter,
+           "btn":"l"
         });
     })
 </script>

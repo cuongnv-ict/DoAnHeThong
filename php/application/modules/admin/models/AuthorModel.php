@@ -28,6 +28,15 @@
             }
             return FALSE;
         }
+        
+        public function getByName($author_name){
+            $this->db->select("*");
+            $this->db->where("author_name",$author_name);
+            $query=$this->db->get("tbl_authors");
+            $data=$query->result_array();
+            return $data;
+        }
+        
         public function getAll(){
             $this->db->select("*");
             $query=$this->db->get("tbl_authors");

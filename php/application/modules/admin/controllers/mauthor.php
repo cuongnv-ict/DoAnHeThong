@@ -18,6 +18,26 @@ class Mauthor extends MX_Controller {
         $this->tz_layout->view("author/index", $model);
     }
 
+    public function search() {
+        $author_name = "";
+        if (isset($_REQUEST["search"])) {
+            $author_name = $_REQUEST["search"];
+        }
+        $lstAuthor = AuthorModel::getByName($author_name);
+        echo '<tr>
+                <td><input type="checkbox" name="chkAuthors" id="' . (1) . '_chkAuthor" value="' . $lstAuthor[0]["id"] . '"></td>
+                <td>' . (1) . '</td>
+                <td><a href="#">' . $lstAuthor[0]["author_name"] . '</a></td>
+                <td><a href="#">' . $lstAuthor[0]["create_date"] . '</a></td>    
+            </tr>';
+        echo "  <script>
+                    $('input[name=\"chkAuthors\"]').change(function () {
+                        if ($(this).is(':checked'))
+                            $('#chkAuthors').attr('checked', false);
+                    });
+                </script>";
+    }
+
     public function newAuthor() {
         $this->tz_layout->view("author/new_author");
     }
@@ -50,7 +70,7 @@ class Mauthor extends MX_Controller {
         foreach ($lstAuthorId as $id) {
             AuthorModel::delete($id);
         }
-        $lstAuthor=  AuthorModel::getAll();
+        $lstAuthor = AuthorModel::getAll();
         for ($i = 0; $i < sizeof($lstAuthor); $i++) {
             echo '<tr>
                 <td><input type="checkbox" name="chkAuthors" id="' . ($i + 1) . '_chkAuthor" value="' . $lstAuthor[$i]["id"] . '"></td>

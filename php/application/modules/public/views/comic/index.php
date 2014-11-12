@@ -1,9 +1,9 @@
-<?php $model=$model[0];?>
+<?php $model = $model[0]; ?>
 <script>
-    function showAllChapter(){
-        $(document).ready(function(){
-            $("#list-chapter").load("<?php echo base_url('/index.php/public/comic/showAllChapter'); ?>",{
-                "id_comic": <?php echo $model["id"];?>
+    function showAllChapter() {
+        $(document).ready(function () {
+            $("#list-chapter").load("<?php echo base_url('/index.php/public/comic/showAllChapter'); ?>", {
+                "id_comic": <?php echo $model["id"]; ?>
             });
         });
     }
@@ -28,23 +28,39 @@
     <div class="info col-md-8 col-sm-6 col-xs-12">
         <h2><?php echo $model["comic_name"] ?></h2>
         <div id="rating">
-            <div class="fb-like" data-href="https://www.facebook.com/truyen.ry" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-            <a href="#">
-                <i class="fa fa-star fa-2x"></i>
-            </a>
-            <a href="#">
-                <i class="fa fa-star fa-2x"></i>
-            </a>
-            <a href="#">
-                <i class="fa fa-star fa-2x"></i>
-            </a>
-            <a href="#">
-                <i class="fa fa-star-half-o fa-2x"></i>
-            </a>
-            <a href="#">
-                <i class="fa fa-star-o fa-2x"></i>
-            </a>
+            <?php
+            $avetage = $model["review_average"];
+            if ($avetage - floor($avetage) > 0.8) {
+                $avetage = ceil($avetage);
+            } else if ($avetage - floor($avetage) < 0.2) {
+                $avetage = floor($avetage);
+            } else {
+                $avetage = floor($avetage) + 0.5;
+            }
+            for ($i = 1; $i <= 5; $i++) {
+                if ($i <= floor($avetage)) {
+                    echo '  <a href="#" title="'.$i.'">
+                                <i class="fa fa-star fa-2x"></i>
+                            </a>';
+                } else if ($i == floor($avetage) + 1) {
+                    if ($avetage - floor($avetage) == 0.5) {
+                        echo '  <a href="#" title="'.$i.'">
+                                    <i class="fa fa-star-half-o fa-2x"></i>
+                                </a>';
+                    } else {
+                        echo '  <a href="#" title="'.$i.'">
+                                    <i class="fa fa-star-o fa-2x"></i>
+                                </a>';
+                    }
+                } else{
+                        echo '  <a href="#" title="'.$i.'">
+                                    <i class="fa fa-star-o fa-2x"></i>
+                                </a>';
+                }
+            }
+            ?>
         </div>
+    
         <ul>
             <li>Tên khác: <?php echo $model["comic_name"]; ?></li>
             <li>Tác giả: <?php echo AuthorModel::getById($model["id_author"])[0]["author_name"]; ?></li>
@@ -58,14 +74,14 @@
         <p><?php echo $model["summary"]; ?></p>
     </div>
     <div class="chapter col-md-12">
-        <form action="<?php echo base_url("index.php/public/comic/readingone"."/".$model["id"]."/0");?>" method="GET">
+        <form action="<?php echo base_url("index.php/public/comic/readingone" . "/" . $model["id"] . "/0"); ?>" method="GET">
             <div class="col-md-6">
                 <select class="form-control" id="select-chapter" name="select_chapter">
                     <option>Chọn chương</option>
                     <?php
                     $lstChapter = ChapterModel::getByComicId($model["id"]);
                     for ($i = 0; $i < sizeof($lstChapter); $i++) {
-                        echo '<option value='.$lstChapter[$i]["id"].'>' . $lstChapter[$i]["chapter_name"] . '</option>';
+                        echo '<option value=' . $lstChapter[$i]["id"] . '>' . $lstChapter[$i]["chapter_name"] . '</option>';
                     }
                     ?>
                 </select>
@@ -80,7 +96,7 @@
                 <?php
                 $lstChapter = ChapterModel::getChapterNewUpdate($model["id"]);
                 for ($i = 0; $i < sizeof($lstChapter); $i++) {
-                    echo '<li><a href="' . base_url() . 'index.php/public/comic/readingone/' . $model["id"] . '/' . $lstChapter[$i]["id"].'">' . $lstChapter[$i]["chapter_name"] . '</a></li>';
+                    echo '<li><a href="' . base_url() . 'index.php/public/comic/readingone/' . $model["id"] . '/' . $lstChapter[$i]["id"] . '">' . $lstChapter[$i]["chapter_name"] . '</a></li>';
                 }
                 ?>
             </ul>

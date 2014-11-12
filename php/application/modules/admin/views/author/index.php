@@ -10,13 +10,15 @@
                 <i class="fa fa-times"></i> Xóa
             </button>
         </div>
-        <div class="input-group col-md-4">
-            <input type="text" class="form-control"
-                   placeholder="Tìm kiếm theo tên">
-            <div class="input-group-btn">
-                <button type="button" class="btn btn-success">Tìm kiếm</button>
+        <form action="javascript:searchAuthor()">
+            <div class="input-group col-md-4">
+                <input id="search" name="search" type="text" class="form-control"
+                       placeholder="Tìm kiếm theo tên" size="50">
+                <div class="input-group-btn">
+                    <input type="submit" class="btn btn-success" value="Tìm kiếm"/>
+                </div>
             </div>
-        </div>
+        </form>
 
         <ul class="pagination pull-right">
             <li><a href="#">&laquo;</a></li>
@@ -64,6 +66,11 @@
         <li><a href="#">&raquo;</a></li>
     </ul>
 </div>
+
+<?php echo TZ_Helper::htmlJs('custom') ?>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<?php echo TZ_Helper::htmlJs('bootstrap.min') ?>
+<?php echo TZ_Helper::htmlJs('typeahead') ?>
 <script>
     $('#chkAuthors').change(function () {
         if ($('#chkAuthors').is(':checked')) {
@@ -89,9 +96,59 @@
                 }
             }
         }
-        alert(arIdAuthor);
         $("#lst-author").load("<?php echo TZ_Helper::getUrl("admin", "mauthor", "delete"); ?>", {
-            "lstAuthorId":arIdAuthor,
+            "lstAuthorId": arIdAuthor,
         });
     });
+
+    function searchAuthor() {
+        var author_name=$("#search").val();
+        $("#lst-author").load("<?php echo TZ_Helper::getUrl("admin", "mauthor", "search")?>",{
+            "search": author_name,
+        })
+    }
+
+    var substringMatcher = function (strs) {
+        return function findMatches(q, cb) {
+            var matches, substrRegex;
+
+            // an array that will be populated with substring matches
+            matches = [];
+
+            // regex used to determine if a string contains the substring `q`
+            substrRegex = new RegExp(q, 'i');
+
+            // iterate through the pool of strings and for any string that
+            // contains the substring `q`, add it to the `matches` array
+            $.each(strs, function (i, str) {
+                if (substrRegex.test(str)) {
+                    // the typeahead jQuery plugin expects suggestions to a
+                    // JavaScript object, refer to typeahead docs for more info
+                    matches.push({value: str});
+                }
+            });
+
+            cb(matches);
+        };
+    };
+    var states = [
+<?php
+foreach ($lstAuthor as $info) {
+    echo '\'' . $info["author_name"] . '\',';
+}
+?>
+    ];
+
+    $('#search').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+    },
+    {
+        name: 'states',
+        displayKey: 'value',
+        source: substringMatcher(states)
+    });
+
+
 </script>
