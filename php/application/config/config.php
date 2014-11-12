@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/doanhethong/php/';
+$config['base_url']	= 'http://localhost:99/doanhethong/php/';
 
 /*
 |--------------------------------------------------------------------------
