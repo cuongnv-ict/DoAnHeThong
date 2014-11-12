@@ -110,6 +110,7 @@
                                                         <a href="' . (base_url("index.php/public/comic/index") . "/" . $lstComicRank[$i]["id"]) . '"> 
                                                             <img src="' . (base_url("application/" . $lstComicRank[$i]["url_images"])) . '" width="100%" height="150px" align=center/>
                                                             <p>' . AuthorModel::getById($lstComicRank[$i]["id_author"])[0]["author_name"] . '</p>
+        													<span>Đánh giá: 7.9</span>
                                                             <h3>' . $lstComicRank[$i]["comic_name"] . '</h3>
                                                         </a>
                                                     </div>

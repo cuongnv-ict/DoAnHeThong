@@ -397,7 +397,7 @@ div.mitem h3{
   font-size: 1.2em;
   text-align: center;
   color: #c4c8ce;
-  margin-top: 1em;
+  margin-top: 0;
   margin-left: 1em;
   margin-right: 1em;
   margin-bottom: 0.2em;
@@ -420,6 +420,10 @@ div.mitem p{
 div.mitem img {
   margin-top: 0.5em;
   z-index: -11111;
+}
+
+div.mitem span {
+	
 }
 /*============= */
 div#featured .col-md-2{
@@ -475,7 +479,7 @@ div#main-content {
 /*=============== mitem-2 ================*/
 .mitem-2 {
   background-color: #3e4147;
-  margin: 0.25em;
+  margin: 0.5em;
   padding: 0.5em;
   border-radius: 5px 5px 5px 5px;
   -moz-border-radius: 5px 5px 5px 5px;
@@ -485,11 +489,19 @@ div#main-content {
 
 .mitem-2 .caption {
  padding-left: 1em;
+ 
+}
+
+.mitem-2 .caption p{
+ margin: 0.1em;
+ 
 }
 
 .mitem-2 .caption h3 {
   font-size: 1.2em;
   color: #f3d56b;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
 }
 
 .mitem-2 a:hover{
