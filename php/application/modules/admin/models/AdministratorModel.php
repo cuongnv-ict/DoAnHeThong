@@ -25,6 +25,15 @@ class AdministratorModel extends CI_Model {
         $query = $this->db->get("tbl_administrator");
         return $query->result_array();
     }
+    
+    public function checkUser($username, $pass){
+    	$this->db->select("*");
+    	$this->db->where("administrator_name", $username);
+    	$this->db->where("password", $pass);
+    	$query = $this->db->get("tbl_administrator");
+    	return $query->result_array();
+    	
+    }
 
 }
 
