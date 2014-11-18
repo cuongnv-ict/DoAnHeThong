@@ -203,10 +203,10 @@ if (defined('ENVIRONMENT'))
  *---------------------------------------------------------------
  * TZ CUSTOM BY TRANS
  *---------------------------------------------------------------
- * Xác định các đường dẫn cơ bản
+ * XÃ¡c Ä‘á»‹nh cÃ¡c Ä‘Æ°á»�ng dáº«n cÆ¡ báº£n
  */
-/* Thư mục public chứa các file css,js,... của trang web */
-define('WEBROOT_URL', 'http://localhost:99/DoAnHeThong/php/application/webroot/');
+/* ThÆ° má»¥c public chá»©a cÃ¡c file css,js,... cá»§a trang web */
+define('WEBROOT_URL', 'http://localhost/DoAnHeThong/php/application/webroot/');
 	
 require_once BASEPATH.'core/CodeIgniter.php';
 

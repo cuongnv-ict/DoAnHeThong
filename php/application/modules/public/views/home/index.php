@@ -11,9 +11,18 @@ for ($i = 0; $i < sizeof($lstComicShow); $i++) {
     echo '<div class="col-md-3 col-sm-4 col-xs-6">
             <div class="mitem-2">
                 <div>
-                    <a href="'.(base_url()).'index.php/public/comic/index/'.$lstComicShow[$i]["id"].'">
-                        <img src="'.(base_url("application/".$lstComicShow[$i]["url_images"])).'" width="100%" height="200px" />
-                    </a>
+                    <a href="'.(base_url()).'index.php/public/comic/index/'.$lstComicShow[$i]["id"].'">';
+                      
+                    
+                    if (CategoryModel::getById($lstComicShow[$i]['id_category'])[0]['id_type']== 1){
+                        echo ' <img src="'.(base_url("application/".$lstComicShow[$i]["url_images"])).'" width="100%" height="200px" />';
+                    }
+                    else{
+                         echo ' <img src="'.($lstComicShow[$i]["url_images"]).'" width="100%" height="200px" />';
+                    }
+         
+                      //  <img src="'.(base_url("application/".$lstComicShow[$i]["url_images"])).'" width="100%" height="200px" />
+    echo                '</a>
                 </div>
                 <div class="caption">
                     <a href="#"><h3>'.$lstComicShow[$i]["comic_name"].'</h3></a> <a href="#"><span>Đánh giá 9.9</span><p>Chương 12</p></a>     		

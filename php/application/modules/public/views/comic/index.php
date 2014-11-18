@@ -21,9 +21,13 @@
 </div>
 <div id="details" class="container-fluid">
     <div class="thumnail col-md-4 col-sm-6 col-xs-12">
+         <?php if(CategoryModel::getById($model['id_category'])[0]['id_type']== 1) {?>
         <img src="<?php echo base_url("application/" . $model["url_images"]); ?>" width="100%"
              height=350px">
-
+        <?php } else{?>
+         <img src="<?php  echo $model["url_images"]  ?>" width="100%"
+             height=350px">
+        <?php }?>
     </div>
     <div class="info col-md-8 col-sm-6 col-xs-12">
         <h2><?php echo $model["comic_name"] ?></h2>

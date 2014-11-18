@@ -107,10 +107,14 @@
                                     echo '<li class="col-md-2 col-sm-4 col-xs-6">
                                                 <div>
                                                     <div class="mitem" align="center">
-                                                        <a href="' . (base_url("index.php/public/comic/index") . "/" . $lstComicRank[$i]["id"]) . '"> 
-                                                            <img src="' . (base_url("application/" . $lstComicRank[$i]["url_images"])) . '" width="100%" height="150px" align=center/>
-                                                            <p>' . AuthorModel::getById($lstComicRank[$i]["id_author"])[0]["author_name"] . '</p>
-        													<span>Đánh giá: 7.9</span>
+                                                        <a href="' . (base_url("index.php/public/comic/index") . "/" . $lstComicRank[$i]["id"]) . '"> ';
+                                                            if (CategoryModel::getById($lstComicRank[$i]['id_category'])[0]['id_type']== 1){
+                                                                echo '<img src="' . (base_url("application/" . $lstComicRank[$i]["url_images"])) . '" width="100%" height="150px" align=center/>';
+                                                            }
+                                                            else{
+                                                                echo '<img src="' . ($lstComicRank[$i]["url_images"]) . '" width="100%" height="150px" align=center/>';
+                                                            }                                                  
+                                    echo                        '<p>' . AuthorModel::getById($lstComicRank[$i]["id_author"])[0]["author_name"] . '</p>
                                                             <h3>' . $lstComicRank[$i]["comic_name"] . '</h3>
                                                         </a>
                                                     </div>
@@ -156,7 +160,7 @@
                             <?php
                             for ($i = 0; $i < sizeof($category = CategoryModel::getByTypeId(2)); $i++) {
                                 echo ' <div class="col-md-6 col-sm-4 col-xs-4">
-                                            <a href="' . (base_url("index.php/public/home/showToCategory/" . $category[$i]["id"])) . '"><i class="fa fa-chevron-right fa-1x"></i>' . KindModel::getById($category[$i]["id_kind"])["kind_name"] . '</a>
+                                            <a href="' . (base_url("index.php/public/home/showToCategory/" . $category[$i]["id"])) . '"><i class="fa fa-chevron-right fa-1x"></i>' . KindModel::getById($category[$i]["id_kind"])[0]["kind_name"] . '</a>
                                         </div>';
                             }
                             ?>

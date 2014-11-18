@@ -49,11 +49,20 @@
 <div class="container-fluid">
     <p id="content-book">
         <?php
-        for ($i = 0; $i < sizeof($lstDataStore); $i++) {
-            $url = base_url() . 'application/' . $lstDataStore[$i]["url_store"];
-            $file = fopen($url, 'r');
-            while (!feof($file)) {
-                echo fgets($file) . "<br>";
+        $id_category = ComicModel::getById($id_comic)[0]['id_category'];
+        if (CategoryModel::getById($id_category)[0]['id_type'] == 1) {
+            for ($i = 0; $i < sizeof($lstDataStore); $i++) {
+                $url = base_url() . 'application/' . $lstDataStore[$i]["url_store"];
+                $file = fopen($url, 'r');
+                while (!feof($file)) {
+                    echo fgets($file) . "<br>";
+                }
+            }
+        } else {
+            foreach ($lstDataStore as $value){
+                echo ' <div style="text-align:center;">     
+                            <img src="'; echo $value['url_store']; echo '"/>
+                       </div><br>';
             }
         }
         ?>
