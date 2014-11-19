@@ -10,7 +10,11 @@
             parent::__construct();
             $this->load->database();
         }
-        
+        public function getAll(){
+            $this->db->select("*");
+            $query=$this->db->get("tbl_authors");
+            return $query->result_array();
+        }
         public function getById($id){
             $this->db->select("*");
             $this->db->where("id",$id);

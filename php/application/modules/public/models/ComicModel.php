@@ -13,7 +13,14 @@ class ComicModel extends CI_Model {
         $this->load->database();
         $this->load->Model("CategoryModel");
     }
+    
+     public function getAll() {
+        $this->db->select("*");
+        $query = $this->db->get("tbl_comic");
+        return $query->result_array();
+    }
 
+    
     public function getRank() {
         $this->db->select("*");
         $this->db->order_by("number_viewers","DESC");
