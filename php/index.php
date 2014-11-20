@@ -206,7 +206,7 @@ if (defined('ENVIRONMENT'))
  * XÃ¡c Ä‘á»‹nh cÃ¡c Ä‘Æ°á»�ng dáº«n cÆ¡ báº£n
  */
 /* ThÆ° má»¥c public chá»©a cÃ¡c file css,js,... cá»§a trang web */
-define('WEBROOT_URL', 'http://forum-websitetruyen.rhcloud.com/php/application/webroot/');
+define('WEBROOT_URL', 'http://forum-websitetruyen.rhcloud.com/application/webroot/');
 	
 require_once BASEPATH.'core/CodeIgniter.php';
 
