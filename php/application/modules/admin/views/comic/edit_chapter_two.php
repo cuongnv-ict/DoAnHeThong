@@ -53,6 +53,7 @@ $oFCKeditor->BasePath = $sBasePath;
             $strContentChapter=file_get_contents(base_url() . 'application/' . $lstDataStore[$i]["url_store"]);
         }
         $oFCKeditor->Value = "$strContentChapter";
+        $oFCKeditor->Height = 500;
         $oFCKeditor->Create();
         ?>
     </div>
