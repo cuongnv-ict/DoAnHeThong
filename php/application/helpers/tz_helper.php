@@ -13,8 +13,13 @@ class TZ_Helper{
 		$src = WEBROOT_URL.'images/'.$imageName;
 		return $src;
 	}
-	public static function getUrl($module,$controller,$action){
+	public static function getUrl($module,$controller,$action,$arrGET = null){
 		$url = base_url("index.php/{$module}/{$controller}/{$action}");
+		if($arrGET != null){
+			foreach ($arrGET as $get){
+				$url .= "/{$get}";
+			}
+		}
 		return $url;
 	}
 }

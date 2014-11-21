@@ -54,5 +54,13 @@ class Mcomic extends MX_Controller {
     public function newChapter() {
         $this->tz_layout->view("comic/new_chapter");
     }
+    
+    public function allChapter($id_comic) {
+    	$model["model"]=  ComicModel::getById($id_comic)[0];
+    	$model["lstAuthor"]=  AuthorModel::getAll();
+    	$model["lstType"]=  TypeModel::getAll();
+    	$model["lstKind"]=  KindModel::getAll();
+    	$this->tz_layout->view("comic/show_all_chapter",$model);
+    }
 
 }
