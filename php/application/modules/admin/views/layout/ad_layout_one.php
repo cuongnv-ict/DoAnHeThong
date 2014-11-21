@@ -78,7 +78,7 @@
 			  	<ul class="list-unstyled">
 				  	<li><a href="<?php echo TZ_Helper::getUrl("admin", "mcomic", "showall");?>" class="active"><i class="fa fa-th-list"></i> Tất cả truyện</a></li>
 				  	<li><a href="<?php echo TZ_Helper::getUrl("admin", "mcomic", "newcomic");?>" ><i class="fa fa-th-list"></i> Thêm truyện mới</a></li>
-				  	<li ><a href="#" class="active"><i class="fa fa-th-list"></i> Thông báo lỗi</a></li>
+				  	<li ><a href="<?php echo TZ_Helper::getUrl("admin", "mcomic", "addchapter");?>" class="active"><i class="fa fa-th-list"></i> Thêm chương mới</a></li>
 				
 				  </ul>
 				  

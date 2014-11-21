@@ -62,5 +62,9 @@ class Mcomic extends MX_Controller {
     	$model["lstKind"]=  KindModel::getAll();
     	$this->tz_layout->view("comic/show_all_chapter",$model);
     }
+    
+    public function addChapter(){
+    	$this->tz_layout->view("comic/add_chapter");
+    }
 
 }
