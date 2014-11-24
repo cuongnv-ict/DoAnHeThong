@@ -1,6 +1,6 @@
 <div class="avatar"> 
     <a href="#" >
-        <img src="<?php echo TZ_Helper::getUrlImage($model["url_image"]); ?>" alt="..." class="img-thumbnail" width="100px">
+        <img src="<?php echo TZ_Helper::getUrlImage($model["url_image"]); ?>" alt="..." class="img-thumbnail" width="100px" height="100px">
     </a>
     <h4><?php echo $model["administrator_name"]; ?></h4>
 
