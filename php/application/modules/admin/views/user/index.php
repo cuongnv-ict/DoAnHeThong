@@ -1,8 +1,10 @@
 <div class="avatar"> 
     <a href="#" >
-        <img src="<?php echo TZ_Helper::getUrlImage($model["url_image"]); ?>" alt="..." class="img-thumbnail" width="100px" height="100px">
+        <!--. (base_url("application/" . $model[0]["url_image"]))-->
+        <!--<img src="<?php echo TZ_Helper::getUrlImage($model[0]["url_image"]); ?>" alt="..." class="img-thumbnail" width="100px" height="100px">-->
+        <img src="<?php echo base_url("application/" . $model[0]["url_image"]); ?>" alt="..."  width="100px" height="100px">
     </a>
-    <h4><?php echo $model["administrator_name"]; ?></h4>
+    <h4><?php echo $model[0]["administrator_name"]; ?></h4>
 
     <hr />
 </div>
@@ -15,7 +17,7 @@
             <div class="panel-heading">
                 <h4 class="panel-title clearfix">
                     <span class="col-md-2">Tên </span>
-                    <span><?php echo $model["fullname"]; ?></span>
+                    <span><?php echo $model[0]["fullname"]; ?></span>
                     <a class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
                         Chỉnh sửa
                     </a>
@@ -25,7 +27,7 @@
                 function changeName() {
                     $(document).ready(function () {
                         var newname = $("#inputPassword3").val();
-                        var id =<?php echo $model["id"]; ?>;
+                        var id =<?php echo $model[0]["id"]; ?>;
                         $("#test").load("", {
                         })
                     });
@@ -85,7 +87,7 @@
             <div class="panel-heading">
                 <h4 class="panel-title clearfix">
                     <span class="col-md-2">Email </span>
-                    <span><?php echo $model["email"]; ?></span>
+                    <span><?php echo $model[0]["email"]; ?></span>
                     <a class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
                         Chỉnh sửa
                     </a>
@@ -114,7 +116,7 @@
             <div class="panel-heading">
                 <h4 class="panel-title clearfix">
                     <span class="col-md-2">Số điện thoại </span>
-                    <span><?php echo $model["phone_number"]; ?></span>
+                    <span><?php echo $model[0]["phone_number"]; ?></span>
                     <a class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
                         Chỉnh sửa
                     </a>
@@ -139,32 +141,32 @@
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title clearfix">
-                    <span class="col-md-2">Ảnh đại diện </span>
-                    <span><?php echo $model["url_image"]; ?></span>
-                    <a class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-                        Chỉnh sửa
-                    </a>
-                </h4>
-            </div>
-            <div id="collapse5" class="panel-collapse collapse out">
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <div class="col-sm-10">
-                                <input type="file" class="form-control" id="inputEmail3" placeholder="">
-                            </div>
+        <!--        <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title clearfix">
+                            <span class="col-md-2">Ảnh đại diện </span>
+                            <span><?php echo $model[0]["url_image"]; ?></span>
+                            <a class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+                                Chỉnh sửa
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse5" class="panel-collapse collapse out">
+                        <div class="panel-body">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control" id="inputEmail3" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-default">OK</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-10">
-                                <button type="submit" class="btn btn-default">OK</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+                    </div>
+                </div>-->
     </div>
 </div>

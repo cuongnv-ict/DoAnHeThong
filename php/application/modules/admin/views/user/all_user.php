@@ -34,7 +34,7 @@
         <thead>
             <tr>
                 <th width="2%"><input type="checkbox"
-                                      value="option1" ></th>
+                                      value="option1" hidden="true"></th>
                 <th>STT</th>
                 <th>Username</th>
                 <th>Password</th>              
