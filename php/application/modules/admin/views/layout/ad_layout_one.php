@@ -65,7 +65,7 @@
 			  <div class="panel-heading">Người dùng</div>
 			  <div class="panel-body">
 				  <ul class="list-unstyled">
-				  	<li class="active"><a href="<?php echo TZ_Helper::getUrl("admin", "muser", "index");?>" class="active"><i class="fa fa-th-list"></i> Tài khoản cá nhân</a></li>
+				  	<li><a href="<?php echo TZ_Helper::getUrl("admin", "muser", "index");?>" class="active"><i class="fa fa-th-list"></i> Tài khoản cá nhân</a></li>
                                         <li><a href="<?php echo TZ_Helper::getUrl("admin", "muser", "alluser");?>" ><i class="fa fa-th-list"></i> Quản lý thành viên</a></li>
 				  </ul>
 			  </div>

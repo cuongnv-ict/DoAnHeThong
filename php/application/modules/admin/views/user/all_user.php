@@ -1,11 +1,11 @@
 <div id="header">
     <h3 class="bg-primary title">Danh sách người dùng</h3>
     <div class="clearfix container-fluid">
-        <div id="actions" class="btn-group col-md-3">
-            <button type="button" class="btn btn-success">
+        <div id="actions" class="btn-group col-md-3" >
+            <button type="button" class="btn btn-success" id="add_account">
                 <a href="<?php echo TZ_Helper::getUrl("admin", "muser", "newuser"); ?>" style="color: white;"><i class="fa fa-plus"></i> Thêm mới</a>
             </button>
-            <button type="button" class="btn btn-success">
+            <button type="button" class="btn btn-success" id="delete_account">
                 <i class="fa fa-times"></i> Xóa
             </button>
         </div>
@@ -33,27 +33,29 @@
     <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
-                <th width="2%"><input type="checkbox" id="inlineCheckbox1"
-                                      value="option1"></th>
-                <th>ID</th>
+                <th width="2%"><input type="checkbox"
+                                      value="option1" ></th>
+                <th>STT</th>
                 <th>Username</th>
-                <th>Password</th>
-                <th>Role</th>
+                <th>Password</th>              
                 <th>Email</th>
                 <th>Phone</th>
+                <th>Role</th>
+                <th>Create time</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="list_account">
             <?php
             for ($i = 0; $i < sizeof($model); $i++) {
                 echo '  <tr>
-				<td><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
-				<td>' . $model[$i]["id"] . '</td>
-				<td><a href="' . (TZ_Helper::getUrl("admin", "muser", "index/".$model[$i]["id"])) . '">' . $model[$i]["administrator_name"] . '</a></td>
-				<td>' . $model[$i]["password"] . '</td>
-				<td>' . $model[$i]["isSuperAdministrator"] . '</td>
+				<td><input type="checkbox" name="check_account"  value="' . $model[$i]["id"] . '"></td>
+				<td>' . ($i + 1) . '</td>
+				<td>' . $model[$i]["administrator_name"] . '</td>
+				<td>' . '********' . '</td>		
 				<td>' . $model[$i]["email"] . '</td>
 				<td>' . $model[$i]["phone_number"] . '</td>
+                                <td>' . $model[$i]["isSuperAdministrator"] . '</td>
+                                <td>' . $model[$i]["create_time"] . '</td> 
 			</tr>';
             }
             ?>
@@ -71,3 +73,20 @@
         <li><a href="#">&raquo;</a></li>
     </ul>
 </div>
+<script>
+    $("#add_account").click(function () {
+        window.location.href = "<?php echo TZ_Helper::getUrl("admin", "muser", "newUser"); ?>";
+    });
+    $("#delete_account").click(function () {
+        var arIdAccount = [];
+        var elements = document.getElementsByName('check_account');
+        for (var i = 0; i < elements.length; i++) {
+            if ($(elements[i]).is(":checked")) {
+                arIdAccount.push($(elements[i]).val());
+            }
+        }
+        $("#list_account").load("<?php echo TZ_Helper::getUrl("admin", "muser", "delete"); ?>", {
+            "list": arIdAccount,
+        });
+    });
+</script>

@@ -26,8 +26,7 @@
                     $(document).ready(function () {
                         var newname = $("#inputPassword3").val();
                         var id =<?php echo $model["id"]; ?>;
-                        $("#test").load("",{
-                            
+                        $("#test").load("", {
                         })
                     });
                 }
@@ -167,9 +166,5 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
-
 </div>
