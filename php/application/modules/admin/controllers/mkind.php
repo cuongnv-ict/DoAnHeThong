@@ -37,7 +37,8 @@ class Mkind extends MX_Controller {
             echo '<option value="' . $mode[$i]["id"] . '">' . $mode[$i]["kind_name"] . '</option>';
         }
     }
-    public function insert(){
+
+    public function insert() {
         $type = 1;
         $kind = "";
         if (isset($_REQUEST["type"])) {
@@ -46,22 +47,54 @@ class Mkind extends MX_Controller {
         if (isset($_REQUEST["kind"])) {
             $kind = $_REQUEST["kind"];
         }
-        if($kind== ""){
+        if ($kind == "") {
             echo 'Bạn chưa nhập tên thể loại';
-        }else{
+        } else {
             $model = array(
-                "kind_name"=> $kind
+                "kind_name" => $kind
             );
             $id_kind = KindModel::insert($model);
             $model = array(
-                "id_kind" =>$id_kind,
-                "id_type" =>$type
+                "id_kind" => $id_kind,
+                "id_type" => $type
             );
             CategoryModel::insert($model);
             echo "Thêm thành công";
         }
     }
-    public function delete(){
-        
+
+    public function delete() {
+        $listKind = NULL;
+        if (isset($_REQUEST["list"])) {
+            $listKind = $_REQUEST["list"];
+        }
+//        echo sizeof($listKind);
+        if ($listKind != NULL) {
+            foreach ($listKind as $id) {
+//                CategoryModel::deleteKind($id);
+//                KindModel::delete($id);                
+            }
+            $lstCategory = CategoryModel::getAll();
+            for ($i = 0; $i < sizeof($lstCategory); $i++) {
+                 echo '  <tr>
+				<td><input type="checkbox" name="cKind" value="' . $lstCategory[$i]["id_kind"] . '"></td>
+				<td>' . ($i + 1) . '</td>
+				<td>' . (TypeModel::getById($lstCategory[$i]["id_type"])[0]["type_name"]) . '</td>
+				<td>' . (KindModel::getById($lstCategory[$i]["id_kind"])[0]["kind_name"]) . '</td>
+			</tr>';
+            }
+        } 
+        else {
+            $lstCategory = CategoryModel::getAll();
+            for ($i = 0; $i < sizeof($lstCategory); $i++) {
+                echo '  <tr>
+				<td><input type="checkbox" id="inlineCheckbox1" value="' . $lstCategory[$i]["id_kind"] . '"></td>
+				<td>' . ($i + 1) . '</td>
+				<td>' . (TypeModel::getById($lstCategory[$i]["id_type"])[0]["type_name"]) . '</td>
+				<td>' . (KindModel::getById($lstCategory[$i]["id_kind"])[0]["kind_name"]) . '</td>
+			</tr>';
+            }
+        }
     }
+
 }

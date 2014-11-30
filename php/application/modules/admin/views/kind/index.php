@@ -45,10 +45,10 @@
             <?php
             for ($i = 0; $i < sizeof($lstCategory); $i++) {
                 echo '  <tr>
-				<td><input type="checkbox" id="inlineCheckbox1" value="'.$lstCategory[$i]["id_kind"].'"></td>
-				<td>'.($i+1).'</td>
-				<td>'.(TypeModel::getById($lstCategory[$i]["id_type"])[0]["type_name"]).'</td>
-				<td>'.(KindModel::getById($lstCategory[$i]["id_kind"])[0]["kind_name"]).'</td>
+				<td><input type="checkbox" name="cKind" value="' . $lstCategory[$i]["id_kind"] . '"></td>
+				<td>' . ($i + 1) . '</td>
+				<td>' . (TypeModel::getById($lstCategory[$i]["id_type"])[0]["type_name"]) . '</td>
+				<td>' . (KindModel::getById($lstCategory[$i]["id_kind"])[0]["kind_name"]) . '</td>
 			</tr>';
             }
             ?>
@@ -68,23 +68,19 @@
     </ul>
 </div>
 <script>
-    $("#add_kind").click(function (){
-         window.location.href = "<?php echo TZ_Helper::getUrl("admin", "mkind", "newKind"); ?>";
+    $("#add_kind").click(function() {
+        window.location.href = "<?php echo TZ_Helper::getUrl("admin", "mkind", "newKind"); ?>";
     });
-    $("#delete_kind").click(function () {
+    $("#delete_kind").click(function() {
         var arIdKind = [];
-        if ($('#list_kind').is(':checked')) {
-            arIdKind.push($("#list_kind").val());
-        } else {
-            var elements = document.getElementsByName('list_kind');
-            for (var i = 0; i < elements.length; i++) {
-                if ($(elements[i]).is(":checked")) {
-                    arIdKind.push($(elements[i]).val());
-                }
+        var elements = document.getElementsByName('cKind');
+        for (var i = 0; i < elements.length; i++) {
+            if ($(elements[i]).is(":checked")) {
+                arIdKind.push($(elements[i]).val());
             }
         }
         $("#ls_kind").load("<?php echo TZ_Helper::getUrl("admin", "mkind", "delete"); ?>", {
-            "lstAuthorId": arIdKind,
+            "list": arIdKind,
         });
     });
 </script>
