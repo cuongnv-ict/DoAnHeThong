@@ -10,19 +10,20 @@
             </div>
         </div>
     </form>
-
-    <div class="form-group bt-action">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-success" id="btn-add">Thêm mới</button>
-            <button type="submit" class="btn btn-default">Thêm và trở về</button>
-            <button type="submit" class="btn btn-default" id="btn-delete">Hủy bỏ</button>
-        </div>
-    </div>
+    <div class="btn-group col-md-12">
+        <label for="inputEmail3" class="col-sm-2 control-label input-sm"></label>
+        <button type="button" class="btn btn-success" id="btn-add">
+            <i class="fa fa-plus"></i> Thêm mới
+        </button>	
+        <button type="button" class="btn btn-success" id="btn-delete">
+            <i class="fa fa-times"></i> Hủy bỏ
+        </button>
+    </div>	    
     <div class="col-sm-offset-2 text-success" id="target"></div>
 </div>
 
 <script>
-    $("#btn-add").click(function () {
+    $("#btn-add").click(function() {
         var author_name = $("#author_name").val();
         $("#target").load("<?php echo TZ_Helper::getUrl("admin", "mauthor", "insert"); ?>", {
             "author_name": author_name,
@@ -30,7 +31,7 @@
         $("#author_name").val("");
     });
 
-    $("#btn-delete").click(function () {
-        $("#author_name").val("");
+    $("#btn-delete").click(function() {
+        window.location.href="<?php echo TZ_Helper::getUrl("admin", "mauthor", "index"); ?>";
     });
 </script>

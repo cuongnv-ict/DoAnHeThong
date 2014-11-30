@@ -14,8 +14,8 @@ class Muser extends MX_Controller {
         $this->load->Model('AdministratorModel');
     }
 
-    public function index() {
-        $model["model"] = AdministratorModel::getById(2);
+    public function index($id) {
+        $model["model"] = AdministratorModel::getById($id);
         $this->tz_layout->view("user/index", $model);
 //      $this->tz_layout->view("user/all_user", $model);
     }
@@ -31,11 +31,15 @@ class Muser extends MX_Controller {
 
     public function insert() {
         $name = "";
+        $fullname = "";
         $pass = "";
         $re_pass = "";
         $email = "";
         $phone = "";
         $role = 0;
+        if (isset($_REQUEST["fullname"])) {
+            $fullname = $_REQUEST["fullname"];
+        }
         if (isset($_REQUEST["name"])) {
             $name = $_REQUEST["name"];
         }
@@ -51,10 +55,12 @@ class Muser extends MX_Controller {
         if (isset($_REQUEST["phone"])) {
             $phone = $_REQUEST["phone"];
         }
-        if ($name == "" || $pass == "" || $re_pass == "" || $email == "" || $phone == "") {
+        if ($fullname == "" || $name == "" || $pass == "" || $re_pass == "" || $email == "" || $phone == "") {
             echo "Bạn chưa hoàn thành thông tin cần thiết";
+            return;
         } else if ($pass != $re_pass) {
             echo "Password nhập không chính xác";
+            return;
         }
         $check = AdministratorModel::checkExitsUser($name);
         if ($check != 0) {
@@ -66,7 +72,8 @@ class Muser extends MX_Controller {
                 "password" => $pass,
                 "email" => $email,
                 "phone_number" => $phone,
-                "isSuperAdministrator" => $role
+                "isSuperAdministrator" => $role,
+                "fullname" => $fullname
             );
             AdministratorModel::insert($account);
             echo "Tạo thành công tài khoản";

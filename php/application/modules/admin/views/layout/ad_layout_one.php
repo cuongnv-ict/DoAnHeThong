@@ -43,11 +43,9 @@
 		    <ul class="nav navbar-nav navbar-right">
 		        <li id="account" class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="images/avatar.jpg" width="40dp" height="40dp" alt="avatar" /> bacuong12<span class="caret"></span></a>
-		          <ul class="dropdown-menu" role="menu">
-		            <li><a href="#">Thiết lập tài khoản</a></li>
-		            <li><a href="#">Something else here</a></li>
+		          <ul class="dropdown-menu" role="menu">		         
 		            <li class="divider"></li>
-		            <li><a href="#">Đăng xuất</a></li>
+		            <li><a href="<?php echo TZ_Helper::getUrl("admin", "login", "index");?>">Đăng xuất</a></li>
 		          </ul>
 		        </li>
 		      </ul>
@@ -65,7 +63,7 @@
 			  <div class="panel-heading">Người dùng</div>
 			  <div class="panel-body">
 				  <ul class="list-unstyled">
-				  	<li><a href="<?php echo TZ_Helper::getUrl("admin", "muser", "index");?>" class="active"><i class="fa fa-th-list"></i> Tài khoản cá nhân</a></li>
+				  	<li><a href="<?php echo TZ_Helper::getUrl("admin", "muser", "index/12");?>" class="active"><i class="fa fa-th-list"></i> Tài khoản cá nhân</a></li>
                                         <li><a href="<?php echo TZ_Helper::getUrl("admin", "muser", "alluser");?>" ><i class="fa fa-th-list"></i> Quản lý thành viên</a></li>
 				  </ul>
 			  </div>
@@ -77,8 +75,7 @@
 			  
 			  	<ul class="list-unstyled">
 				  	<li><a href="<?php echo TZ_Helper::getUrl("admin", "mcomic", "showall");?>" class="active"><i class="fa fa-th-list"></i> Tất cả truyện</a></li>
-				  	<li><a href="<?php echo TZ_Helper::getUrl("admin", "mcomic", "newcomic");?>" ><i class="fa fa-th-list"></i> Thêm truyện mới</a></li>
-				  	<li ><a href="<?php echo TZ_Helper::getUrl("admin", "mcomic", "addchapter");?>" class="active"><i class="fa fa-th-list"></i> Thêm chương mới</a></li>
+				  	<li><a href="<?php echo TZ_Helper::getUrl("admin", "mcomic", "newcomic");?>" ><i class="fa fa-th-list"></i> Thêm truyện mới</a></li>				  	
 				
 				  </ul>
 				  

@@ -5,10 +5,17 @@
 <div id="table-content">
     <!--<form class="form" role="form">-->
     <div class="form-group col-md-12">
-        <label for="inputEmail3" class="col-sm-2 control-label input-sm">Tên sử dụng</label>
+        <label for="inputEmail3" class="col-sm-2 control-label input-sm">Tên tài khoản</label>
         <div class="col-sm-4">
             <input type="text" class="form-control input-sm" 
                    placeholder="" id="name">
+        </div>
+    </div>
+    <div class="form-group col-md-12">
+        <label for="inputEmail3" class="col-sm-2 control-label input-sm">Tên sử dụng</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control input-sm" 
+                   placeholder="" id="fullname">
         </div>
     </div>
     <div class="form-group col-md-12">
@@ -61,22 +68,23 @@
             <i class="fa fa-times"></i> Hủy bỏ
         </button>
     </div>	
-     <div class="col-sm-offset-2 text-success" id="target"></div>
+    <div class="col-sm-offset-2 text-success" id="target"></div>
     <!--</form>-->
 </div>
 <script>
-    $("#cancel").click(function () {
+    $("#cancel").click(function() {
         window.location.href = "<?php echo TZ_Helper::getUrl("admin", "muser", "alluser"); ?>";
     });
-    $("#add_account").click(function () {
+    $("#add_account").click(function() {
 //          window.location.href = "<?php echo TZ_Helper::getUrl("admin", "muser", "alluser"); ?>";
         var name = $("#name").val();
         var password = $("#password").val();
         var re_password = $("#re_password").val();
         var email = $("#email").val();
         var phone = $("#phone").val();
+        var fullname = $("#fullname").val();
         $("#target").load("<?php echo TZ_Helper::getUrl("admin", "muser", "insert"); ?>", {
-            "name": name,"pass": password,"re_pass":re_password,"email":email,"phone":phone,
+            "name": name, "pass": password, "re_pass": re_password, "email": email, "phone": phone,"fullname":fullname,
         });
     });
 </script>
