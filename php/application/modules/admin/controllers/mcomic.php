@@ -46,8 +46,7 @@ class Mcomic extends MX_Controller {
 
     public function newComic() {
         $model["lstAuthor"]=  AuthorModel::getAll();
-        $model["lstType"]=  TypeModel::getAll();
-        $model["lstKind"]=  KindModel::getAll();
+        $model["lstKind"]=  KindModel::getAllName(1);
         $this->tz_layout->view("comic/new_comic",$model);
     }
 

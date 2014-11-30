@@ -5,20 +5,20 @@
 <div id="table-content">
     <form class="form-horizontal" role="form">
 
-        <div class="form-group">
-            <label  class="col-sm-2 input-sm control-label">ID: </label>
-            <div class="col-sm-2 input-group">
-                <?php echo $model["id"];?>
-            </div>
-        </div>
+        <!--        <div class="form-group">
+                    <label  class="col-sm-2 input-sm control-label">ID: </label>
+                    <div class="col-sm-2 input-group">
+        <?php echo $model["id"]; ?>
+                    </div>
+                </div>-->
 
         <div class="form-group">
             <label  class="col-sm-2 control-label input-sm">Tên truyện: </label>
             <div class="col-sm-3 input-group">
                 <input type="text" class="form-control input-sm" placeholder="Tên truyện" value="<?php echo $model["comic_name"]; ?>">
-                <span class="input-group-btn">
+<!--                <span class="input-group-btn">
                     <button class="btn btn-success input-sm" type="button">Cập nhật</button>
-                </span>
+                </span>-->
             </div>
         </div>
 
@@ -35,9 +35,9 @@
                     }
                     ?>                
                 </select>
-                <span class="input-group-btn">
+<!--                <span class="input-group-btn">
                     <button class="btn btn-success input-sm" type="button">Cập nhật</button>
-                </span>
+                </span>-->
             </div>
         </div>
 
@@ -54,9 +54,9 @@
                     }
                     ?>                    
                 </select>
-                <span class="input-group-btn">
+<!--                <span class="input-group-btn">
                     <button class="btn btn-success input-sm" type="button">Cập nhật</button>
-                </span>
+                </span>-->
             </div>
         </div>
 
@@ -73,29 +73,16 @@
                     }
                     ?>                   
                 </select>
-                <span class="input-group-btn">
+<!--                <span class="input-group-btn">
                     <button class="btn btn-success input-sm" type="button">Cập nhật</button>
-                </span>
+                </span>-->
             </div>
-        </div>
-
-        <div class="form-group">
-            <label  class="col-sm-2 control-label input-sm">Số chap: </label>
-            <div class="col-sm-3 input-group">
-                <input type="text" class="form-control input-sm" placeholder="type name comic" value="<?php echo $model["number_chapter"] ?>">
-                <span class="input-group-btn">
-                    <button class="btn btn-success input-sm" type="button">Cập nhật</button>
-                </span>
-            </div>
-        </div>
+        </div>      
 
         <div class="form-group">
             <label  class="col-sm-2 control-label input-sm">Ảnh đại diện: </label>
             <div class="col-sm-3 input-group">
                 <input type="file" class="form-control input-sm" placeholder="type name comic" value="<?php echo $model["url_images"]; ?>">
-                <span class="input-group-btn">
-                    <button class="btn btn-success input-sm" type="button">Cập nhật</button>
-                </span>
             </div>
         </div>
 
@@ -104,21 +91,18 @@
             <div class="col-sm-10 input-group">
                 <textarea class="form-control input-sm" rows="7" id="textArea" ><?php echo $model["summary"]; ?></textarea>
             </div>
-            <div class="col-sm-offset-2 col-sm-10 input-group">
-                <button class="btn btn-success input-sm" type="button">Cập nhật</button>
-            </div>
         </div>
-
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10 input-group">
-                <button type="submit" class="btn btn-success">Cập nhật tất cả</button>
+                <button type="submit" class="btn btn-success">Cập nhật</button>
                 <button type="submit" class="btn btn-warning">Hủy bỏ</button>
             </div>
         </div>
+
     </form>
 
-    <a href=" <?php echo TZ_Helper::getUrl("admin", "mcomic", "allChapter",array($model["id"]));?>">Xem tất cả chương truyện</a>
+    <a href=" <?php echo TZ_Helper::getUrl("admin", "mcomic", "allChapter", array($model["id"])); ?>">Xem tất cả chương truyện</a>
     <hr />
- 
+
 
 </div>

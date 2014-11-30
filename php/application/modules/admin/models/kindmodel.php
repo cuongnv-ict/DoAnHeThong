@@ -21,6 +21,7 @@ class KindModel extends CI_Model {
 
     public function insert($kindModel) {
         $this->db->insert("tbl_kind", $kindModel);
+        return $this->db->insert_id();
     }
 
     public function delete($id) {
@@ -31,6 +32,14 @@ class KindModel extends CI_Model {
     public function update($kindModel, $id) {
         $this->db->where("id", $id);
         $this->db->update("tbl_kind", $kindModel);
+    }
+    public function getAllName($id_type){
+        $this->db->select("*");
+        $this->db->from("tbl_kind");
+        $this->db->join("tbl_categorys","tbl_categorys.id_kind = tbl_kind.id");
+        $this->db->where("tbl_categorys.id_type",$id_type);
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
 }

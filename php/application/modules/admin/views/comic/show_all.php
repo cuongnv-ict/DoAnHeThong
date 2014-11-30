@@ -3,7 +3,7 @@
     <div class="clearfix container-fluid">
         <div id="actions" class="btn-group col-md-3">
             <button type="button" class="btn btn-success">
-                <a href="<?php echo TZ_Helper::getUrl("admin", "mcomic", "newcomic")?>" style="color: white;"><i class="fa fa-plus"></i> Thêm mới</a>
+                <a href="<?php echo TZ_Helper::getUrl("admin", "mcomic", "newcomic") ?>" style="color: white;"><i class="fa fa-plus"></i> Thêm mới</a>
             </button>
             <button type="button" class="btn btn-success">
                 <i class="fa fa-times"></i> Xóa
@@ -39,12 +39,15 @@
         <thead>
             <tr>
                 <th width="2%"><input type="checkbox" id="inlineCheckbox1"
-                                      value="option1"></th>
+                                      value="option1" hidden="true"></th>
                 <th>ID</th>
                 <th>Tên truyện</th>
+                <th>Số chapper</th>
                 <th>Loại truyện</th>
                 <th>Thể loại</th>
                 <th>Tác giả</th>
+                <th>Create time</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -53,13 +56,25 @@
                 echo '  <tr>
                                         <td><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
                                         <td>' . $lstComic[$i]["id"] . '</td>
-                                        <td><a href="'.TZ_Helper::getUrl("admin", "mcomic", "edit/".$lstComic[$i]["id"]).'">' . $lstComic[$i]["comic_name"] . '</a></td>
+                                        <td><a href="' . TZ_Helper::getUrl("admin", "mcomic", "edit/" . $lstComic[$i]["id"]) . '">' . $lstComic[$i]["comic_name"] . '</a></td>
+                                        <td>' . $lstComic[$i]["number_chapter"] . '</td>
                                         <td>' . (TypeModel::getById(CategoryModel::getById($lstComic[$i]["id_category"])[0]["id_type"])[0]["type_name"]) . '</td>
                                         <td>' . (KindModel::getById(CategoryModel::getById($lstComic[$i]["id_category"])[0]["id_kind"])[0]["kind_name"]) . '</td>
                                         <td>' . (AuthorModel::getById($lstComic[$i]["id_author"])[0]["author_name"]) . '</td>
+                                        <td>' . $lstComic[$i]["create_date"] . '</td>
+                                        <td>';
+                ?>
+           
+                
+                <button type = "button" class = "btn btn-success">
+                    <a href="<?php echo TZ_Helper::getUrl("admin", "mcomic", "allChapter/1") ?>">  <b> >> </b></a>
+                </button>
+           
+            <?php
+            echo '</td>
                                     </tr>';
-            }
-            ?>
+        }
+        ?>
         </tbody>
     </table>
 </div>
