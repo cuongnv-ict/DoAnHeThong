@@ -37,8 +37,8 @@
         <?php echo TZ_Helper::htmlCss('jquery.simplyscroll') ?>
 
         <script type="text/javascript">
-            (function ($) {
-                $(function () {
+            (function($) {
+                $(function() {
                     $("#scroller").simplyScroll({pauseOnHover: true});
                 });
             })(jQuery);
@@ -79,15 +79,21 @@
             <!-- TopMenu -->
             <div id='cssmenu'>
                 <ul>
-                    <li class='active'><a href="<?php echo base_url("index.php"); ?>"><i class="fa fa-home fa-2x"></i>
+                    <li class='' id="hom" onclick="home00()"><a href="<?php echo base_url("index.php"); ?>"><i class="fa fa-home fa-2x"></i>
                             Trang chủ</a></li>
-                    <li><a href="<?php echo base_url("index.php/public/home/showToType/2"); ?>"><i class="fa fa-file-image-o fa-2x"></i> Truyện
+                    <li class='' id="home1"><a href="<?php echo base_url("index.php/public/home/showToType/2"); ?>"><i class="fa fa-file-image-o fa-2x"></i> Truyện
                             tranh</a>
 
-                    <li><a href='<?php echo base_url("index.php/public/home/showToType/1"); ?>'><i class="fa fa-file-text-o fa-2x"></i> Truyện chữ</a></li>
-                    <li><a href='#'><i class="fa fa-credit-card fa-2x"></i> Liên hệ</a></li>
+                    <li class='' id="home2"><a href='<?php echo base_url("index.php/public/home/showToType/1"); ?>'><i class="fa fa-file-text-o fa-2x"></i> Truyện chữ</a></li>
+                    <li class='' id="home3"><a href='#'><i class="fa fa-credit-card fa-2x"></i> Liên hệ</a></li>
                 </ul>
             </div>
+            <script>              
+                function home00(){
+                      document.getElementById("hom").className = 'active';
+                }
+                
+            </script>
             <!-- End TopMenu -->
             <div id="content">
                 <div id="featured">
@@ -107,13 +113,12 @@
                                                 <div>
                                                     <div class="mitem" align="center">
                                                         <a href="' . (base_url("index.php/public/comic/index") . "/" . $lstComicRank[$i]["id"]) . '"> ';
-                                                            if (CategoryModel::getById($lstComicRank[$i]['id_category'])[0]['id_type']== 1){
-                                                                echo '<img src="' . (base_url("application/" . $lstComicRank[$i]["url_images"])) . '" width="100%" height="150px" align=center/>';
-                                                            }
-                                                            else{
-                                                                echo '<img src="' . ($lstComicRank[$i]["url_images"]) . '" width="100%" height="150px" align=center/>';
-                                                            }                                                  
-                                    echo                        '<p>' . AuthorModel::getById($lstComicRank[$i]["id_author"])[0]["author_name"] . '</p>
+                                    if (CategoryModel::getById($lstComicRank[$i]['id_category'])[0]['id_type'] == 1) {
+                                        echo '<img src="' . (base_url("application/" . $lstComicRank[$i]["url_images"])) . '" width="100%" height="150px" align=center/>';
+                                    } else {
+                                        echo '<img src="' . ($lstComicRank[$i]["url_images"]) . '" width="100%" height="150px" align=center/>';
+                                    }
+                                    echo '<p>' . AuthorModel::getById($lstComicRank[$i]["id_author"])[0]["author_name"] . '</p>
                                                             <h3>' . $lstComicRank[$i]["comic_name"] . '</h3>
                                                         </a>
                                                     </div>
@@ -183,7 +188,7 @@
 
                 <div id="main-content" class="col-md-9 container-fluid">
 
-                    <?php echo $content_for_layout; // các file view được nạp vào layout?>
+                    <?php echo $content_for_layout; // các file view được nạp vào layout ?>
 
                 </div>
 
@@ -227,7 +232,7 @@
 </html>
 
 <script>
-    var substringMatcher = function (strs) {
+    var substringMatcher = function(strs) {
         return function findMatches(q, cb) {
             var matches, substrRegex;
 
@@ -239,7 +244,7 @@
 
             // iterate through the pool of strings and for any string that
             // contains the substring `q`, add it to the `matches` array
-            $.each(strs, function (i, str) {
+            $.each(strs, function(i, str) {
                 if (substrRegex.test(str)) {
                     // the typeahead jQuery plugin expects suggestions to a
                     // JavaScript object, refer to typeahead docs for more info
@@ -252,17 +257,17 @@
     };
 
     var states = [
-        <?php 
-            $lstAuthor=AuthorModel::getAll();
-            foreach ($lstAuthor as $info){
-                echo "'".$info["author_name"]."',";
-            }
-            
-            $lstComic=ComicModel::getAll();
-            foreach ($lstComic as $info){
-                echo "'".$info["comic_name"]."',";
-            }
-        ?>
+<?php
+$lstAuthor = AuthorModel::getAll();
+foreach ($lstAuthor as $info) {
+    echo "'" . $info["author_name"] . "',";
+}
+
+$lstComic = ComicModel::getAll();
+foreach ($lstComic as $info) {
+    echo "'" . $info["comic_name"] . "',";
+}
+?>
     ];
 
     $('#search').typeahead({

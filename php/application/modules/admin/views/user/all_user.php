@@ -37,6 +37,7 @@
                                       value="option1" hidden="true"></th>
                 <th>STT</th>
                 <th>Username</th>
+                <th>Full Name</th>
                 <th>Password</th>              
                 <th>Email</th>
                 <th>Phone</th>
@@ -51,6 +52,7 @@
 				<td><input type="checkbox" name="check_account"  value="' . $model[$i]["id"] . '"></td>
 				<td>' . ($i + 1) . '</td>
 				<td>' . $model[$i]["administrator_name"] . '</td>
+                                <td>' . $model[$i]["fullname"] . '</td>
 				<td>' . '********' . '</td>		
 				<td>' . $model[$i]["email"] . '</td>
 				<td>' . $model[$i]["phone_number"] . '</td>
@@ -74,10 +76,10 @@
     </ul>
 </div>
 <script>
-    $("#add_account").click(function () {
+    $("#add_account").click(function() {
         window.location.href = "<?php echo TZ_Helper::getUrl("admin", "muser", "newUser"); ?>";
     });
-    $("#delete_account").click(function () {
+    $("#delete_account").click(function() {
         var arIdAccount = [];
         var elements = document.getElementsByName('check_account');
         for (var i = 0; i < elements.length; i++) {
