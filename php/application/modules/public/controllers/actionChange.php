@@ -22,6 +22,7 @@ class actionChange extends MX_Controller {
         $this->load->Model('ChapterModel');
         $this->load->Model('PublisherModel');
         $this->load->Model('TypeModel');
+        $this->load->Model('ReviewModel');
         $this->load->Model('KindModel');
         $this->load->Model('DataStoreModel');
     }
@@ -35,7 +36,7 @@ class actionChange extends MX_Controller {
         if (isset($_REQUEST["id_chapter"])) {
             $id_chapter = $_REQUEST["id_chapter"];
         }
-
+        
         $infoChapter = ChapterModel::getById($id_chapter)[0];
         if (isset($_REQUEST["btn"])) {
             $action = $_REQUEST["btn"];
@@ -52,5 +53,36 @@ class actionChange extends MX_Controller {
         }
     }
 
+    public function reviewComic() {
+        $ip = $_REQUEST["ip"];
+        $id_comic = $_REQUEST["idComic"];
+        $point = $_REQUEST["point"];
+
+        $check = ReviewModel::checkReview($id_comic, $ip);
+        if ($check) {
+            echo '<script>alert("Xin lỗi! Bạn chỉ có thể đánh giá truyện một lần! xin cám ơn!");</script>';
+            return;
+        }
+        
+        $reviewModel = array(
+            "ip" => $ip,
+            "id_comic" => $id_comic,
+            "reviews_point" => $point
+        );
+        ReviewModel::insert($reviewModel);
+        
+        $lstReview=ReviewModel::getByComicId($id_comic);
+        $total=0;
+        foreach ($lstReview as $info){
+            $total+=$info["reviews_point"];
+        }
+        $average=$total/(sizeof($lstReview));
+        $objComic=array(
+            "review_average"=>$average,
+        );
+        ComicModel::updateReview($objComic,$id_comic);
+    }
+
 }
+
 ?>

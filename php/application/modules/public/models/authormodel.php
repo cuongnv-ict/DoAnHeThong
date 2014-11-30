@@ -21,5 +21,11 @@
             $query=$this->db->get("tbl_authors");
             return $query->result_array();
         }
+        public function getByName($name){
+            $this->db->select("*");
+            $this->db->where("author_name",$name);
+            $query=$this->db->get("tbl_authors");
+            return $query->result_array();
+        }
     }
 ?>

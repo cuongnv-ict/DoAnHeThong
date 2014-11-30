@@ -48,7 +48,14 @@ class ComicModel extends CI_Model {
         $query = $this->db->get("tbl_comic");
         return $query->result_array();
     }
-
+    
+    public function getByAuthorId($id_author) {
+        $this->db->select("*");
+        $this->db->where("id_author", $id_author);
+        $query = $this->db->get("tbl_comic");
+        return $query->result_array();
+    }
+    
     public function getByTypeId($id_type) {
         $this->db->select("*");
         $this->db->where("id_category in (select id 
@@ -64,7 +71,17 @@ class ComicModel extends CI_Model {
         $query = $this->db->get("tbl_comic");
         return $query->result_array();
     }
-
+    public function getByName($name) {
+        $this->db->select("*");
+        $this->db->where("comic_name", $name);
+        $query = $this->db->get("tbl_comic");
+        return $query->result_array();
+    }
+    
+    public function updateReview($comicModel, $id) {
+        $this->db->where("id", $id);
+        $this->db->update("tbl_comic", $comicModel);
+    }
 }
 
 ?>

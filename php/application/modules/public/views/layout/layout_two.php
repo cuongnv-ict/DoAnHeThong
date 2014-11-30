@@ -72,15 +72,15 @@
                 <a class="navbar-brand" href="<?php echo base_url("index.php"); ?>">ZTruyen</a>
             </div>
             <div class="navbar-collapse collapse navbar-responsive-collapse">
-                <form class="navbar-form navbar-right">
+                <form class="navbar-form navbar-right" action="<?php echo TZ_Helper::getUrl("public", "home", "search"); ?>">
                     <div class="input-group">
-                	<input id="search" type="text" class="form-control col-lg-8"
-                           placeholder="Tìm kiếm tác giả hoặc tác phẩm" size="50"> 
-                            <span class="input-group-btn">
-                           <a href="#" id="bt-search"
-                           class="btn btn-primary">Tìm kiếm</a>
-                           </span>
-                </div>
+                        <input id="search" name="name" type="text" class="form-control col-lg-8"
+                               placeholder="Tìm kiếm tác giả hoặc tác phẩm" size="50"> 
+                        <span class="input-group-btn">
+                            <input type="submit" id="bt-search"
+                                   class="btn btn-primary" value="Tìm kiếm" />
+                        </span>
+                    </div>
                 </form>
             </div>
         </div>
@@ -125,7 +125,7 @@
                             }
                             ?>
                         </div>
-                        
+
                         <div class="container-fluid">
                             <div class="col-md-6 col-sm-4 col-xs-4 text-info ">
                                 <a href="<?php echo base_url("index.php/public/home/showToType/2"); ?>"><b>TRUYỆN TRANH</b></a>
@@ -144,8 +144,8 @@
                     <div id="abc" class="col-md-2 col-sm-12">
                         <div class=" container-fluid">
                             <?php
-                            for ($i = 65; $i <91; $i++) {
-                                echo '<a href="'.(base_url("index.php/public/home/showToFirstChar"))."/".chr($i).'" class="col-md-12 col-sm-2 text-uppercase">' . chr($i) . '</a>';
+                            for ($i = 65; $i < 91; $i++) {
+                                echo '<a href="' . (base_url("index.php/public/home/showToFirstChar")) . "/" . chr($i) . '" class="col-md-12 col-sm-2 text-uppercase">' . chr($i) . '</a>';
                             }
                             ?>
                         </div>
@@ -200,6 +200,56 @@
 <!-- 	<script src="js/bootstrap.min.js"></script> -->
         <?php echo TZ_Helper::htmlJs('bootstrap.min') ?>
         <?php echo TZ_Helper::htmlJs('typeahead') ?>
-        <?php echo TZ_Helper::htmlJs('search') ?>
+
     </body>
 </html>
+<script>
+    var substringMatcher = function(strs) {
+        return function findMatches(q, cb) {
+            var matches, substrRegex;
+
+            // an array that will be populated with substring matches
+            matches = [];
+
+            // regex used to determine if a string contains the substring `q`
+            substrRegex = new RegExp(q, 'i');
+
+            // iterate through the pool of strings and for any string that
+            // contains the substring `q`, add it to the `matches` array
+            $.each(strs, function(i, str) {
+                if (substrRegex.test(str)) {
+                    // the typeahead jQuery plugin expects suggestions to a
+                    // JavaScript object, refer to typeahead docs for more info
+                    matches.push({value: str});
+                }
+            });
+
+            cb(matches);
+        };
+    };
+
+    var states = [
+<?php
+$lstAuthor = AuthorModel::getAll();
+foreach ($lstAuthor as $info) {
+    echo "'" . $info["author_name"] . "',";
+}
+
+$lstComic = ComicModel::getAll();
+foreach ($lstComic as $info) {
+    echo "'" . $info["comic_name"] . "',";
+}
+?>
+    ];
+
+    $('#search').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+    },
+    {
+        name: 'states',
+        displayKey: 'value',
+        source: substringMatcher(states)
+    });
+</script>

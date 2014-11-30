@@ -7,6 +7,25 @@
             });
         });
     }
+    function review(point) {
+        $(document).ready(function () {
+            $("#target").load("<?php echo TZ_Helper::getUrl("public", "actionChange", "reviewComic"); ?>", {
+                "idComic": <?php echo $model["id"]; ?>,
+                "point": point,
+                <?php
+                $ip = $_SERVER['REMOTE_ADDR'];
+
+                if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+                    $ip = $_SERVER['HTTP_CLIENT_IP'];
+                } else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+                }
+                echo '"ip":"' . $ip . '"';
+                ?>
+            });
+            alert("Cám ơn bạn đã yêu thích truyện!");
+        });
+    }
 </script>
 
 <div class="mtitle">
@@ -21,13 +40,13 @@
 </div>
 <div id="details" class="container-fluid">
     <div class="thumnail col-md-4 col-sm-6 col-xs-12">
-         <?php if(CategoryModel::getById($model['id_category'])[0]['id_type']== 1) {?>
-        <img src="<?php echo base_url("application/" . $model["url_images"]); ?>" width="100%"
-             height=350px">
-        <?php } else{?>
-         <img src="<?php  echo $model["url_images"]  ?>" width="100%"
-             height=350px">
-        <?php }?>
+        <?php if (CategoryModel::getById($model['id_category'])[0]['id_type'] == 1) { ?>
+            <img src="<?php echo base_url("application/" . $model["url_images"]); ?>" width="100%"
+                 height=350px">
+             <?php } else { ?>
+            <img src="<?php echo $model["url_images"] ?>" width="100%"
+                 height=350px">
+             <?php } ?>
     </div>
     <div class="info col-md-8 col-sm-6 col-xs-12">
         <h2><?php echo $model["comic_name"] ?></h2>
@@ -43,28 +62,28 @@
             }
             for ($i = 1; $i <= 5; $i++) {
                 if ($i <= floor($avetage)) {
-                    echo '  <a href="#" title="'.$i.'">
+                    echo '  <a href="#id" title="' . $i . '" onclick="review(' . $i . ')">
                                 <i class="fa fa-star fa-2x"></i>
                             </a>';
                 } else if ($i == floor($avetage) + 1) {
                     if ($avetage - floor($avetage) == 0.5) {
-                        echo '  <a href="#" title="'.$i.'">
+                        echo '  <a href="#id" title="' . $i . '" onclick="review(' . $i . ')">
                                     <i class="fa fa-star-half-o fa-2x"></i>
                                 </a>';
                     } else {
-                        echo '  <a href="#" title="'.$i.'">
+                        echo '  <a href="#id" title="' . $i . '">
                                     <i class="fa fa-star-o fa-2x"></i>
                                 </a>';
                     }
-                } else{
-                        echo '  <a href="#" title="'.$i.'">
+                } else {
+                    echo '  <a href="#id" title="' . $i . '" onclick="review(' . $i . ')">
                                     <i class="fa fa-star-o fa-2x"></i>
                                 </a>';
                 }
             }
             ?>
         </div>
-    
+
         <ul>
             <li>Tên khác: <?php echo $model["comic_name"]; ?></li>
             <li>Tác giả: <?php echo AuthorModel::getById($model["id_author"])[0]["author_name"]; ?></li>
@@ -111,3 +130,4 @@
 <div id="fb-api" class="col-md-12">
     <div class="fb-comments" data-href="https://www.facebook.com/truyen.ry" data-width="100%" data-numposts="5" data-colorscheme="dark"></div>
 </div>
+<span id="target"></span>

@@ -60,16 +60,15 @@
                 <a class="navbar-brand" href="<?php echo base_url("index.php"); ?>">ZTruyen</a>
             </div>
             <div class="navbar-collapse collapse navbar-responsive-collapse">
-                <form class="navbar-form navbar-right">
+                <form class="navbar-form navbar-right" action="<?php echo TZ_Helper::getUrl("public","home","search"); ?>">
                     <div class="input-group">
-                        <input id="search" type="text" class="form-control col-lg-8"
+                        <input id="search" name ="name" type="text" class="form-control col-lg-8"
                                placeholder="Tìm kiếm tác giả hoặc tác phẩm" size="50"/> 
                         <span class="input-group-btn">
-                            <a href="#" id="bt-search"
-                               class="btn btn-primary">Tìm kiếm</a>
+                            <input type="submit" id="bt-search"
+                                   class="btn btn-primary" value="Tìm kiếm" />
                         </span>
                     </div>
-
                 </form>
             </div>
         </div>
