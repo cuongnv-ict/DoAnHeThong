@@ -17,6 +17,7 @@ class Comic extends MX_Controller {
         $this->load->Model('PublisherModel');
         $this->load->Model('TypeModel');
         $this->load->Model('KindModel');
+        $this->load->Model('ReviewModel');
         $this->load->Model('DataStoreModel');
     }
 

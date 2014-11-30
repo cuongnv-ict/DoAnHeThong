@@ -16,6 +16,7 @@ class Home extends MX_Controller {
         $this->load->Model('ChapterModel');
         $this->load->Model('PublisherModel');
         $this->load->Model('TypeModel');
+        $this->load->Model('ReviewModel');
         $this->load->Model('KindModel');
     }
 
@@ -27,31 +28,54 @@ class Home extends MX_Controller {
 
     public function showToType($id_type) {
         $comicModelRank = ComicModel::getRank();
-        $comicshow=  ComicModel::getByTypeId($id_type);
+        $comicshow = ComicModel::getByTypeId($id_type);
         $model = array(
-            'lstComicRank'=>$comicModelRank,
-            'lstComicShow'=>$comicshow,
+            'lstComicRank' => $comicModelRank,
+            'lstComicShow' => $comicshow,
         );
         $this->tz_layout->view("home/index", $model);
     }
-    
-    public function showToCategory($id_category){
+
+    public function showToCategory($id_category) {
         $comicModelRank = ComicModel::getRank();
-        $comicshow=  ComicModel::getByCategoryId($id_category);
+        $comicshow = ComicModel::getByCategoryId($id_category);
         $model = array(
-            'lstComicRank'=>$comicModelRank,
-            'lstComicShow'=>$comicshow,
+            'lstComicRank' => $comicModelRank,
+            'lstComicShow' => $comicshow,
         );
         $this->tz_layout->view("home/index", $model);
     }
-    
-    public function showToFirstChar($char){
+
+    public function showToFirstChar($char) {
         $comicModelRank = ComicModel::getRank();
-        $comicshow=  ComicModel::getByFirstChar($char);
+        $comicshow = ComicModel::getByFirstChar($char);
         $model = array(
-            'lstComicRank'=>$comicModelRank,
-            'lstComicShow'=>$comicshow,
+            'lstComicRank' => $comicModelRank,
+            'lstComicShow' => $comicshow,
         );
         $this->tz_layout->view("home/index", $model);
     }
+
+    public function search() {
+        $info="";
+        if(isset($_REQUEST["name"])){
+            $info=$_REQUEST["name"];
+        }
+        $arComic=ComicModel::getByName($info);
+        $author=AuthorModel::getByName($info);
+        $arComicGetAuthorId=array();
+        if(sizeof($author)!=0){
+            $arComicGetAuthorId=ComicModel::getByAuthorId($author[0]["id"]);
+        }
+        $comicModelRank = ComicModel::getRank();
+        $comicshow = $arComicGetAuthorId+$arComic;
+     //   print_r($comicshow);
+        $model = array(
+            'lstComicRank' => $comicModelRank,
+            'lstComicShow' => $comicshow,
+        );
+        $this->tz_layout->view("home/index", $model);
+
+    }
+
 }
