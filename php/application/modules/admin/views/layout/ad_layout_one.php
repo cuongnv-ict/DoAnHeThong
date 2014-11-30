@@ -45,7 +45,7 @@
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="images/avatar.jpg" width="40dp" height="40dp" alt="avatar" /> bacuong12<span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">		         
 		            <li class="divider"></li>
-		            <li><a href="<?php echo TZ_Helper::getUrl("admin", "login", "index");?>">Đăng xuất</a></li>
+		            <li><a href="<?php echo TZ_Helper::getUrl("admin", "login", "logout");?>">Đăng xuất</a></li>
 		          </ul>
 		        </li>
 		      </ul>
