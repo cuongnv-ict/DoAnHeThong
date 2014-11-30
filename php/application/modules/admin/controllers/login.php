@@ -14,6 +14,9 @@ class Login extends MX_Controller{
 	}
 	
 	public function index(){
+		if($this->session->userdata('login')==true){
+			redirect('/admin/mcomic/showAll', 'refresh');
+		}
 		$this->tz_layout->setLayout("layout/login_layout");
 		$this->tz_layout->view("login/index");
 	}
@@ -22,7 +25,6 @@ class Login extends MX_Controller{
 		$username = $_POST['username'];
 		$passwd = $_POST['password'];
 		$result = AdministratorModel::checkUser($username,$passwd);
-		
 		if($result) {
 			$userdata = array(
 					'username' => $username,
@@ -30,14 +32,19 @@ class Login extends MX_Controller{
 					'email' => $result[0]['email'],
 					'type' => $result[0]['isSuperAdministrator']
 			);
-			$this->session->set_userdata['login'] = true;
-			$this->session->set_userdata['info'] = $userdata;
+			$this->session->set_userdata('login', true);
+			$this->session->set_userdata('info', $userdata);
 			redirect('/admin/mcomic/showAll', 'refresh');
 		} else {
 			$this->session->set_userdata['login'] = false;
+			echo "false";
 			redirect('/admin/login/index?r=error', 'refresh');
 		}
-		
-		
+	}
+	
+	public function logout(){
+		$this->session->unset_userdata('info');
+		$this->session->set_userdata('login', false);
+		redirect('/admin/login/index', 'refresh');
 	}
 }

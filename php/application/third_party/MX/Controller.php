@@ -57,4 +57,10 @@ class MX_Controller
 	public function __get($class) {
 		return CI::$APP->$class;
 	}
+	
+	public function checkLogin(){
+		if($this->session->userdata('login') == false){
+			redirect('/admin/login/index', 'refresh');
+		}
+	}
 }
