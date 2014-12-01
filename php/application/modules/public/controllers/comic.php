@@ -23,6 +23,10 @@ class Comic extends MX_Controller {
 
     public function index($id) {
         $info = ComicModel::getById($id);
+        $objModel=array(
+            "number_viewers"=>ComicModel::getById($id)[0]["number_viewers"]+1
+        );
+        ComicModel::update($objModel,$id);
         $model['model'] = $info;
         $this->tz_layout->view("comic/index", $model);
     }

@@ -78,7 +78,7 @@ class ComicModel extends CI_Model {
         return $query->result_array();
     }
     
-    public function updateReview($comicModel, $id) {
+    public function update($comicModel, $id) {
         $this->db->where("id", $id);
         $this->db->update("tbl_comic", $comicModel);
     }

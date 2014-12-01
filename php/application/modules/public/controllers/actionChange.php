@@ -80,9 +80,8 @@ class actionChange extends MX_Controller {
         $objComic=array(
             "review_average"=>$average,
         );
-        ComicModel::updateReview($objComic,$id_comic);
+        ComicModel::update($objComic,$id_comic);
     }
-
 }
 
 ?>
