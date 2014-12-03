@@ -37,8 +37,8 @@
         <?php echo TZ_Helper::htmlCss('jquery.simplyscroll') ?>
 
         <script type="text/javascript">
-            (function($) {
-                $(function() {
+            (function ($) {
+                $(function () {
                     $("#scroller").simplyScroll({pauseOnHover: true});
                 });
             })(jQuery);
@@ -60,7 +60,7 @@
                 <a class="navbar-brand" href="<?php echo base_url("index.php"); ?>">ZTruyen</a>
             </div>
             <div class="navbar-collapse collapse navbar-responsive-collapse">
-                <form class="navbar-form navbar-right" action="<?php echo TZ_Helper::getUrl("public","home","search"); ?>">
+                <form class="navbar-form navbar-right" action="<?php echo TZ_Helper::getUrl("public", "home", "search"); ?>">
                     <div class="input-group">
                         <input id="search" name ="name" type="text" class="form-control col-lg-8"
                                placeholder="Tìm kiếm tác giả hoặc tác phẩm" size="50"/> 
@@ -88,11 +88,11 @@
                     <li class='' id="home3"><a href='#'><i class="fa fa-credit-card fa-2x"></i> Liên hệ</a></li>
                 </ul>
             </div>
-            <script>              
-                function home00(){
-                      document.getElementById("hom").className = 'active';
+            <script>
+                function home00() {
+                    document.getElementById("hom").className = 'active';
                 }
-                
+
             </script>
             <!-- End TopMenu -->
             <div id="content">
@@ -114,7 +114,7 @@
                                                     <div class="mitem" align="center">
                                                         <a href="' . (base_url("index.php/public/comic/index") . "/" . $lstComicRank[$i]["id"]) . '"> ';
                                     if (CategoryModel::getById($lstComicRank[$i]['id_category'])[0]['id_type'] == 1) {
-                                        echo '<img src="' . (base_url("application/" . $lstComicRank[$i]["url_images"])) . '" width="100%" height="150px" align=center/>';
+                                        echo '<img src="' . (base_url("application/" . $lstComicRank[$i]["url_images"])) . '" width="100%" height="150px" align=center />';
                                     } else {
                                         echo '<img src="' . ($lstComicRank[$i]["url_images"]) . '" width="100%" height="150px" align=center/>';
                                     }
@@ -223,7 +223,7 @@
             </div>
 
         </div>
-
+        <span id="target"></span>
         <?php echo TZ_Helper::htmlJs('custom') ?>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <?php echo TZ_Helper::htmlJs('bootstrap.min') ?>
@@ -232,7 +232,7 @@
 </html>
 
 <script>
-    var substringMatcher = function(strs) {
+    var substringMatcher = function (strs) {
         return function findMatches(q, cb) {
             var matches, substrRegex;
 
@@ -244,7 +244,7 @@
 
             // iterate through the pool of strings and for any string that
             // contains the substring `q`, add it to the `matches` array
-            $.each(strs, function(i, str) {
+            $.each(strs, function (i, str) {
                 if (substrRegex.test(str)) {
                     // the typeahead jQuery plugin expects suggestions to a
                     // JavaScript object, refer to typeahead docs for more info

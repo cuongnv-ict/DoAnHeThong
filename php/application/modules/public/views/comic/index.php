@@ -89,7 +89,6 @@
             <li>Tác giả: <?php echo AuthorModel::getById($model["id_author"])[0]["author_name"]; ?></li>
             <li>Thể loại:<?php echo KindModel::getById(CategoryModel::getById($model["id_category"])[0]["id_kind"])[0]["kind_name"]; ?></li>
             <li>Số tập:<?php echo $model["number_chapter"]; ?></li>
-            <li>Chương mới nhất:Chưa phát triển</li>
         </ul>
     </div>
     <div class="col-md-12">

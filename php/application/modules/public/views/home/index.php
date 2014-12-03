@@ -22,7 +22,10 @@ for ($i = 0; $i < sizeof($lstComicShow); $i++) {
     echo                '</a>
                 </div>
                 <div class="caption">
-                    <a href="#"><h3>'.$lstComicShow[$i]["comic_name"].'</h3></a> <a href="#"><span>Đánh giá 9.9</span><p>Chương 12</p></a>     		
+                    <a href="'.(TZ_Helper::getUrl("public","comic","index/".$lstComicShow[$i]["id"])).'"><h3>'.$lstComicShow[$i]["comic_name"].'</h3></a> 
+                        <span>
+                        Đánh giá 9.9
+                        </span><p>Chương 12</p></a>     		
                     <p>Tác giả: '.AuthorModel::getById($lstComicShow[$i]["id_author"])[0]["author_name"].'</p>
                 </div>
 

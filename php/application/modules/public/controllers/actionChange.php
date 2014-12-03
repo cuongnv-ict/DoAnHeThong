@@ -36,18 +36,29 @@ class actionChange extends MX_Controller {
         if (isset($_REQUEST["id_chapter"])) {
             $id_chapter = $_REQUEST["id_chapter"];
         }
-        
+        $lstChapter = ChapterModel::getByComicId($id_comic);
+        $maxNo = $lstChapter[sizeof($lstChapter) - 1];
+        $minNo = $lstChapter[0];
         $infoChapter = ChapterModel::getById($id_chapter)[0];
+
         if (isset($_REQUEST["btn"])) {
             $action = $_REQUEST["btn"];
             if ($action == "f") {
-                $id_chapter = ChapterModel::getByIdComicAndNo($infoChapter["id_comic"], $infoChapter["No"] - 1)[0]["id"];
+                if ($infoChapter["No"] == $minNo["No"]) {
+                    $id_chapter = $maxNo["id"];
+                } else {
+                    $id_chapter = ChapterModel::getByIdComicAndNo($infoChapter["id_comic"], $infoChapter["No"] - 1)[0]["id"];
+                }
             } else if ($action == "l") {
-                $id_chapter = ChapterModel::getByIdComicAndNo($infoChapter["id_comic"], $infoChapter["No"] + 1)[0]["id"];
+                if ($infoChapter["No"] == $maxNo["No"]) {
+                    $id_chapter = $minNo["id"];
+                } else {
+                    $id_chapter = ChapterModel::getByIdComicAndNo($infoChapter["id_comic"], $infoChapter["No"] + 1)[0]["id"];
+                }
             }
         }
         echo '<option value="' . $id_chapter . '">' . (ChapterModel::getById($id_chapter)[0]["chapter_name"]) . '</option>';
-        $lstChapter = ChapterModel::getByComicId($id_comic);
+
         for ($i = 0; $i < sizeof($lstChapter); $i++) {
             echo '<option value=' . $lstChapter[$i]["id"] . '>' . $lstChapter[$i]["chapter_name"] . '</option>';
         }
@@ -63,24 +74,24 @@ class actionChange extends MX_Controller {
             echo '<script>alert("Xin lỗi! Bạn chỉ có thể đánh giá truyện một lần! xin cám ơn!");</script>';
             return;
         }
-        
+
         $reviewModel = array(
             "ip" => $ip,
             "id_comic" => $id_comic,
             "reviews_point" => $point
         );
         ReviewModel::insert($reviewModel);
-        
-        $lstReview=ReviewModel::getByComicId($id_comic);
-        $total=0;
-        foreach ($lstReview as $info){
+
+        $lstReview = ReviewModel::getByComicId($id_comic);
+        $total = 0;
+        foreach ($lstReview as $info) {
             $total+=$info["reviews_point"];
         }
-        $average=$total/(sizeof($lstReview));
-        $objComic=array(
-            "review_average"=>$average,
+        $average = $total / (sizeof($lstReview));
+        $objComic = array(
+            "review_average" => $average,
         );
-        ComicModel::updateReview($objComic,$id_comic);
+        ComicModel::update($objComic, $id_comic);
     }
 
 }
