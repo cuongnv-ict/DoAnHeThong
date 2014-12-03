@@ -28,6 +28,10 @@ class DataStoreModel extends CI_Model {
         $this->db->where("id", $id);
         $this->db->delete("tbl_data_store");
     }
+    public function deleteChap($id_chap) {
+        $this->db->where("id_chapter", $id_chap);
+        $this->db->delete("tbl_data_store");
+    }
 
     public function update($data_storeModel, $id) {
         $this->db->where("id", $id);

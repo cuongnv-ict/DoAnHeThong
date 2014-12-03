@@ -11,7 +11,10 @@ class ComicModel extends CI_Model {
     public function __construct() {
         parent::__construct();
         $this->load->database();
+        $this->load->helper('text');
+        $this->load->helper('url');
         $this->load->Model("CategoryModel");
+        $this->_gallery_path = realpath(APPPATH . "../application/upload/avatar");
     }
 
     public function getAll() {
@@ -51,6 +54,12 @@ class ComicModel extends CI_Model {
     }
 
     public function insert($comicModel) {
+        if (CategoryModel::getById($comicModel['id_category'])[0]['id_type'] == 1) {
+            $dir2 = "./application/upload/truyenchu/" . md5($comicModel['comic_name']);
+            if (!is_dir($dir2)) {
+                mkdir($dir2, 0777, true);
+            }
+        }
         $this->db->insert("tbl_comic", $comicModel);
     }
 
@@ -62,6 +71,32 @@ class ComicModel extends CI_Model {
     public function update($comicModel, $id) {
         $this->db->where("id", $id);
         $this->db->update("tbl_comic", $comicModel);
+    }
+
+    public function uploadImg($urli) {
+//        $dir2 = $this->_gallery_path;
+//                if (! is_dir ( $dir2 )) {
+//			mkdir ( $dir2, 0777, true );
+//		}
+//        $this->_gallery_path = realpath(APPPATH . "../application/upload/avatar");
+//        $image_data = "";
+//        $config = array(
+//            'upload_path' => $this->_gallery_path,
+//            'allowed_types' => 'gif|jpg|png',
+//            'max_size' => '2000'
+//        );
+//        $urli = ""
+////        $this->load->library("upload", $config);
+//        if (!$this->upload->do_upload($urli)) {
+//            echo 1;
+//            $error = array(
+//                $this->upload->display_errors()
+//            );
+//        } else {
+//            echo 2;
+//            $image_data = $this->upload->data();
+//        }
+//        return $image_data;
     }
 
 }

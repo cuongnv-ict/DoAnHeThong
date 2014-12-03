@@ -35,7 +35,8 @@ $oFCKeditor->BasePath = $sBasePath;
         <div class="form-group">
             <label  class="col-sm-2 control-label input-sm">Lưu trữ: </label>
             <div class="col-sm-3 input-group">
-                <input type="text" class="form-control input-sm" placeholder="type name comic" value="<?php echo DataStoreModel::getByChapterId($model["id"])[0]["url_store"]; ?>">
+                <input type="text" class="form-control input-sm" name="abc" id="abc"  placeholder="type name comic" value="<?php echo DataStoreModel::getByChapterId($model["id"])[0]["url_store"]; ?>">
+                <?php $data = $this->input->post(); $data['abc'];?>
                 <span class="input-group-btn">
                     <button class="btn btn-success input-sm" type="button">Cập nhật</button>
                 </span>

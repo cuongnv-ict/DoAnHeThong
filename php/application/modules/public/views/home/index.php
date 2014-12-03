@@ -18,7 +18,6 @@ for ($i = 0; $i < sizeof($lstComicShow); $i++) {
                     else{
                          echo ' <img src="'.($lstComicShow[$i]["url_images"]).'" width="100%" height="200px" />';
                     }
-         
                       //  <img src="'.(base_url("application/".$lstComicShow[$i]["url_images"])).'" width="100%" height="200px" />
     echo                '</a>
                 </div>

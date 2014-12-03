@@ -26,6 +26,14 @@ class CategoryModel extends CI_Model {
         return $query->result_array();
     }
 
+    public function getByTypeKind($id_type, $id_kind) {
+        $this->db->select("*");
+        $this->db->where("id_type", $id_type);
+        $this->db->where("id_kind", $id_kind);
+        $query = $this->db->get("tbl_categorys");
+        return $query->result_array();
+    }
+
     public function getById($id) {
         $this->db->select("*");
         $this->db->where("id", $id);
@@ -41,6 +49,7 @@ class CategoryModel extends CI_Model {
         $this->db->where("id", $id);
         $this->db->delete("tbl_categorys");
     }
+
     public function deleteKind($id) {
         $this->db->where("id_kind", $id);
         $this->db->delete("tbl_categorys");
@@ -50,6 +59,7 @@ class CategoryModel extends CI_Model {
         $this->db->where("id", $id);
         $this->db->update("tbl_categorys", $categoryModel);
     }
+
 }
 
 ?>

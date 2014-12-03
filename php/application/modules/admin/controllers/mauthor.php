@@ -4,7 +4,7 @@ class Mauthor extends MX_Controller {
 
     public function __construct() {
         parent::__construct();
-        
+
         $this->load->helper("url");
         // Nạp thư viện hỗ trợ tạo file view
         $this->load->helper("tz_helper");
@@ -68,11 +68,17 @@ class Mauthor extends MX_Controller {
     }
 
     public function delete() {
-        $lstAuthorId = $_REQUEST["lstAuthorId"];
-        // print_r( $lstAuthorId);
-        foreach ($lstAuthorId as $id) {
-            AuthorModel::delete($id);
+        $lstAuthorId = NULL;
+        if (isset($_REQUEST["lstAuthorId"])) {
+            $lstAuthorId = $_REQUEST["lstAuthorId"];
         }
+        if ($lstAuthorId != NULL) {
+            foreach ($lstAuthorId as $id) {
+                AuthorModel::delete($id);
+            }
+        }
+        // print_r( $lstAuthorId);
+
         $lstAuthor = AuthorModel::getAll();
         for ($i = 0; $i < sizeof($lstAuthor); $i++) {
             echo '<tr>

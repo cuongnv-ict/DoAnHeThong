@@ -45,6 +45,7 @@ class ChapterModel extends CI_Model {
 
     public function insert($chapterModel) {
         $this->db->insert("tbl_chapter", $chapterModel);
+        return $this->db->insert_id();
     }
 
     public function delete($id) {

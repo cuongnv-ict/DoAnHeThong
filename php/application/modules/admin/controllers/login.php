@@ -27,6 +27,7 @@ class Login extends MX_Controller{
 		$result = AdministratorModel::checkUser($username,$passwd);
 		if($result) {
 			$userdata = array(
+                                        'id'=>$result[0]['id'],
 					'username' => $username,
 					'full_name' => $result[0]['fullname'],
 					'email' => $result[0]['email'],

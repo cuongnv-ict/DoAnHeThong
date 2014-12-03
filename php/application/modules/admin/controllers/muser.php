@@ -4,7 +4,7 @@ class Muser extends MX_Controller {
 
     public function __construct() {
         parent::__construct();
-        
+
         $this->load->helper("url");
         // Nạp thư viện hỗ trợ tạo file view
         $this->load->helper("tz_helper");
@@ -95,9 +95,10 @@ class Muser extends MX_Controller {
             $model = AdministratorModel::getAll();
             for ($i = 0; $i < sizeof($model); $i++) {
                 echo '  <tr>
-				<td><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
+				<td><input type="checkbox" name="check_account"  value="' . $model[$i]["id"] . '"></td>
 				<td>' . ($i + 1) . '</td>
 				<td>' . $model[$i]["administrator_name"] . '</td>
+                                <td>' . $model[$i]["fullname"] . '</td>
 				<td>' . '********' . '</td>		
 				<td>' . $model[$i]["email"] . '</td>
 				<td>' . $model[$i]["phone_number"] . '</td>
@@ -106,19 +107,20 @@ class Muser extends MX_Controller {
 			</tr>';
             }
         } else {
-//            $model = AdministratorModel::getAll();
-//            for ($i = 0; $i < sizeof($model); $i++) {
-//                echo '  <tr>
-//				<td><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
-//				<td>' . ($i + 1) . '</td>
-//				<td>' . $model[$i]["administrator_name"] . '</td>
-//				<td>' . '********' . '</td>		
-//				<td>' . $model[$i]["email"] . '</td>
-//				<td>' . $model[$i]["phone_number"] . '</td>
-//                                <td>' . $model[$i]["isSuperAdministrator"] . '</td>
-//                                <td>' . $model[$i]["create_time"] . '</td> 
-//			</tr>';
-//            }
+            $model = AdministratorModel::getAll();
+            for ($i = 0; $i < sizeof($model); $i++) {
+                echo '  <tr>
+				<td><input type="checkbox" name="check_account"  value="' . $model[$i]["id"] . '"></td>
+				<td>' . ($i + 1) . '</td>
+				<td>' . $model[$i]["administrator_name"] . '</td>
+                                <td>' . $model[$i]["fullname"] . '</td>
+				<td>' . '********' . '</td>		
+				<td>' . $model[$i]["email"] . '</td>
+				<td>' . $model[$i]["phone_number"] . '</td>
+                                <td>' . $model[$i]["isSuperAdministrator"] . '</td>
+                                <td>' . $model[$i]["create_time"] . '</td> 
+			</tr>';
+            }
         }
     }
 

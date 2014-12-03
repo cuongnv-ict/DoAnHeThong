@@ -59,14 +59,15 @@
             </select>
         </div>
     </div>
-
+    <!--<form action="<?php echo TZ_Helper::getUrl("admin", "mcomic", "insert"); ?>" method="post" enctype="multipart/form-data">-->
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">Ảnh đại diện: </label>
         <div class="col-sm-5">
-            <input type="file" class="form-control" placeholder="Đường dẫn ảnh">
+            <input type="file" class="form-control" name="img_ups" id ="url_img" placeholder="Đường dẫn ảnh" multiple />
         </div>
+<!--        <input type="submit" value="upload anh" >-->
     </div>
-
+    <!--</form>-->
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">Tổng quan: </label>
         <div class="col-sm-10">
@@ -98,9 +99,14 @@
         var id_type = document.getElementById("type").value;
         var id_kind = document.getElementById("reload_select").value;
         var text = $("#textArea").val();
-//        $("#target").load("<?php echo TZ_Helper::getUrl("admin", "muser", "insert"); ?>", {
-//            "name": name, "pass": password, "re_pass": re_password, "email": email, "phone": phone, "fullname": fullname,
-//        });
+//        var x = document.getElementById("url_img");
+//        if('files' in url_img){
+//        }
+        var url = document.getElementById("url_img").value;
+//        var file = document.getElementById("url_img").files;
+        $("#target").load("<?php echo TZ_Helper::getUrl("admin", "mcomic", "insert"); ?>", {
+            "name": name, "id_author": id_author, "id_type": id_type, "id_kind": id_kind, "text": text, "url": url,
+        });
     });
     $("#cancel").click(function() {
         window.location.href = "<?php echo TZ_Helper::getUrl("admin", "mcomic", "showall"); ?>";

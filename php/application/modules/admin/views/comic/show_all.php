@@ -5,9 +5,23 @@
             <button type="button" class="btn btn-success">
                 <a href="<?php echo TZ_Helper::getUrl("admin", "mcomic", "newcomic") ?>" style="color: white;"><i class="fa fa-plus"></i> Thêm mới</a>
             </button>
-            <button type="button" class="btn btn-success">
+            <button type="button" class="btn btn-success" id = "delete">
                 <i class="fa fa-times"></i> Xóa
             </button>
+            <script>
+                $("#delete").click(function() {
+                    var arIdComic = [];
+                    var elements = document.getElementsByName('id_comic');
+                    for (var i = 0; i < elements.length; i++) {
+                        if ($(elements[i]).is(":checked")) {
+                            arIdComic.push($(elements[i]).val());
+                        }
+                    }
+                    $("#list_account").load("<?php echo TZ_Helper::getUrl("admin", "mcomic", "deleteComic"); ?>", {
+                        "list": arIdComic,
+                    });
+                });
+            </script>
         </div>
         <div class="input-group col-md-4">
             <input type="text" class="form-control"
@@ -50,12 +64,12 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="list_account">
             <?php
             for ($i = 0; $i < sizeof($lstComic); $i++) {
                 echo '  <tr>
-                                        <td><input type="checkbox" id="inlineCheckbox1" value="option1"></td>
-                                        <td>' . $lstComic[$i]["id"] . '</td>
+                                        <td><input type="checkbox" name="id_comic" value="'.$lstComic[$i]["id"].'"></td>
+                                        <td>' . ($i + 1) . '</td>
                                         <td><a href="' . TZ_Helper::getUrl("admin", "mcomic", "edit/" . $lstComic[$i]["id"]) . '">' . $lstComic[$i]["comic_name"] . '</a></td>
                                         <td>' . $lstComic[$i]["number_chapter"] . '</td>
                                         <td>' . (TypeModel::getById(CategoryModel::getById($lstComic[$i]["id_category"])[0]["id_type"])[0]["type_name"]) . '</td>
@@ -64,12 +78,12 @@
                                         <td>' . $lstComic[$i]["create_date"] . '</td>
                                         <td>';
                 ?>
-           
-                
-                <button type = "button" class = "btn btn-success">
-                    <a href="<?php echo TZ_Helper::getUrl("admin", "mcomic", "allChapter/1") ?>">  <b> >> </b></a>
-                </button>
-           
+
+
+            <button type = "button" class = "btn btn-success">
+                <a href="<?php echo TZ_Helper::getUrl("admin", "mcomic", "allChapter/" . $lstComic[$i]["id"]) ?>">  <b> >> </b></a>
+            </button>
+
             <?php
             echo '</td>
                                     </tr>';
