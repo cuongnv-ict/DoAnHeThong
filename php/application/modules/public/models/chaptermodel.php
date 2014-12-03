@@ -50,6 +50,14 @@ class ChapterModel extends CI_Model {
         $query = $this->db->get("tbl_chapter");
         return $query->result_array();
     }
+    public function getMaxNo($idComic){
+        $this->db->select("*");
+        $this->db->where("id_comic", $id_comic);
+        $this->db->order_by("No","DESC");
+        $query = $this->db->get("tbl_chapter");
+        
+        return $query->result_array();
+    }
 }
 
 ?>

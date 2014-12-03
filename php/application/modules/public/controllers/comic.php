@@ -23,10 +23,10 @@ class Comic extends MX_Controller {
 
     public function index($id) {
         $info = ComicModel::getById($id);
-        $objModel=array(
-            "number_viewers"=>ComicModel::getById($id)[0]["number_viewers"]+1
+        $objModel = array(
+            "number_viewers" => ComicModel::getById($id)[0]["number_viewers"] + 1
         );
-        ComicModel::update($objModel,$id);
+        ComicModel::update($objModel, $id);
         $model['model'] = $info;
         $this->tz_layout->view("comic/index", $model);
     }
@@ -54,18 +54,30 @@ class Comic extends MX_Controller {
 
     public function changeContent() {
         $id_chapter = $_REQUEST["id_chapter"];
+
         $infoChapter = ChapterModel::getById($id_chapter)[0];
+        $lstChapter = ChapterModel::getByComicId($infoChapter["id_comic"]);
+        $maxNo = $lstChapter[sizeof($lstChapter) - 1];
+        $minNo = $lstChapter[0];
+
         if (isset($_REQUEST["btn"])) {
             $action = $_REQUEST["btn"];
             if ($action == "f") {
-                $id_chapter = ChapterModel::getByIdComicAndNo($infoChapter["id_comic"], $infoChapter["No"] - 1)[0]["id"];
+                if ($infoChapter["No"] == $minNo["No"]) {
+                    $id_chapter = $maxNo["id"];
+                } else {
+                    $id_chapter = ChapterModel::getByIdComicAndNo($infoChapter["id_comic"], $infoChapter["No"] - 1)[0]["id"];
+                }
             } else if ($action == "l") {
-                $id_chapter = ChapterModel::getByIdComicAndNo($infoChapter["id_comic"], $infoChapter["No"] + 1)[0]["id"];
+                if ($infoChapter["No"] == $maxNo["No"]) {
+                    $id_chapter = $minNo["id"];
+                } else {
+                    $id_chapter = ChapterModel::getByIdComicAndNo($infoChapter["id_comic"], $infoChapter["No"] + 1)[0]["id"];
+                }
             }
         }
 
         $lstDataStore = DataStoreModel::getByChapterId($id_chapter);
-
         for ($i = 0; $i < sizeof($lstDataStore); $i++) {
             $url = base_url() . 'application/' . $lstDataStore[$i]["url_store"];
             $file = fopen($url, 'r');
