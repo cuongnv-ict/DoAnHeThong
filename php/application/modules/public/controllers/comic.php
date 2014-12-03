@@ -76,13 +76,22 @@ class Comic extends MX_Controller {
                 }
             }
         }
+        $id_category = ComicModel::getById($infoChapter["id_comic"])[0]['id_category'];
 
         $lstDataStore = DataStoreModel::getByChapterId($id_chapter);
-        for ($i = 0; $i < sizeof($lstDataStore); $i++) {
-            $url = base_url() . 'application/' . $lstDataStore[$i]["url_store"];
-            $file = fopen($url, 'r');
-            while (!feof($file)) {
-                echo fgets($file) . "<br>";
+        if (CategoryModel::getById($id_category)[0]['id_type'] == 1) {
+            for ($i = 0; $i < sizeof($lstDataStore); $i++) {
+                $url = base_url() . 'application/' . $lstDataStore[$i]["url_store"];
+                $file = fopen($url, 'r');
+                while (!feof($file)) {
+                    echo fgets($file) . "<br>";
+                }
+            }
+        }else{
+            foreach ($lstDataStore as $value){
+                echo ' <div style="text-align:center;">     
+                            <img src="'; echo $value['url_store']; echo '"/>
+                       </div><br>';
             }
         }
     }
