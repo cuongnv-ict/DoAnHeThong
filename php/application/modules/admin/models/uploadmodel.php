@@ -15,7 +15,7 @@ class UploadModel extends CI_Model {
         $this->load->helper('url');
     }
 
-    public function do_upload() {
+    public function do_upload($url) {
 //        $dir2 = $this->_gallery_path;
 //                if (! is_dir ( $dir2 )) {
 //			mkdir ( $dir2, 0777, true );

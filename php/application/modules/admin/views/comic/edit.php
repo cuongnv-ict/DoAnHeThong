@@ -95,7 +95,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10 input-group">
                 <button type="submit" class="btn btn-success">Cập nhật</button>
-                <button type="submit" class="btn btn-warning">Hủy bỏ</button>
+                <button type="submit" class="btn btn-success">Hủy bỏ</button>
             </div>
         </div>
 
@@ -103,6 +103,6 @@
 
     <a href=" <?php echo TZ_Helper::getUrl("admin", "mcomic", "allChapter", array($model["id"])); ?>">Xem tất cả chương truyện</a>
     <hr />
-
-
 </div>
+<script>
+</script>

@@ -104,6 +104,8 @@ class Mcomic extends MX_Controller {
         if (isset($_REQUEST["url"])) {
             $url = $_REQUEST["url"];
         }
+        echo $url;
+        UploadModel::do_upload($url);
         if ($name == "" || $text == "") {
             echo "Bạn chưa điền đủ thông tin.";
         } else {
