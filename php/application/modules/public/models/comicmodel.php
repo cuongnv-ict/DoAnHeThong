@@ -12,25 +12,37 @@ class ComicModel extends CI_Model {
         parent::__construct();
         $this->load->database();
         $this->load->Model("CategoryModel");
+        $this->load->Model("ChapterModel");
     }
-    
-     public function getAll() {
+
+    public function getAll() {
         $this->db->select("*");
         $query = $this->db->get("tbl_comic");
         return $query->result_array();
     }
 
-    
     public function getRank() {
         $this->db->select("*");
-        $this->db->order_by("number_viewers","DESC");
-        $this->db->limit(5,0);
+        $this->db->order_by("number_viewers", "DESC");
+        $this->db->limit(5, 0);
         $query = $this->db->get("tbl_comic");
         return $query->result_array();
     }
 
     public function getUpdateNew() {
-        $this->db->select("*"); 
+        $id = ChapterModel::getNewUpdate();
+        $strId = "";
+        $count = 0;
+        foreach ($id as $item) {
+            $count++;
+            if ($count == sizeof($id)) {
+                $strId.=$item["id_comic"];
+            } else {
+                $strId.=$item["id_comic"] . ",";
+            }
+        }
+        $this->db->select("*");
+        $this->db->where("id in ($strId)");
         $query = $this->db->get("tbl_comic");
         return $query->result_array();
     }
@@ -48,14 +60,14 @@ class ComicModel extends CI_Model {
         $query = $this->db->get("tbl_comic");
         return $query->result_array();
     }
-    
+
     public function getByAuthorId($id_author) {
         $this->db->select("*");
         $this->db->where("id_author", $id_author);
         $query = $this->db->get("tbl_comic");
         return $query->result_array();
     }
-    
+
     public function getByTypeId($id_type) {
         $this->db->select("*");
         $this->db->where("id_category in (select id 
@@ -67,21 +79,23 @@ class ComicModel extends CI_Model {
 
     public function getByFirstChar($char) {
         $this->db->select("*");
-        $this->db->where("comic_name like ", $char."%");
+        $this->db->where("comic_name like ", $char . "%");
         $query = $this->db->get("tbl_comic");
         return $query->result_array();
     }
+
     public function getByName($name) {
         $this->db->select("*");
         $this->db->where("comic_name", $name);
         $query = $this->db->get("tbl_comic");
         return $query->result_array();
     }
-    
+
     public function update($comicModel, $id) {
         $this->db->where("id", $id);
         $this->db->update("tbl_comic", $comicModel);
     }
+
 }
 
 ?>

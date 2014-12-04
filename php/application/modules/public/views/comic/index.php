@@ -24,7 +24,11 @@
                 ?>
             });
             alert("Cám ơn bạn đã yêu thích truyện!");
+            $("#rating").load("<?php echo TZ_Helper::getUrl("public", "actionChange", "showReviewComic"); ?>", {
+                "id": <?php echo $model["id"]; ?>,
+            });
         });
+        
     }
 </script>
 
@@ -71,7 +75,7 @@
                                     <i class="fa fa-star-half-o fa-2x"></i>
                                 </a>';
                     } else {
-                        echo '  <a href="#id" title="' . $i . '">
+                        echo '  <a href="#id" title="' . $i . '" onclick="review(' . $i . ')">
                                     <i class="fa fa-star-o fa-2x"></i>
                                 </a>';
                     }
@@ -82,6 +86,7 @@
                 }
             }
             ?>
+            
         </div>
 
         <ul>

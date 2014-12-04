@@ -58,6 +58,22 @@ class ChapterModel extends CI_Model {
         
         return $query->result_array();
     }
+    
+    public function getNewUpdate(){
+        $this->db->distinct();
+        $this->db->select("id_comic");
+        $this->db->order_by("create_time","DESC");
+        $query = $this->db->get("tbl_chapter");
+        return $query->result_array();
+    }
+     public function getChapterUpdateNewFinal($id_comic){
+        $this->db->select("*");
+        $this->db->where("id_comic", $id_comic);
+        $this->db->order_by("create_time","DESC");
+        $this->db->limit(1);
+        $query = $this->db->get("tbl_chapter");
+        return $query->result_array();
+    }
 }
 
 ?>
