@@ -111,7 +111,6 @@ function() {
 })(jQuery);
 
 function rating(point){
-	console.log(point);
 	for ( i=0; i<=point; i++ ){
 		$('#rating a:eq('+i+') i').addClass('fa-star');
 		$('#rating a:eq('+i+') i').removeClass('fa-star-o');
