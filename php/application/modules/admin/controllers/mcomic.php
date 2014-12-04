@@ -23,6 +23,7 @@ class Mcomic extends MX_Controller {
         $this->load->Model('TypeModel');
         $this->load->Model('KindModel');
         $this->load->Model('DataStoreModel');
+        $this->load->Model('Mgallery');
     }
 
     public function showAll() {
@@ -79,48 +80,42 @@ class Mcomic extends MX_Controller {
     }
 
     public function insert() {
-//        $img_all = $this->ComicModel->do_upload();
-        $name = "";
-        $id_author = "";
-        $id_type = "";
-        $id_kind = "";
-        $text = "";
-        $url = "";
-        if (isset($_REQUEST["name"])) {
-            $name = $_REQUEST["name"];
-        }
-        if (isset($_REQUEST["id_author"])) {
-            $id_author = $_REQUEST["id_author"];
-        }
-        if (isset($_REQUEST["id_type"])) {
-            $id_type = $_REQUEST["id_type"];
-        }
-        if (isset($_REQUEST["id_kind"])) {
-            $id_kind = $_REQUEST["id_kind"];
-        }
-        if (isset($_REQUEST["text"])) {
-            $text = $_REQUEST["text"];
-        }
-        if (isset($_REQUEST["url"])) {
-            $url = $_REQUEST["url"];
-        }
-        echo $url;
-        UploadModel::do_upload($url);
-        if ($name == "" || $text == "") {
-            echo "Bạn chưa điền đủ thông tin.";
+        if ($this->input->post("add")) {
+            $name = $_POST["name"];
+            $id_author = $_POST["id_author"];
+            $id_type = $_POST["type"];
+            $id_kind = $_POST["id_kind"];
+            $text = $_POST["textArea"];
+            $url = "";
+            if ($name == "" || $text == "" || $_FILES["img"]["name"] == NULL) {
+                echo "<script>alert('Ban chua dien du thong tin')</script>";
+                $model["lstAuthor"] = AuthorModel::getAll();
+                $model["lstKind"] = KindModel::getAllName(1);
+                $this->tz_layout->view("comic/new_comic", $model);
+            } else {
+                $this->Mgallery->do_upload();
+                $url = "/upload/avatar/" . $_FILES["img"]["name"];
+                $comic = array(
+                    "comic_name" => $name,
+                    "review_average" => 0,
+                    "number_viewers" => 0,
+                    "summary" => $text,
+                    "url_images" => $url,
+                    "number_chapter" => 0,
+                    "id_category" => $id_kind,
+                    "id_author" => $id_author,
+                );
+
+                ComicModel::insert($comic);
+                echo "<script>alert('Them thanh cong')</script>";
+                $model["lstAuthor"] = AuthorModel::getAll();
+                $model["lstKind"] = KindModel::getAllName(1);
+                $this->tz_layout->view("comic/new_comic", $model);
+            }
+//            
         } else {
-            $comic = array(
-                "comic_name" => $name,
-                "review_average" => 0,
-                "number_viewers" => 0,
-                "summary" => $text,
-                "url_images" => NULL,
-                "number_chapter" => 0,
-                "id_category" => $id_kind,
-                "id_author" => $id_author,
-            );
-            ComicModel::insert($comic);
-            echo "Tạo thành công truyện";
+            $model["lstComic"] = ComicModel::getAll();
+            $this->tz_layout->view("comic/show_all", $model);
         }
     }
 
@@ -136,8 +131,8 @@ class Mcomic extends MX_Controller {
         }
         if (isset($_REQUEST["text"])) {
             $text = $_REQUEST["text"];
-            $text=  str_replace("<p>", "", $text);
-            $text=  str_replace("</p>", "<br>", $text);
+            $text = str_replace("<p>", "", $text);
+            $text = str_replace("</p>", "<br>", $text);
         }
         if ($name == "" || $no == "" || $text == "") {
             echo "Bạn chưa điền đủ thông tin";
@@ -355,9 +350,9 @@ class Mcomic extends MX_Controller {
             }
         }
         $lstComic = ComicModel::getAll();
-         for ($i = 0; $i < sizeof($lstComic); $i++) {
-                echo '  <tr>
-                                        <td><input type="checkbox" name="id_comic" value="'.$lstComic[$i]["id"].'"></td>
+        for ($i = 0; $i < sizeof($lstComic); $i++) {
+            echo '  <tr>
+                                        <td><input type="checkbox" name="id_comic" value="' . $lstComic[$i]["id"] . '"></td>
                                         <td>' . ($i + 1) . '</td>
                                         <td><a href="' . TZ_Helper::getUrl("admin", "mcomic", "edit/" . $lstComic[$i]["id"]) . '">' . $lstComic[$i]["comic_name"] . '</a></td>
                                         <td>' . $lstComic[$i]["number_chapter"] . '</td>
@@ -370,11 +365,12 @@ class Mcomic extends MX_Controller {
 
 
             <button type = "button" class = "btn btn-success">
-                <a href="'.TZ_Helper::getUrl("admin", "mcomic", "allChapter/" . $lstComic[$i]["id"]) .'">  <b> >> </b></a>
+                <a href="' . TZ_Helper::getUrl("admin", "mcomic", "allChapter/" . $lstComic[$i]["id"]) . '">  <b> >> </b></a>
             </button>
 
             </td>
                                     </tr>';
         }
     }
-}  
+
+}

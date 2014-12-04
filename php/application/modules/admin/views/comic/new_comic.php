@@ -16,17 +16,18 @@
                 </div>
             </div>
     -->
+    <form action="<?php echo TZ_Helper::getUrl("admin", "mcomic", "insert"); ?>" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label  class="col-sm-2 control-label">Tên truyện: </label>
         <div class="col-sm-3">
-            <input type="text" class="form-control" placeholder="Tên truyện" id="name">
+            <input type="text" class="form-control" placeholder="Tên truyện" name="name">
         </div>
     </div>
 
     <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">Tác giả: </label>
         <div class="col-sm-3">
-            <select class="form-control" id="id_author">
+            <select class="form-control" name="id_author">
                 <?php
                 for ($i = 0; $i < sizeof($lstAuthor); $i++) {
                     echo '<option value="' . $lstAuthor[$i]["id"] . '">' . $lstAuthor[$i]["author_name"] . '</option>';
@@ -39,7 +40,7 @@
     <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">Loại truyện: </label>
         <div class="col-sm-3">
-            <select class="form-control" id="type" onchange="reloadKind()">
+            <select class="form-control" id ="type" name ="type" onchange="reloadKind()">
                 <option value="1" >Truyện chữ</option>
                 <option value="2" >Truyện tranh</option>                   
             </select>
@@ -50,7 +51,7 @@
         <label for="inputPassword3" class="col-sm-2 control-label">Thể loại:
         </label>
         <div class="col-sm-3">
-            <select class="form-control" id="reload_select">
+            <select class="form-control" id="reload_select" name="id_kind">
                 <?php
                 for ($i = 0; $i < sizeof($lstKind); $i++) {
                     echo '<option value="' . $lstKind[$i]["id"] . '">' . $lstKind[$i]["kind_name"] . '</option>';
@@ -59,32 +60,34 @@
             </select>
         </div>
     </div>
-    <!--<form action="<?php echo TZ_Helper::getUrl("admin", "mcomic", "insert"); ?>" method="post" enctype="multipart/form-data">-->
-    <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">Ảnh đại diện: </label>
-        <div class="col-sm-5">
-            <input type="file" class="form-control" name="img_ups" id ="url_img" placeholder="Đường dẫn ảnh" multiple />
+    
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Ảnh đại diện: </label>
+            <div class="col-sm-5">
+                <input type="file" class="form-control" name="img" id ="url_img" placeholder="Đường dẫn ảnh" multiple />
+            </div>
+    <!--        <input type="submit" value="upload anh" >-->
         </div>
-<!--        <input type="submit" value="upload anh" >-->
-    </div>
-    <!--</form>-->
-    <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">Tổng quan: </label>
-        <div class="col-sm-10">
-            <textarea class="form-control" rows="3" id="textArea"></textarea>
+        <!--</form>-->
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Tổng quan: </label>
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="3" name="textArea"></textarea>
+            </div>
         </div>
-    </div>
-    <div class="btn-group col-md-12">
-        <label for="inputEmail3" class="col-sm-2 control-label input-sm"></label>
-        <button type="button" class="btn btn-success" id="add">
-            <i class="fa fa-plus"></i> Thêm mới
-        </button>	
-        <button type="button" class="btn btn-success" id="cancel">
-            <i class="fa fa-times"></i> Hủy bỏ
-        </button>
-    </div>	
-    <div class="col-sm-offset-2 text-success" id="target"></div>
-    <!--</form>-->
+        <div class="btn-group col-md-12">
+            <label for="inputEmail3" class="col-sm-2 control-label input-sm"></label>
+            <input type="submit" name="add" class="btn btn-success" value="Thêm mới" />	
+            <!--<input type="submit" name="cancel" class="btn btn-success" value="Upload" />-->
+            <!--        <button type="button" class="btn btn-success" name="add">
+                        <i class="fa fa-plus"></i> Thêm mới
+                    </button>	-->        
+            <button type="button" class="btn btn-success" id="cancel">
+                <i class="fa fa-times"></i> Hủy bỏ
+            </button>
+        </div>	
+        <div class="col-sm-offset-2 text-success" id="target"></div>
+    </form>
 </div>
 <script>
     function reloadKind() {
