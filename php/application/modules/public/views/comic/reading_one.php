@@ -63,12 +63,11 @@
     </div>			
 </div>
 <div class="container-fluid">
-    <!--<p id="content-book">-->
+    <p id="content-book">
     <?php
     $id_category = ComicModel::getById($id_comic)[0]['id_category'];
     if (CategoryModel::getById($id_category)[0]['id_type'] == 1) {
         ?>
-        <p id="content-book">
             <?php
             for ($i = 0; $i < sizeof($lstDataStore); $i++) {
                 $url = base_url() . 'application/' . $lstDataStore[$i]["url_store"];
@@ -78,19 +77,16 @@
                 }
             }
             ?>
-        </p>
         <?php
     } else {
         foreach ($lstDataStore as $value) {
-            echo '<div align="center">';
             echo '<img src="';
             echo $value['url_store'];
             echo '"/> <br>';
-            echo "</div>";
         }
     }
     ?>
-    <!--</p>-->
+</p>
 </div>
 <!-- End #content-book -->
 
@@ -102,8 +98,17 @@
 </div>	
 
 <div id="fb-api" class="col-md-12">
-    <div class="fb-comments" data-href="https://www.facebook.com/truyen.ry"
-         data-width="100%" data-numposts="5" data-colorscheme="dark"></div>
+    <div class="fb-comments"style="padding-top: 20px; " data-href="http://liveproject.topica.vn/index.php?idreport=<?php echo $id_comic; ?>" data-numposts="5" data-colorscheme="dark"></div>
+    <div class="col-sm-12 "id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id))
+                return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, "script", "facebook-jssdk"));</script>
 </div>
 <span id="target"></span>
 <script>
