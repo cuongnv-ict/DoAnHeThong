@@ -27,8 +27,8 @@ class Muser extends MX_Controller {
     }
 
     public function index() {
-        $id = $this->session->userdata('id');
-        $model["model"] = AdministratorModel::getById(2);
+        $id = $this->session->userdata('info')['id'];
+        $model["model"] = AdministratorModel::getById($id);
         $model['id'] = $id;
         $this->tz_layout->view("user/index", $model);
 //      $this->tz_layout->view("user/all_user", $model);
