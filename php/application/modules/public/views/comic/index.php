@@ -1,34 +1,34 @@
 <?php $model = $model[0]; ?>
 <script>
     function showAllChapter() {
-        $(document).ready(function () {
+        $(document).ready(function() {
             $("#list-chapter").load("<?php echo base_url('/index.php/public/comic/showAllChapter'); ?>", {
                 "id_comic": <?php echo $model["id"]; ?>
             });
         });
     }
     function review(point) {
-        $(document).ready(function () {
+        $(document).ready(function() {
             $("#target").load("<?php echo TZ_Helper::getUrl("public", "actionChange", "reviewComic"); ?>", {
                 "idComic": <?php echo $model["id"]; ?>,
                 "point": point,
-                <?php
-                $ip = $_SERVER['REMOTE_ADDR'];
+<?php
+$ip = $_SERVER['REMOTE_ADDR'];
 
-                if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-                    $ip = $_SERVER['HTTP_CLIENT_IP'];
-                } else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-                    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-                }
-                echo '"ip":"' . $ip . '"';
-                ?>
+if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+} else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+}
+echo '"ip":"' . $ip . '"';
+?>
             });
             alert("Cám ơn bạn đã yêu thích truyện!");
             $("#rating").load("<?php echo TZ_Helper::getUrl("public", "actionChange", "showReviewComic"); ?>", {
                 "id": <?php echo $model["id"]; ?>,
             });
         });
-        
+
     }
 </script>
 
@@ -44,13 +44,8 @@
 </div>
 <div id="details" class="container-fluid">
     <div class="thumnail col-md-4 col-sm-6 col-xs-12">
-        <?php if (CategoryModel::getById($model['id_category'])[0]['id_type'] == 1) { ?>
-            <img src="<?php echo base_url("application/" . $model["url_images"]); ?>" width="100%"
-                 height=350px">
-             <?php } else { ?>
-            <img src="<?php echo $model["url_images"] ?>" width="100%"
-                 height=350px">
-             <?php } ?>
+        <img src="<?php echo base_url("application/" . $model["url_images"]); ?>" width="100%"
+             height=350px">
     </div>
     <div class="info col-md-8 col-sm-6 col-xs-12">
         <h2><?php echo $model["comic_name"] ?></h2>
@@ -86,7 +81,7 @@
                 }
             }
             ?>
-            
+
         </div>
 
         <ul>

@@ -113,11 +113,11 @@
                                                 <div>
                                                     <div class="mitem" align="center">
                                                         <a href="' . (base_url("index.php/public/comic/index") . "/" . $lstComicRank[$i]["id"]) . '"> ';
-                                    if (CategoryModel::getById($lstComicRank[$i]['id_category'])[0]['id_type'] == 1) {
+//                                    if (CategoryModel::getById($lstComicRank[$i]['id_category'])[0]['id_type'] == 1) {
                                         echo '<img src="' . (base_url("application/" . $lstComicRank[$i]["url_images"])) . '" width="100%" height="150px" align=center />';
-                                    } else {
-                                        echo '<img src="' . ($lstComicRank[$i]["url_images"]) . '" width="100%" height="150px" align=center/>';
-                                    }
+//                                    } else {
+//                                        echo '<img src="' . ($lstComicRank[$i]["url_images"]) . '" width="100%" height="150px" align=center/>';
+//                                    }
                                     echo '<p>' . AuthorModel::getById($lstComicRank[$i]["id_author"])[0]["author_name"] . '</p>
                                                             <h3>' . $lstComicRank[$i]["comic_name"] . '</h3>
                                                         </a>

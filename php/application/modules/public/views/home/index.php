@@ -12,11 +12,11 @@ for ($i = 0; $i < sizeof($lstComicShow); $i++) {
             <div class="mitem-2">
                 <div>
                     <a href="' . (base_url()) . 'index.php/public/comic/index/' . $lstComicShow[$i]["id"] . '">';
-    if (CategoryModel::getById($lstComicShow[$i]['id_category'])[0]['id_type'] == 1) {
+//    if (CategoryModel::getById($lstComicShow[$i]['id_category'])[0]['id_type'] == 1) {
         echo ' <img src="' . (base_url("application/" . $lstComicShow[$i]["url_images"])) . '" width="100%" height="200px" />';
-    } else {
-        echo ' <img src="' . ($lstComicShow[$i]["url_images"]) . '" width="100%" height="200px" />';
-    }
+//    } else {
+//        echo ' <img src="' . ($lstComicShow[$i]["url_images"]) . '" width="100%" height="200px" />';
+//    }
     //  <img src="'.(base_url("application/".$lstComicShow[$i]["url_images"])).'" width="100%" height="200px" />
     echo '</a>
                 </div>
