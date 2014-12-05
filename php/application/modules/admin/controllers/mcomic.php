@@ -346,6 +346,7 @@ class Mcomic extends MX_Controller {
                     DataStoreModel::deleteChap($id_chap['id']);
                     ChapterModel::delete($id_chap['id']);
                 }
+                ComicModel::deleteTableView($id);
                 ComicModel::delete($id);
             }
         }

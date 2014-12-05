@@ -42,7 +42,7 @@
 		  <div class="navbar-collapse collapse navbar-responsive-collapse">
 		    <ul class="nav navbar-nav navbar-right">
 		        <li id="account" class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="images/avatar.jpg" width="40dp" height="40dp" alt="avatar" /> bacuong12<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo base_url().'application/upload/avatar/avatar.jpg' ?>" width="40dp" height="40dp" alt="avatar" /><span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">		         
 		            <li class="divider"></li>
 		            <li><a href="<?php echo TZ_Helper::getUrl("admin", "login", "logout");?>">Đăng xuất</a></li>
@@ -63,7 +63,7 @@
 			  <div class="panel-heading">Người dùng</div>
 			  <div class="panel-body">
 				  <ul class="list-unstyled">
-				  	<li><a href="<?php echo TZ_Helper::getUrl("admin", "muser", "index/2");?>" class="active"><i class="fa fa-th-list"></i> Tài khoản cá nhân</a></li>
+				  	<li><a href="<?php echo TZ_Helper::getUrl("admin", "muser", "index");?>" class="active"><i class="fa fa-th-list"></i> Tài khoản cá nhân</a></li>
                                         <li><a href="<?php echo TZ_Helper::getUrl("admin", "muser", "alluser");?>" ><i class="fa fa-th-list"></i> Quản lý thành viên</a></li>
 				  </ul>
 			  </div>

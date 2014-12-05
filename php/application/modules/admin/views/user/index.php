@@ -1,7 +1,5 @@
 <div class="avatar"> 
     <a href="#" >
-        <!--. (base_url("application/" . $model[0]["url_image"]))-->
-        <!--<img src="<?php echo TZ_Helper::getUrlImage($model[0]["url_image"]); ?>" alt="..." class="img-thumbnail" width="100px" height="100px">-->
         <img src="<?php echo base_url("application/" . $model[0]["url_image"]); ?>" alt="..."  width="100px" height="100px">
     </a>
     <h4><?php echo $model[0]["administrator_name"]; ?></h4>

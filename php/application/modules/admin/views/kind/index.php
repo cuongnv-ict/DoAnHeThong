@@ -48,7 +48,7 @@
 				<td><input type="checkbox" name="cKind" value="' . $lstCategory[$i]["id_kind"] . '"></td>
 				<td>' . ($i + 1) . '</td>
 				<td>' . (TypeModel::getById($lstCategory[$i]["id_type"])[0]["type_name"]) . '</td>
-                                <td><a href="' .TZ_Helper::getUrl("admin", "mcomic", "showAll") . '">' . (KindModel::getById($lstCategory[$i]["id_kind"])[0]["kind_name"]) . '</a></td>				
+                                <td><a href="' .TZ_Helper::getUrl("admin", "mkind", "edit/".$lstCategory[$i]["id_kind"]) . '">' . (KindModel::getById($lstCategory[$i]["id_kind"])[0]["kind_name"]) . '</a></td>				
 			</tr>';
             }
             ?>

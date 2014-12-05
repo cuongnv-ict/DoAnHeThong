@@ -33,6 +33,12 @@ class CategoryModel extends CI_Model {
         $query = $this->db->get("tbl_categorys");
         return $query->result_array();
     }
+    public function getByKind( $id_kind) {
+        $this->db->select("*");
+        $this->db->where("id_kind", $id_kind);
+        $query = $this->db->get("tbl_categorys");
+        return $query->result_array();
+    }
 
     public function getById($id) {
         $this->db->select("*");

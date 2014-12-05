@@ -15,18 +15,32 @@ class Muser extends MX_Controller {
         $this->tz_layout->setLayout("layout/ad_layout_one");
 
         $this->load->Model('AdministratorModel');
+        $this->load->Model('ComicModel');
+        $this->load->Model('AuthorModel');
+        $this->load->Model('CategoryModel');
+        $this->load->Model('ChapterModel');
+        $this->load->Model('PublisherModel');
+        $this->load->Model('TypeModel');
+        $this->load->Model('KindModel');
+        $this->load->Model('DataStoreModel');
+        $this->load->Model('Mgallery');
     }
 
-    public function index($id) {
-        $model["model"] = AdministratorModel::getById($id);
+    public function index() {
+        $id = $this->session->userdata('id');
+        $model["model"] = AdministratorModel::getById(2);
+        $model['id'] = $id;
         $this->tz_layout->view("user/index", $model);
 //      $this->tz_layout->view("user/all_user", $model);
     }
 
     public function allUser() {
-    	if($this->session->userdata('type') == 0){
-    		die("Bạn không có quyền truy cập vào trang này!");
-    	}
+        if ($this->session->userdata('type') == 0) {
+            echo "<script>alert('Ban không được phép truy cập')</script>";
+            $model["lstComic"] = ComicModel::getAll();
+            $this->tz_layout->view("comic/show_all", $model);
+            return;
+        }
         $model["model"] = AdministratorModel::getAll();
         $this->tz_layout->view("user/all_user", $model);
     }

@@ -67,36 +67,14 @@ class ComicModel extends CI_Model {
         $this->db->where("id", $id);
         $this->db->delete("tbl_comic");
     }
+     public function deleteTableView($id) {
+        $this->db->where("id_comic", $id);
+        $this->db->delete("tbl_reviews");
+    }
 
     public function update($comicModel, $id) {
         $this->db->where("id", $id);
         $this->db->update("tbl_comic", $comicModel);
-    }
-
-    public function uploadImg($urli) {
-//        $dir2 = $this->_gallery_path;
-//                if (! is_dir ( $dir2 )) {
-//			mkdir ( $dir2, 0777, true );
-//		}
-//        $this->_gallery_path = realpath(APPPATH . "../application/upload/avatar");
-//        $image_data = "";
-//        $config = array(
-//            'upload_path' => $this->_gallery_path,
-//            'allowed_types' => 'gif|jpg|png',
-//            'max_size' => '2000'
-//        );
-//        $urli = ""
-////        $this->load->library("upload", $config);
-//        if (!$this->upload->do_upload($urli)) {
-//            echo 1;
-//            $error = array(
-//                $this->upload->display_errors()
-//            );
-//        } else {
-//            echo 2;
-//            $image_data = $this->upload->data();
-//        }
-//        return $image_data;
     }
 
 }
