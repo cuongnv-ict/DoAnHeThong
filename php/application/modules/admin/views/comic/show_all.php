@@ -55,8 +55,7 @@
                 <th width="2%"><input type="checkbox" id="inlineCheckbox1"
                                       value="option1" hidden="true"></th>
                 <th>ID</th>
-                <th>Tên truyện</th>
-                <th>Số chapper</th>
+                <th>Tên truyện</th>               
                 <th>Loại truyện</th>
                 <th>Thể loại</th>
                 <th>Tác giả</th>
@@ -70,8 +69,7 @@
                 echo '  <tr>
                                         <td><input type="checkbox" name="id_comic" value="'.$lstComic[$i]["id"].'"></td>
                                         <td>' . ($i + 1) . '</td>
-                                        <td><a href="' . TZ_Helper::getUrl("admin", "mcomic", "edit/" . $lstComic[$i]["id"]) . '">' . $lstComic[$i]["comic_name"] . '</a></td>
-                                        <td>' . $lstComic[$i]["number_chapter"] . '</td>
+                                        <td><a href="' . TZ_Helper::getUrl("admin", "mcomic", "edit/" . $lstComic[$i]["id"]) . '">' . $lstComic[$i]["comic_name"] . '</a></td>                                      
                                         <td>' . (TypeModel::getById(CategoryModel::getById($lstComic[$i]["id_category"])[0]["id_type"])[0]["type_name"]) . '</td>
                                         <td>' . (KindModel::getById(CategoryModel::getById($lstComic[$i]["id_category"])[0]["id_kind"])[0]["kind_name"]) . '</td>
                                         <td>' . (AuthorModel::getById($lstComic[$i]["id_author"])[0]["author_name"]) . '</td>

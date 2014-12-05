@@ -35,7 +35,10 @@ class Mcomic extends MX_Controller {
         $model["model"] = ComicModel::getById($id_comic)[0];
         $model["lstAuthor"] = AuthorModel::getAll();
         $model["lstType"] = TypeModel::getAll();
-        $model["lstKind"] = KindModel::getAll();
+        $m = ComicModel::getById($id_comic)[0];
+        $m = $m['id_category'];
+        $m = CategoryModel::getById($m)[0];
+        $model["lstKind"] = KindModel::getAllName($m['id_type']);
         $this->tz_layout->view("comic/edit", $model);
     }
 
@@ -304,6 +307,63 @@ class Mcomic extends MX_Controller {
         }
     }
 
+    public function updateComic($id) {
+        if ($this->input->post("add")) {
+            $name = $_POST["name"];
+            $id_author = $_POST["id_author"];
+            $id_type = $_POST["type"];
+            $id_kind = $_POST["id_kind"];
+            $text = $_POST["textArea"];
+            $url = "";
+            if ($name == "" || $text == "") {
+                echo "<script>alert('Bạn chưa điền đủ thông tin')</script>";
+                $model["lstAuthor"] = AuthorModel::getAll();
+                $model["lstKind"] = KindModel::getAllName(1);
+                $this->tz_layout->view("comic/new_comic", $model);
+            } else {
+                $this->Mgallery->do_upload();
+                if ($_FILES["img"]["name"] == NULL) {
+                    $comic = array(
+                        "comic_name" => $name,
+                        "review_average" => 0,
+                        "number_viewers" => 0,
+                        "summary" => $text,
+                        "number_chapter" => 0,
+                        "id_category" => $id_kind,
+                        "id_author" => $id_author,
+                    );
+                } else {
+                    $url = "/upload/avatar/" . $_FILES["img"]["name"];
+                    $comic = array(
+                        "comic_name" => $name,
+                        "review_average" => 0,
+                        "number_viewers" => 0,
+                        "summary" => $text,
+                        "url_images" => $url,
+                        "number_chapter" => 0,
+                        "id_category" => $id_kind,
+                        "id_author" => $id_author,
+                    );
+                }
+
+                ComicModel::update($comic, $id);
+                echo "<script>alert('Cập nhật thành công')</script>";
+                $model["model"] = ComicModel::getById($id)[0];
+                $model["lstAuthor"] = AuthorModel::getAll();
+                $model["lstType"] = TypeModel::getAll();
+                $m = ComicModel::getById($id)[0];
+                $m = $m['id_category'];
+                $m = CategoryModel::getById($m)[0];
+                $model["lstKind"] = KindModel::getAllName($m['id_type']);
+                $this->tz_layout->view("comic/edit", $model);
+            }
+//            
+        } else {
+            $model["lstComic"] = ComicModel::getAll();
+            $this->tz_layout->view("comic/show_all", $model);
+        }
+    }
+
     public function deleteChappter($id_comic) {
         $list = NULL;
         if (isset($_REQUEST["list"])) {
@@ -355,8 +415,7 @@ class Mcomic extends MX_Controller {
             echo '  <tr>
                                         <td><input type="checkbox" name="id_comic" value="' . $lstComic[$i]["id"] . '"></td>
                                         <td>' . ($i + 1) . '</td>
-                                        <td><a href="' . TZ_Helper::getUrl("admin", "mcomic", "edit/" . $lstComic[$i]["id"]) . '">' . $lstComic[$i]["comic_name"] . '</a></td>
-                                        <td>' . $lstComic[$i]["number_chapter"] . '</td>
+                                        <td><a href="' . TZ_Helper::getUrl("admin", "mcomic", "edit/" . $lstComic[$i]["id"]) . '">' . $lstComic[$i]["comic_name"] . '</a></td>                                 
                                         <td>' . (TypeModel::getById(CategoryModel::getById($lstComic[$i]["id_category"])[0]["id_type"])[0]["type_name"]) . '</td>
                                         <td>' . (KindModel::getById(CategoryModel::getById($lstComic[$i]["id_category"])[0]["id_kind"])[0]["kind_name"]) . '</td>
                                         <td>' . (AuthorModel::getById($lstComic[$i]["id_author"])[0]["author_name"]) . '</td>
