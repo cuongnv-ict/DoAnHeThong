@@ -24,6 +24,9 @@ class Muser extends MX_Controller {
     }
 
     public function allUser() {
+    	if($this->session->userdata('type') == 0){
+    		die("Bạn không có quyền truy cập vào trang này!");
+    	}
         $model["model"] = AdministratorModel::getAll();
         $this->tz_layout->view("user/all_user", $model);
     }

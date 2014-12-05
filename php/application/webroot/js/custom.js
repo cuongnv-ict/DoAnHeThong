@@ -109,3 +109,56 @@ function() {
 
 });
 })(jQuery);
+
+function rating(point){
+	for ( i=0; i<=point; i++ ){
+		$('#rating a:eq('+i+') i').addClass('fa-star');
+		$('#rating a:eq('+i+') i').removeClass('fa-star-o');
+	}
+	for ( i=point+1; i<= 4; i++){
+		$('#rating a:eq('+i+') i').addClass('fa-star-o');
+		$('#rating a:eq('+i+') i').removeClass('fa-star');
+	}
+}
+
+
+$(document).ready(function(){
+	$('#rating a:eq(0)').mouseenter(function(){
+		rating(0);
+	});
+	
+	$('#rating a:eq(1)').mouseenter(function(){
+		rating(1);
+	});
+	
+	$('#rating a:eq(2)').mouseenter(function(){
+		rating(2);
+	});
+	
+	$('#rating a:eq(3)').mouseenter(function(){
+		rating(3);
+	});
+	
+	$('#rating a:eq(4)').mouseenter(function(){
+		rating(4);
+	});
+
+	
+//	$('#rating a:eq(0)').mouseenter(function(){
+//		$('#rating a:eq(0) i').addClass('fa-star');
+//		$('#rating a:eq(0) i').removeClass('fa-star-o');
+//		$('#rating a:eq(1) i').addClass('fa-star-o');
+//		$('#rating a:eq(1) i').removeClass('fa-star');
+//		$('#rating a:eq(2) i').addClass('fa-star-o');
+//		$('#rating a:eq(2) i').removeClass('fa-star');
+//		$('#rating a:eq(3) i').addClass('fa-star-o');
+//		$('#rating a:eq(3) i').removeClass('fa-star');
+//		$('#rating a:eq(4) i').addClass('fa-star-o');
+//		$('#rating a:eq(4) i').addClass('fa-star');
+//		rating(0);
+//	});
+	
+//	$('#rating a:eq(1)').mouseenter(function(){
+//		rating(1);
+//	});
+});
