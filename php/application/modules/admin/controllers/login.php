@@ -39,7 +39,6 @@ class Login extends MX_Controller{
 			redirect('/admin/mcomic/showAll', 'refresh');
 		} else {
 			$this->session->set_userdata['login'] = false;
-			echo "false";
 			redirect('/admin/login/index?r=error', 'refresh');
 		}
 	}

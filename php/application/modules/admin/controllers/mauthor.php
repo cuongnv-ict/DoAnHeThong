@@ -52,7 +52,7 @@ class Mauthor extends MX_Controller {
             $author_name = $_REQUEST["author_name"];
         }
         if ($author_name == "") {
-            echo 'Vui lòng điền tên tác giả!';
+            echo "<script>alert('Vui lòng điền tên tác giả')</script>";
         } else {
             $checkAuthor = AuthorModel::getByAuthorName($author_name);
             if (!$checkAuthor) {
@@ -60,9 +60,9 @@ class Mauthor extends MX_Controller {
                     "author_name" => $author_name,
                 );
                 AuthorModel::insert($authorModel);
-                echo 'Đã thêm tác giả <b>' . $author_name . '</b> vào cơ sở dữ liệu!';
+                echo "<script>alert('Thêm thành công')</script>";
             } else {
-                echo 'Tên tác giả đã tồn tại vui lòng kiểm tra lại!';
+                echo "<script>alert('Tên tác giả đã tồn tại vui lòng kiểm tra lại')</script>";
             }
         }
     }
@@ -100,17 +100,17 @@ class Mauthor extends MX_Controller {
             $author_name = $_REQUEST["author_name"];
         }
         if ($author_name == "") {
-            echo 'Vui lòng điền tên tác giả!';
+            echo "<script>alert('Vui lòng điền tên tác giả')</script>";
         } else {
             $checkAuthor = AuthorModel::getByAuthorName($author_name);
             if (!$checkAuthor) {
                 $authorModel = array(
                     "author_name" => $author_name,
                 );
-                AuthorModel::update($authorModel,$id);
-                echo 'Cập nhật thành công!';
+                AuthorModel::update($authorModel, $id);
+                echo "<script>alert('Cập nhật thành công')</script>";
             } else {
-                echo 'Tên tác giả đã tồn tại vui lòng kiểm tra lại!';
+                echo "<script>alert('Tên tác giả đã tồn tại vui lòng kiểm tra lại')</script>";
             }
         }
     }

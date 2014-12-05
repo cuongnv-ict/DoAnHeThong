@@ -70,4 +70,7 @@ $oFCKeditor->Create();
             "name": name, "No": no, "text": text,
         });
     });
+     $("#cancel").click(function() {
+        window.location.href = "<?php echo TZ_Helper::getUrl("admin", "mcomic", "showAll"); ?>";
+    });
 </script>

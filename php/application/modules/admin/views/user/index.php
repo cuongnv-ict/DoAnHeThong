@@ -134,7 +134,6 @@
             <div class="panel-heading">
                 <h4 class="panel-title clearfix">
                     <span class="col-md-2">Ảnh đại diện </span>
-                    <span><?php echo $model[0]["url_image"]; ?></span>
                     <a class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse5">
                         Chỉnh sửa
                     </a>

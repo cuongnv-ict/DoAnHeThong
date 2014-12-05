@@ -48,7 +48,7 @@ class Mkind extends MX_Controller {
         $this->tz_layout->view("kind/edit_kind", $model);
     }
 
-    public function update($id,$id_type) {
+    public function update($id, $id_type) {
         $type = 1;
         $kind = "";
         if (isset($_REQUEST["type"])) {
@@ -58,17 +58,17 @@ class Mkind extends MX_Controller {
             $kind = $_REQUEST["kind"];
         }
         if ($kind == "") {
-            echo 'Bạn chưa nhập tên thể loại';
+            echo "<script>alert('Bạn chưa nhập tên thể loại')</script>";
         } else {
             $model = array(
                 "kind_name" => $kind
             );
-            KindModel::update($model,$id_type);
+            KindModel::update($model, $id_type);
             $model = array(
                 "id_type" => $type
             );
             CategoryModel::update($model, $id);
-            echo "Cập nhật thành công";
+            echo "<script>alert('Cập nhật thành công')</script>";
         }
     }
 
@@ -82,7 +82,7 @@ class Mkind extends MX_Controller {
             $kind = $_REQUEST["kind"];
         }
         if ($kind == "") {
-            echo 'Bạn chưa nhập tên thể loại';
+            echo "<script>alert('Bạn chưa nhập tên thể loại')</script>";
         } else {
             $model = array(
                 "kind_name" => $kind
@@ -93,7 +93,7 @@ class Mkind extends MX_Controller {
                 "id_type" => $type
             );
             CategoryModel::insert($model);
-            echo "Thêm thành công";
+            echo "<script>alert('Thêm thành công')</script>";
         }
     }
 
@@ -107,7 +107,7 @@ class Mkind extends MX_Controller {
             foreach ($listKind as $id) {
                 $id_cate = CategoryModel::getByKind($id);
                 $id_com = ComicModel:: getByCategoryId($id_cate[0]['id']);
-                if (sizeof($id_com)==0) {
+                if (sizeof($id_com) == 0) {
                     CategoryModel::deleteKind($id);
                     KindModel::delete($id);
                 } else {

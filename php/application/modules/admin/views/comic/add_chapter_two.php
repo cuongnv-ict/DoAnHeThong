@@ -12,8 +12,10 @@ $oFCKeditor->BasePath = $sBasePath;
     <?php
     $id_c = $id;
     if ($type == 1) {
-        $name_type =  "One";  } else {
-        $name_type =  "Two";  }
+        $name_type = "One";
+    } else {
+        $name_type = "Two";
+    }
     ?>
 </div>
 <div id="table-content">
@@ -48,16 +50,16 @@ $oFCKeditor->BasePath = $sBasePath;
     <h4>Nội dung chương</h4>
 
     <div id="fckeditor">
-<?php
+        <?php
 //        $lstDataStore = DataStoreModel::getByChapterId($model["id"]);
 //        $strContentChapter = "asdss";
 //        for ($i = 0; $i < sizeof($lstDataStore); $i++) {
 //            $strContentChapter=file_get_contents(base_url() . 'application/' . $lstDataStore[$i]["url_store"]);
 //        }
 //        $oFCKeditor->Value = "$strContentChapter";
-$oFCKeditor->Height = 350;
-$oFCKeditor->Create();
-?>
+        $oFCKeditor->Height = 350;
+        $oFCKeditor->Create();
+        ?>
     </div>
 </div>
 <script>
@@ -69,5 +71,8 @@ $oFCKeditor->Create();
         $("#target").load("<?php echo TZ_Helper::getUrl("admin", "mcomic", "insertOne/" . $id_c); ?>", {
             "name": name, "No": no, "text": text,
         });
+    });
+    $("#cancel").click(function() {
+        window.location.href = "<?php echo TZ_Helper::getUrl("admin", "mcomic", "showAll"); ?>";
     });
 </script>

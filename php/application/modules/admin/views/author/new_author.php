@@ -1,5 +1,5 @@
 <div id="header">
-    <h3 class="bg-primary title">Thêm truyện mới</h3>
+    <h3 class="bg-primary title">Thêm tác giả</h3>
 </div>
 <div id="main-content">
     <form class="form-horizontal" role="form">

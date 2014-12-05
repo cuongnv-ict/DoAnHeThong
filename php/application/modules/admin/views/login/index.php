@@ -14,9 +14,7 @@
         <?php echo TZ_Helper::htmlJs('jquery-2.1.1.min') ?>
         <?php
         if (isset($_GET['r']) && $_GET['r'] == "error") {
-            echo '<div class="alert">
-				<p>Sai tài khoản hoặc mật khẩu</p>
-			</div>';
+               echo "<script>alert('Tài khoản không đúng')</script>";
         }
         ?>
 

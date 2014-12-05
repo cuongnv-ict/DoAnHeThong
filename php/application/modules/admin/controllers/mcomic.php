@@ -141,19 +141,19 @@ class Mcomic extends MX_Controller {
             $text = str_replace("</div>", "<br>", $text);
         }
         if ($name == "" || $no == "" || $text == "") {
-            echo "Bạn chưa điền đủ thông tin";
+            echo "<script>alert('Bạn chưa điền đủ thông tin')</script>";
         } else {
-            $chapter = array(               
+            $chapter = array(
                 "No" => $no,
                 "chapter_name" => $name
             );
-            ChapterModel::update($chapter,$id_chap);
+            ChapterModel::update($chapter, $id_chap);
             $data = DataStoreModel::getByChapterId($id_chap);
             $url = $data[0]['url_store'];
             $myfile = fopen("./application/" . $url, "w");
             fwrite($myfile, $text);
             fclose($myfile);
-            echo "Lưu thành công";
+            echo "<script>alert('Lưu thành công')</script>";
         }
     }
 
@@ -176,7 +176,7 @@ class Mcomic extends MX_Controller {
             $text = str_replace("</div>", "<br>", $text);
         }
         if ($name == "" || $no == "" || $text == "") {
-            echo "Bạn chưa điền đủ thông tin";
+            echo "<script>alert('Bạn chưa điền đủ thông tin')</script>";
         } else {
             $chapter = array(
                 "id_comic" => $id,
@@ -195,7 +195,7 @@ class Mcomic extends MX_Controller {
             $myfile = fopen("./application/" . $url, "w");
             fwrite($myfile, $text);
             fclose($myfile);
-            echo "Lưu thành công";
+            echo "<script>alert('Lưu thành công')</script>";
         }
     }
 
@@ -210,7 +210,7 @@ class Mcomic extends MX_Controller {
         }
 
         if ($name == "" || $no == "") {
-            echo "Bạn chưa điền đủ thông tin";
+            echo "<script>alert('Bạn chưa điền đủ thông tin')</script>";
         } else {
             $chapter = array(
                 "id_comic" => $id,
@@ -218,7 +218,7 @@ class Mcomic extends MX_Controller {
                 "chapter_name" => $name
             );
             $id_chapter = ChapterModel::insert($chapter);
-            echo "Thêm thành công";
+            echo "<script>alert('Thêm thành công')</script>";
         }
     }
 

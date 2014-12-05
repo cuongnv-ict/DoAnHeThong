@@ -76,28 +76,28 @@ class Muser extends MX_Controller {
             $phone = $_REQUEST["phone"];
         }
         if ($fullname == "" || $name == "" || $pass == "" || $re_pass == "" || $email == "" || $phone == "") {
-            echo "Bạn chưa hoàn thành thông tin cần thiết";
+            echo "<script>alert('Bạn chưa hoàn thành thông tin cần thiết')</script>";
             return;
         } else if ($pass != $re_pass) {
-            echo "Password nhập không chính xác";
+            echo "<script>alert('Password nhập không chính xác')</script>";
             return;
         }
         $check = AdministratorModel::checkExitsUser($name);
         if ($check != 0) {
-            echo "Tài khoản này đã tồn tại";
+            echo "<script>alert('Tài khoản này đã tồn tại')</script>";
         } else {
             $pass = md5($pass);
             $account = array(
                 "administrator_name" => $name,
                 "password" => $pass,
                 "email" => $email,
-                "url_image"=>"/upload/avatar/avatar.jpg",
+                "url_image" => "/upload/avatar/avatar.jpg",
                 "phone_number" => $phone,
                 "isSuperAdministrator" => $role,
                 "fullname" => $fullname
             );
             AdministratorModel::insert($account);
-            echo "Tạo thành công tài khoản";
+            echo "<script>alert('Tạo thành công tài khoản')</script>";
         }
     }
 
@@ -210,7 +210,7 @@ class Muser extends MX_Controller {
             } else {
                 $this->Mgallery->do_upload();
                 $url = "/upload/avatar/" . $_FILES["img"]["name"];
-                 $data = array(
+                $data = array(
                     "url_image" => $url
                 );
                 AdministratorModel::update($data, $id);
