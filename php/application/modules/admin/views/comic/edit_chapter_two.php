@@ -10,7 +10,7 @@ $oFCKeditor->BasePath = $sBasePath;
 <div id="header">
     <h3 class="bg-primary title">Thêm chương truyện</h3>
     <?php
-    $id_c = $id;
+    $id_c = $model['id'];
     if ($type == 1) {
         $name_type =  "One";  } else {
         $name_type =  "Two";  }
@@ -21,7 +21,7 @@ $oFCKeditor->BasePath = $sBasePath;
         <div class="form-group">
             <label  class="col-sm-2 control-label input-sm">Tên chương: </label>
             <div class="col-sm-3 input-group">
-                <input type="text" class="form-control input-sm" id="name">                
+                <input type="text" class="form-control input-sm" id="name" value="<?php echo $model['chapter_name']?>">                
             </div>
         </div>
 
@@ -30,7 +30,7 @@ $oFCKeditor->BasePath = $sBasePath;
         <div class="form-group">
             <label  class="col-sm-2 control-label input-sm">No: </label>
             <div class="col-sm-3 input-group">
-                <input type="text" class="form-control input-sm" name="abc" id="No" >                          
+                <input type="text" class="form-control input-sm" name="abc" id="No"  value="<?php echo $model['No']?>">                          
             </div>
         </div>       
     </form>
@@ -66,7 +66,7 @@ $oFCKeditor->Create();
         var no = $("#No").val();
         var editor = FCKeditorAPI.GetInstance('FCKeditor1');
         var text = editor.GetHTML();
-        $("#target").load("<?php echo TZ_Helper::getUrl("admin", "mcomic", "insertOne/" . $id_c); ?>", {
+        $("#target").load("<?php echo TZ_Helper::getUrl("admin", "mcomic", "update/" . $id_c); ?>", {
             "name": name, "No": no, "text": text,
         });
     });

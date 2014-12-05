@@ -122,6 +122,41 @@ class Mcomic extends MX_Controller {
         }
     }
 
+    public function update($id_chap) {
+        $name = "";
+        $no = "";
+        $text = "";
+        if (isset($_REQUEST["name"])) {
+            $name = $_REQUEST["name"];
+        }
+        if (isset($_REQUEST["No"])) {
+            $no = $_REQUEST["No"];
+        }
+        if (isset($_REQUEST["text"])) {
+            $text = $_REQUEST["text"];
+            $text = str_replace("<p>", "", $text);
+            $text = str_replace("</p>", "<br>", $text);
+
+            $text = str_replace("<div>", "", $text);
+            $text = str_replace("</div>", "<br>", $text);
+        }
+        if ($name == "" || $no == "" || $text == "") {
+            echo "Bạn chưa điền đủ thông tin";
+        } else {
+            $chapter = array(               
+                "No" => $no,
+                "chapter_name" => $name
+            );
+            ChapterModel::update($chapter,$id_chap);
+            $data = DataStoreModel::getByChapterId($id_chap);
+            $url = $data[0]['url_store'];
+            $myfile = fopen("./application/" . $url, "w");
+            fwrite($myfile, $text);
+            fclose($myfile);
+            echo "Lưu thành công";
+        }
+    }
+
     public function insertOne($id) {
         $name = "";
         $no = "";
@@ -136,7 +171,7 @@ class Mcomic extends MX_Controller {
             $text = $_REQUEST["text"];
             $text = str_replace("<p>", "", $text);
             $text = str_replace("</p>", "<br>", $text);
-            
+
             $text = str_replace("<div>", "", $text);
             $text = str_replace("</div>", "<br>", $text);
         }
@@ -323,7 +358,7 @@ class Mcomic extends MX_Controller {
                 $model["lstAuthor"] = AuthorModel::getAll();
                 $model["lstKind"] = KindModel::getAllName(1);
                 $this->tz_layout->view("comic/new_comic", $model);
-            } else {             
+            } else {
                 if ($_FILES["img"]["name"] == NULL) {
                     $comic = array(
                         "comic_name" => $name,
