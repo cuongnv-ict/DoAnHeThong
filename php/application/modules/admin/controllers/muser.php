@@ -91,6 +91,7 @@ class Muser extends MX_Controller {
                 "administrator_name" => $name,
                 "password" => $pass,
                 "email" => $email,
+                "url_image"=>"/upload/avatar/avatar.jpg",
                 "phone_number" => $phone,
                 "isSuperAdministrator" => $role,
                 "fullname" => $fullname
@@ -138,6 +139,87 @@ class Muser extends MX_Controller {
                                 <td>' . $model[$i]["create_time"] . '</td> 
 			</tr>';
             }
+        }
+    }
+
+    public function update($id) {
+        if ($this->input->post("name")) {
+            $name = $_POST["new_name"];
+            if ($name == "") {
+                echo "<script>alert('Bạn chưa nhập tên mới')</script>";
+            } else {
+                $data = array(
+                    "fullname" => $name
+                );
+                AdministratorModel::update($data, $id);
+                echo "<script>alert('Đổi thành công')</script>";
+            }
+            $model["model"] = AdministratorModel::getById($id);
+            $model['id'] = $id;
+            $this->tz_layout->view("user/index", $model);
+        }
+        if ($this->input->post("pass")) {
+            $name = $_POST["new_pass"];
+            if ($name == "") {
+                echo "<script>alert('Bạn chưa nhập pass mới')</script>";
+            } else {
+                $data = array(
+                    "password" => md5($name)
+                );
+                AdministratorModel::update($data, $id);
+                echo "<script>alert('Đổi thành công')</script>";
+            }
+            $model["model"] = AdministratorModel::getById($id);
+            $model['id'] = $id;
+            $this->tz_layout->view("user/index", $model);
+        }
+        if ($this->input->post("email")) {
+            $name = $_POST["new_email"];
+            if ($name == "") {
+                echo "<script>alert('Bạn chưa nhập email mới')</script>";
+            } else {
+                $data = array(
+                    "email" => $name
+                );
+                AdministratorModel::update($data, $id);
+                echo "<script>alert('Đổi thành công')</script>";
+            }
+            $model["model"] = AdministratorModel::getById($id);
+            $model['id'] = $id;
+            $this->tz_layout->view("user/index", $model);
+        }
+        if ($this->input->post("phone")) {
+            $name = $_POST["new_phone"];
+            if ($name == "") {
+                echo "<script>alert('Bạn chưa nhập số mới')</script>";
+            } else {
+                $data = array(
+                    "phone_number" => $name
+                );
+                AdministratorModel::update($data, $id);
+                echo "<script>alert('Đổi thành công')</script>";
+            }
+            $model["model"] = AdministratorModel::getById($id);
+            $model['id'] = $id;
+            $this->tz_layout->view("user/index", $model);
+        }
+        if ($this->input->post("image")) {
+//            $name = $_POST["new_pass"];
+            if ($_FILES["img"]["name"] == NULL) {
+                echo "<script>alert('Bạn chưa chọn ảnh mới')</script>";
+            } else {
+                $this->Mgallery->do_upload();
+                $url = "/upload/avatar/" . $_FILES["img"]["name"];
+                 $data = array(
+                    "url_image" => $url
+                );
+                AdministratorModel::update($data, $id);
+                echo "<script>alert('Đổi thành công')</script>";
+            }
+
+            $model["model"] = AdministratorModel::getById($id);
+            $model['id'] = $id;
+            $this->tz_layout->view("user/index", $model);
         }
     }
 

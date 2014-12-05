@@ -52,6 +52,11 @@ class AdministratorModel extends CI_Model {
         $this->db->delete("tbl_administrator");
     }
 
+    public function update($Model, $id) {
+        $this->db->where("id", $id);
+        $this->db->update("tbl_administrator", $Model);
+    }
+
 }
 
 ?>

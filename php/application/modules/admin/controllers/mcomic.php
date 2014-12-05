@@ -323,8 +323,7 @@ class Mcomic extends MX_Controller {
                 $model["lstAuthor"] = AuthorModel::getAll();
                 $model["lstKind"] = KindModel::getAllName(1);
                 $this->tz_layout->view("comic/new_comic", $model);
-            } else {
-                $this->Mgallery->do_upload();
+            } else {             
                 if ($_FILES["img"]["name"] == NULL) {
                     $comic = array(
                         "comic_name" => $name,
@@ -336,6 +335,7 @@ class Mcomic extends MX_Controller {
                         "id_author" => $id_author,
                     );
                 } else {
+                    $this->Mgallery->do_upload();
                     $url = "/upload/avatar/" . $_FILES["img"]["name"];
                     $comic = array(
                         "comic_name" => $name,

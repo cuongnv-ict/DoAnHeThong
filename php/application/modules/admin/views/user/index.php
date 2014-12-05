@@ -21,29 +21,20 @@
                     </a>
                 </h4>
             </div>
-            <script>
-                function changeName() {
-                    $(document).ready(function () {
-                        var newname = $("#inputPassword3").val();
-                        var id =<?php echo $model[0]["id"]; ?>;
-                        $("#test").load("", {
-                        })
-                    });
-                }
-            </script>
+            <?php $id = $model[0]["id"]; ?>
             <div id="test"></div>
             <div id="collapse1" class="panel-collapse collapse out">
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" action="javascript:changeName()">
+                    <form class="form-horizontal" method="post" role="form" action="<?php echo TZ_Helper::getUrl("admin", "muser", "update/" . $id); ?>">
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-2 control-label">Họ  và tên: </label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputPassword3" placeholder="Tên mới">
+                                <input type="text" class="form-control" id="inputPassword3" placeholder="Tên mới" name="new_name">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">OK</button>
+                            <div class="col-sm-offset-2 col-sm-10">                    
+                                <input type="submit" name="name" class="btn btn-default" value="Ok" />	
                             </div>
                         </div>
                     </form>
@@ -63,17 +54,17 @@
             </div>
             <div id="collapse4" class="panel-collapse collapse out">
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" method="post" role="form" action="<?php echo TZ_Helper::getUrl("admin", "muser", "update/" . $id); ?>">
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Pass: </label>
                             <div class="col-sm-10">
-                                <input type="passwd" class="form-control" id="inputEmail3" placeholder="">
+                                <input type="password" class="form-control" name="new_pass" id="inputEmail3" placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">OK</button>
+                                <input type="submit" name="pass" class="btn btn-default" value="Ok" />
                             </div>
                         </div>
                     </form>
@@ -93,16 +84,16 @@
             </div>
             <div id="collapse2" class="panel-collapse collapse out">
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" method="post" role="form" action="<?php echo TZ_Helper::getUrl("admin", "muser", "update/" . $id); ?>">
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Email: </label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                <input type="email" name="new_email" class="form-control" id="inputEmail3" placeholder="Email">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">OK</button>
+                              <input type="submit" name="email" class="btn btn-default" value="Ok" />
                             </div>
                         </div>
                     </form>
@@ -122,16 +113,16 @@
             </div>
             <div id="collapse3" class="panel-collapse collapse out">
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" method="post" role="form" action="<?php echo TZ_Helper::getUrl("admin", "muser", "update/" . $id); ?>">
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Số điện thoại: </label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputEmail3" placeholder="">
+                                <input type="text" name="new_phone" class="form-control" id="inputEmail3" placeholder="">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">OK</button>
+                                 <input type="submit" name="phone" class="btn btn-default" value="Ok" />
                             </div>
                         </div>
                     </form>
@@ -139,32 +130,32 @@
             </div>
         </div>
 
-        <!--        <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title clearfix">
-                            <span class="col-md-2">Ảnh đại diện </span>
-                            <span><?php echo $model[0]["url_image"]; ?></span>
-                            <a class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-                                Chỉnh sửa
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapse5" class="panel-collapse collapse out">
-                        <div class="panel-body">
-                            <form class="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <div class="col-sm-10">
-                                        <input type="file" class="form-control" id="inputEmail3" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-default">OK</button>
-                                    </div>
-                                </div>
-                            </form>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title clearfix">
+                    <span class="col-md-2">Ảnh đại diện </span>
+                    <span><?php echo $model[0]["url_image"]; ?></span>
+                    <a class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+                        Chỉnh sửa
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse5" class="panel-collapse collapse out">
+                <div class="panel-body">
+                 <form class="form-horizontal" method="post"  enctype="multipart/form-data" role="form" action="<?php echo TZ_Helper::getUrl("admin", "muser", "update/" . $id); ?>">
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                <input type="file" name="img" class="form-control" id="inputEmail3" placeholder="">
+                            </div>
                         </div>
-                    </div>
-                </div>-->
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                   <input type="submit" name="image" class="btn btn-default" value="Ok" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
