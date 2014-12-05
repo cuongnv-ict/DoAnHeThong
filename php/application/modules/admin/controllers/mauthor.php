@@ -90,8 +90,29 @@ class Mauthor extends MX_Controller {
         }
     }
 
-    public function update() {
-        
+    public function edit($id) {
+        $model['model'] = AuthorModel::getById($id);
+        $this->tz_layout->view("author/edit_author", $model);
+    }
+
+    public function update($id) {
+        if (isset($_REQUEST["author_name"])) {
+            $author_name = $_REQUEST["author_name"];
+        }
+        if ($author_name == "") {
+            echo 'Vui lòng điền tên tác giả!';
+        } else {
+            $checkAuthor = AuthorModel::getByAuthorName($author_name);
+            if (!$checkAuthor) {
+                $authorModel = array(
+                    "author_name" => $author_name,
+                );
+                AuthorModel::update($authorModel,$id);
+                echo 'Cập nhật thành công!';
+            } else {
+                echo 'Tên tác giả đã tồn tại vui lòng kiểm tra lại!';
+            }
+        }
     }
 
 }

@@ -47,8 +47,8 @@
                 echo '<tr>
                 <td><input type="checkbox" name="chkAuthors" id="' . ($i + 1) . '_chkAuthor" value="' . $lstAuthor[$i]["id"] . '"></td>
                 <td>' . ($i + 1) . '</td>
-                <td><a href="#">' . $lstAuthor[$i]["author_name"] . '</a></td>
-                <td><a href="#">' . $lstAuthor[$i]["create_date"] . '</a></td>    
+                <td><a href="'.TZ_Helper::getUrl("admin", "mauthor", "edit/". $lstAuthor[$i]["id"]).'">' . $lstAuthor[$i]["author_name"] . '</a></td>
+                <td>' . $lstAuthor[$i]["create_date"] . '</td>    
             </tr>';
             }
             ?>
