@@ -94,6 +94,42 @@ class actionChange extends MX_Controller {
         ComicModel::update($objComic, $id_comic);
     }
 
+    public function showReviewComic() {
+        $id=0;
+        if (isset($_REQUEST["id"])){
+            $id=$_REQUEST["id"];
+        }
+        $avetage = ComicModel::getById($id)[0]["review_average"];
+        if ($avetage - floor($avetage) > 0.8) {
+            $avetage = ceil($avetage);
+        } else if ($avetage - floor($avetage) < 0.2) {
+            $avetage = floor($avetage);
+        } else {
+            $avetage = floor($avetage) + 0.5;
+        }
+        for ($i = 1; $i <= 5; $i++) {
+            if ($i <= floor($avetage)) {
+                echo '  <a href="#id" title="' . $i . '" onclick="review(' . $i . ')">
+                                <i class="fa fa-star fa-2x"></i>
+                            </a>';
+            } else if ($i == floor($avetage) + 1) {
+                if ($avetage - floor($avetage) == 0.5) {
+                    echo '  <a href="#id" title="' . $i . '" onclick="review(' . $i . ')">
+                                    <i class="fa fa-star-half-o fa-2x"></i>
+                                </a>';
+                } else {
+                    echo '  <a href="#id" title="' . $i . '" onclick="review(' . $i . ')">
+                                    <i class="fa fa-star-o fa-2x"></i>
+                                </a>';
+                }
+            } else {
+                echo '  <a href="#id" title="' . $i . '" onclick="review(' . $i . ')">
+                                    <i class="fa fa-star-o fa-2x"></i>
+                                </a>';
+            }
+        }
+    }
+
 }
 
 ?>

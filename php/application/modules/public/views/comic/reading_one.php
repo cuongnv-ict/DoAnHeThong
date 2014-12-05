@@ -76,9 +76,7 @@
             }
         } else {
             foreach ($lstDataStore as $value){
-                echo ' <div style="text-align:center;">     
-                            <img src="'; echo $value['url_store']; echo '"/>
-                       </div><br>';
+                echo '<img src="'; echo $value['url_store']; echo '"/> <br>';
             }
         }
         ?>
