@@ -128,5 +128,6 @@ echo '"ip":"' . $ip . '"';
 </div>
 <div id="fb-api" class="col-md-12">
     <div class="fb-comments" data-href="https://www.facebook.com/truyen.ry" data-width="100%" data-numposts="5" data-colorscheme="dark"></div>
+
 </div>
 <span id="target"></span>

@@ -33,6 +33,7 @@ class Login extends MX_Controller{
 					'email' => $result[0]['email'],
 					'type' => $result[0]['isSuperAdministrator']
 			);
+			
 			$this->session->set_userdata('login', true);
 			$this->session->set_userdata('info', $userdata);
 			redirect('/admin/mcomic/showAll', 'refresh');
