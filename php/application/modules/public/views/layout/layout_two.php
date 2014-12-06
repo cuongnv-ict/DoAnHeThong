@@ -97,7 +97,7 @@
                             tranh</a>
 
                     <li><a href='<?php echo base_url("index.php/public/home/showToType/1"); ?>'><i class="fa fa-file-text-o fa-2x"></i> Truyện chữ</a></li>
-                    <li><a href='<?php echo TZ_Helper::getUrl("public", "contact", "index");'><i class="fa fa-credit-card fa-2x"></i> Liên hệ</a></li>
+                    <li><a href='<?php echo TZ_Helper::getUrl("public", "contact", "index") ?>;'><i class="fa fa-credit-card fa-2x"></i> Liên hệ</a></li>
                 </ul>
             </div>
             <!-- End TopMenu -->
