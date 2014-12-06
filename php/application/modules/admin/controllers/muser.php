@@ -35,7 +35,7 @@ class Muser extends MX_Controller {
     }
 
     public function allUser() {
-        if ($this->session->userdata('type') == 0) {
+        if ($this->session->userdata('info')['type'] == '0') {
             echo "<script>alert('Ban không được phép truy cập')</script>";
             $model["lstComic"] = ComicModel::getAll();
             $this->tz_layout->view("comic/show_all", $model);
