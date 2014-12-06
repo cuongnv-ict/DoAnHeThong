@@ -23,7 +23,7 @@ for ($i = 0; $i < sizeof($lstComicShow); $i++) {
                 <div class="caption">
                     <a href="' . (TZ_Helper::getUrl("public", "comic", "index/" . $lstComicShow[$i]["id"])) . '"><h3>' . $lstComicShow[$i]["comic_name"] . '</h3></a> 
                         <span>
-                        Đánh giá 9.9
+                        Đánh giá '.$lstComicShow[$i]["review_average"].'
                         </span>';
     if (sizeof(ChapterModel::getChapterUpdateNewFinal($lstComicShow[$i]["id"])) == 0) {
         echo '<a><p>Chưa cập nhật!';

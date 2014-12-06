@@ -88,6 +88,7 @@ class actionChange extends MX_Controller {
             $total+=$info["reviews_point"];
         }
         $average = $total / (sizeof($lstReview));
+        $average=  number_format($average,1);
         $objComic = array(
             "review_average" => $average,
         );
