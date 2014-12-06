@@ -133,6 +133,9 @@ class Mcomic extends MX_Controller {
             $text = $_REQUEST["text"];
             $text = str_replace("<p>", "", $text);
             $text = str_replace("</p>", "<br>", $text);
+            
+            $text = str_replace("<div>", "", $text);
+            $text = str_replace("</div>", "<br>", $text);
         }
         if ($name == "" || $no == "" || $text == "") {
             echo "Bạn chưa điền đủ thông tin";
