@@ -186,8 +186,7 @@
                     <h4>Thông tin website</h4>
                     <hr />
                     <div>
-                        <p>Website được phát triển Nhóm yêu thích truyện tranh truyenmix
-                            tại Hà Nội</p>
+                        <p>Website được phát triển Nhóm đồ án HTTT - Đại học Bách Khoa Hà Nội</p>
                     </div>
                 </div>
                 <div class="col-md-4 box"></div>
