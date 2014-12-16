@@ -61,7 +61,13 @@
                 js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.0";
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));</script>
-
+            
+		<!-- Button like and sh -->
+         <div id="bt-fb">
+	        <div class="fb-like" data-href="http://forum-websitetruyen.rhcloud.com/" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+		</div>
+		
+		
         <div class="navbar navbar-default" id="topnav">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse"

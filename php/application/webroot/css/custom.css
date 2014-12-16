@@ -696,3 +696,17 @@ span.twitter-typeahead .tt-suggestion:focus {
   outline: 0;
   background-color: #428bca;
 }
+
+#bt-fb{
+	position: fixed;
+	with: 1em;
+	top: 25%;
+	right: 0%;
+}
+#bt-fb td{
+	display: block;
+}
+
+
+
+
