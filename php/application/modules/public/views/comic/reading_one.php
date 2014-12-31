@@ -69,13 +69,28 @@
     if (CategoryModel::getById($id_category)[0]['id_type'] == 1) {
         ?>
             <?php
+            $text="";
             for ($i = 0; $i < sizeof($lstDataStore); $i++) {
                 $url = base_url() . 'application/' . $lstDataStore[$i]["url_store"];
                 $file = fopen($url, 'r');
                 while (!feof($file)) {
-                    echo fgets($file) . "<br>";
+                    $text.= fgets($file) . "<br>";
                 }
             }
+            $text = str_replace("<p>", "", $text);
+            $text = str_replace("</p>", "<br>", $text);
+            
+            $text = str_replace("<p", "<br", $text);
+            $text = str_replace("</p>", "<br>", $text);
+            
+            $text = str_replace("<div>", "", $text);
+            $text = str_replace("</div>", "<br>", $text);
+            
+            $text = str_replace("<div", "<br", $text);
+            $text = str_replace("</div>", "<br>", $text);
+            
+            $text = str_replace("color: rgb(51, 51, 51);", "", $text);
+            echo $text;
             ?>
         <?php
     } else {

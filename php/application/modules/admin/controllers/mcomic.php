@@ -136,9 +136,20 @@ class Mcomic extends MX_Controller {
             $text = $_REQUEST["text"];
             $text = str_replace("<p>", "", $text);
             $text = str_replace("</p>", "<br>", $text);
-
+            
+            $text = str_replace("<p", "<br", $text);
+            $text = str_replace("</p>", "<br>", $text);
+            
+            $text = str_replace("<b", "<br", $text);
+            $text = str_replace("</b>", "<br>", $text);
+            
             $text = str_replace("<div>", "", $text);
             $text = str_replace("</div>", "<br>", $text);
+            
+            $text = str_replace("<div", "<br", $text);
+            $text = str_replace("</div>", "<br>", $text);
+
+            $text = str_replace("color: rgb(51, 51, 51);", "", $text);
         }
         if ($name == "" || $no == "" || $text == "") {
             echo "<script>alert('Bạn chưa điền đủ thông tin')</script>";

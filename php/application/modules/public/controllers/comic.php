@@ -80,16 +80,35 @@ class Comic extends MX_Controller {
 
         $lstDataStore = DataStoreModel::getByChapterId($id_chapter);
         if (CategoryModel::getById($id_category)[0]['id_type'] == 1) {
+            $str = "";
             for ($i = 0; $i < sizeof($lstDataStore); $i++) {
                 $url = base_url() . 'application/' . $lstDataStore[$i]["url_store"];
                 $file = fopen($url, 'r');
                 while (!feof($file)) {
-                    echo fgets($file) . "<br>";
+                    $str.= fgets($file) . "<br>";
                 }
             }
-        }else{
-            foreach ($lstDataStore as $value){
-                echo '<img src="'; echo $value['url_store']; echo '"/><br>';
+            $str = str_replace("<p>", "", $str);
+            $str = str_replace("</p>", "<br>", $str);
+            
+            $str = str_replace("<p", "<br", $str);
+            $str = str_replace("</p>", "<br>", $str);
+            
+            $str = str_replace("<div>", "", $str);
+            $str = str_replace("</div>", "<br>", $str);
+            
+            $str = str_replace("<div", "<br", $str);
+            $str = str_replace("</div>", "<br>", $str);
+            
+            $str = str_replace("color: rgb(51, 51, 51);", "", $str);
+            
+            $str = str_replace("color: rgb(51, 51, 51);", "", $str);
+            echo $str;
+        } else {
+            foreach ($lstDataStore as $value) {
+                echo '<img src="';
+                echo $value['url_store'];
+                echo '"/><br>';
             }
         }
     }
