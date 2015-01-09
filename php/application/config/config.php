@@ -14,8 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/DoAnHeThong/php/';
-
+$config['base_url']	= 'http://forum-websitetruyen.rhcloud.com/';
 /*
 |--------------------------------------------------------------------------
 | Index File
