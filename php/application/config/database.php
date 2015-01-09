@@ -48,9 +48,12 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '127.11.1.130';
+$db['default']['hostname'] = '127.11.1.130:3066';
+//$db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'admin6rXYnyd';
+//$db['default']['username'] = 'root';
 $db['default']['password'] = 'puemWrt26Dbb';
+//$db['default']['password'] = '';
 $db['default']['database'] = 'forum_comic';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
