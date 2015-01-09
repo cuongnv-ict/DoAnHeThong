@@ -2,7 +2,7 @@
 include dirname(BASEPATH) . "/application/webroot/fckeditor/fckeditor.php";
 
 //$sBasePath = "/DoAnHeThong/php/application/webroot/fckeditor/";
-$sBasePath = "application/webroot/fckeditor/";
+$sBasePath = "/application/webroot/fckeditor/";
 
 $oFCKeditor = new FCKeditor('FCKeditor1');
 $oFCKeditor->BasePath = $sBasePath;
