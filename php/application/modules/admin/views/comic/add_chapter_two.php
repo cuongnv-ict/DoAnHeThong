@@ -1,7 +1,7 @@
 <?php
 include dirname(BASEPATH) . "/application/webroot/fckeditor/fckeditor.php";
 
-$sBasePath = "/doanhethong/php/application/webroot/fckeditor/";
+$sBasePath = "/DoAnHeThong/php/application/webroot/fckeditor/";
 
 $oFCKeditor = new FCKeditor('FCKeditor1');
 $oFCKeditor->BasePath = $sBasePath;
