@@ -91,6 +91,7 @@
             
             $text = str_replace("color: rgb(51, 51, 51);", "", $text);
             echo $text;
+            
             ?>
         <?php
     } else {
